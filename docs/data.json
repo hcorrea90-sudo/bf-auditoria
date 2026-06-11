@@ -1,457 +1,457 @@
 {
-  "generado": "2026-06-11T19:32:55.277807",
+  "generado": "2026-06-11T19:47:37.845668",
   "total": 949,
-  "con_precio": 948,
+  "con_precio": 946,
   "vehiculos": [
     {
-      "titulo": "Hyundai TUCSON 2026",
+      "titulo": "HYUNDAI TUCSON 2026 Incluye bono $500.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 5500,
       "precio": 20990000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Kia SORENTO 2021",
+      "titulo": "KIA SORENTO 2021 Incluye bono $500.000",
       "marca": "KIA",
       "ano": 2021,
       "km": 63000,
       "precio": 21490000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Mazda CX-9 2022",
+      "titulo": "MAZDA CX-9 2022 Incluye bono $600.000",
       "marca": "MAZDA",
       "ano": 2022,
       "km": 38955,
       "precio": 28990000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Toyota RAV4 2026",
+      "titulo": "TOYOTA RAV4 2026 Incluye bono $500.000",
       "marca": "TOYOTA",
       "ano": 2026,
       "km": 12684,
       "precio": 24690000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Chery TIGGO 8 2022",
+      "titulo": "CHERY TIGGO 8 2022 Incluye bono $400.000",
       "marca": "CHERY",
       "ano": 2022,
       "km": 45001,
       "precio": 12990000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Toyota COROLLA CROSS 2026",
+      "titulo": "TOYOTA COROLLA CROSS 2026 Incluye bono $500.000",
       "marca": "TOYOTA",
       "ano": 2026,
       "km": 15105,
       "precio": 25190000,
-      "combustible": "",
-      "transmision": "Automatica"
+      "combustible": "Híbrido",
+      "transmision": "Automática"
     },
     {
-      "titulo": "Toyota COROLLA CROSS 2026",
+      "titulo": "TOYOTA COROLLA CROSS 2026 Incluye bono $500.000",
       "marca": "TOYOTA",
       "ano": 2026,
       "km": 13119,
       "precio": 25390000,
-      "combustible": "",
-      "transmision": "Automatica"
+      "combustible": "Híbrido",
+      "transmision": "Automática"
     },
     {
-      "titulo": "Opel CORSA 2023",
+      "titulo": "OPEL CORSA 2023 Incluye bono $300.000",
       "marca": "OPEL",
       "ano": 2023,
       "km": 52335,
       "precio": 9190000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai I20 2026",
+      "titulo": "HYUNDAI I20 2026 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 11260,
       "precio": 13590000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Chery TIGGO 2 PRO MAX 2025",
+      "titulo": "CHERY TIGGO 2 PRO MAX 2025 Incluye bono $300.000",
       "marca": "CHERY",
       "ano": 2025,
       "km": 11666,
       "precio": 10390000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Suzuki SWIFT 2016",
+      "titulo": "SUZUKI SWIFT 2016",
       "marca": "SUZUKI",
       "ano": 2016,
       "km": 106345,
       "precio": 8790000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Nissan VERSA 2023",
+      "titulo": "NISSAN VERSA 2023 Incluye bono $300.000",
       "marca": "NISSAN",
       "ano": 2023,
       "km": 27224,
       "precio": 11290000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Ds DS4 2020",
+      "titulo": "DS DS4 2020",
       "marca": "DS",
       "ano": 2020,
       "km": 84000,
       "precio": 9990000,
       "combustible": "Diesel",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Chery TIGGO 3 2023",
+      "titulo": "CHERY TIGGO 3 2023 Incluye bono $300.000",
       "marca": "CHERY",
       "ano": 2023,
       "km": 61000,
       "precio": 9490000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Subaru XV 2019",
+      "titulo": "SUBARU XV 2019 Incluye bono $400.000",
       "marca": "SUBARU",
       "ano": 2019,
       "km": 60741,
       "precio": 14990000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Mg ZX 2024",
+      "titulo": "MG ZX 2024 Incluye bono $300.000",
       "marca": "MG",
       "ano": 2024,
       "km": 20212,
       "precio": 11990000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Peugeot 5008 2018",
+      "titulo": "PEUGEOT 5008 2018 Incluye bono $400.000",
       "marca": "PEUGEOT",
       "ano": 2018,
       "km": 109549,
       "precio": 12990000,
       "combustible": "Diesel",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Toyota 4RUNNER 2023",
+      "titulo": "TOYOTA 4RUNNER 2023 Incluye bono $800.000",
       "marca": "TOYOTA",
       "ano": 2023,
       "km": 33000,
       "precio": 37990000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Ram 1500 2023",
+      "titulo": "RAM 1500 2023 Incluye bono $1.000.000",
       "marca": "RAM",
       "ano": 2023,
       "km": 64015,
       "precio": 31700000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Mahindra XUV 300 2024",
+      "titulo": "MAHINDRA XUV 300 2024 Incluye bono $200.000",
       "marca": "MAHINDRA",
       "ano": 2024,
       "km": 32806,
       "precio": 8790000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai CRETA 2023",
+      "titulo": "HYUNDAI CRETA 2023 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2023,
       "km": 49821,
       "precio": 15590000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Mg 5 2024",
+      "titulo": "MG 5 2024 Incluye bono $200.000",
       "marca": "MG",
       "ano": 2024,
       "km": 51000,
       "precio": 8290000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Nissan KICKS 2022",
+      "titulo": "NISSAN KICKS 2022 Incluye bono $400.000",
       "marca": "NISSAN",
       "ano": 2022,
       "km": 35964,
       "precio": 13990000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Nissan NP300 2019",
+      "titulo": "NISSAN NP300 2019 Incluye bono $400.000",
       "marca": "NISSAN",
       "ano": 2019,
       "km": 122897,
       "precio": 16990000,
       "combustible": "Diesel",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Gac EMKOO 2024",
+      "titulo": "GAC EMKOO 2024 Incluye bono $300.000",
       "marca": "GAC",
       "ano": 2024,
       "km": 29465,
       "precio": 11690000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Ford ECOSPORT 2020",
+      "titulo": "FORD ECOSPORT 2020 Incluye bono $300.000",
       "marca": "FORD",
       "ano": 2020,
       "km": 84395,
       "precio": 9490000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Suzuki GRAND NOMADE 2015",
+      "titulo": "SUZUKI GRAND NOMADE 2015 Incluye bono $200.000",
       "marca": "SUZUKI",
       "ano": 2015,
       "km": 138000,
       "precio": 6790000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Mercedes benz GLC200 2024",
+      "titulo": "MERCEDES BENZ GLC200 2024 Incluye bono $800.000",
       "marca": "MERCEDES",
       "ano": 2024,
       "km": 18965,
       "precio": 45900000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Chery TIGGO 2 PRO 2025",
+      "titulo": "CHERY TIGGO 2 PRO 2025 Incluye bono $200.000",
       "marca": "CHERY",
       "ano": 2025,
       "km": 44948,
       "precio": 8590000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Subaru CROSSTREK 2024",
+      "titulo": "SUBARU CROSSTREK 2024 Incluye bono $500.000",
       "marca": "SUBARU",
       "ano": 2024,
       "km": 60000,
       "precio": 23990000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Chery TIGGO 7 PRO 2023",
+      "titulo": "CHERY TIGGO 7 PRO 2023 Incluye bono $400.000",
       "marca": "CHERY",
       "ano": 2023,
       "km": 54879,
       "precio": 12490000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Mazda CX-3 2025",
+      "titulo": "MAZDA CX-3 2025 Incluye bono $400.000",
       "marca": "MAZDA",
       "ano": 2025,
       "km": 25830,
       "precio": 17590000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Chevrolet SPIN 2018",
+      "titulo": "CHEVROLET SPIN 2018 Incluye bono $200.000",
       "marca": "CHEVROLET",
       "ano": 2018,
       "km": 98701,
       "precio": 7490000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Chery TIGGO 8 2022",
+      "titulo": "CHERY TIGGO 8 2022 Incluye bono $400.000",
       "marca": "CHERY",
       "ano": 2022,
       "km": 54970,
       "precio": 12490000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Opel MOKKA 2025",
+      "titulo": "OPEL MOKKA 2025 Incluye bono $400.000",
       "marca": "OPEL",
       "ano": 2025,
       "km": 15049,
       "precio": 13590000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai I20 2026",
+      "titulo": "HYUNDAI I20 2026 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 18035,
       "precio": 13390000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai I20 2026",
+      "titulo": "HYUNDAI I20 2026 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 10892,
       "precio": 13590000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Toyota RAIZE 2023",
+      "titulo": "TOYOTA RAIZE 2023 Incluye bono $300.000",
       "marca": "TOYOTA",
       "ano": 2023,
       "km": 19307,
       "precio": 11490000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai I20 2026",
+      "titulo": "HYUNDAI I20 2026 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 17299,
       "precio": 13390000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai I20 2026",
+      "titulo": "HYUNDAI I20 2026 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 13118,
       "precio": 13590000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai I20 2026",
+      "titulo": "HYUNDAI I20 2026 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 17148,
       "precio": 13390000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai I20 2026",
+      "titulo": "HYUNDAI I20 2026 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 15047,
       "precio": 13390000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai I20 2026",
+      "titulo": "HYUNDAI I20 2026 Incluye bono $400.000",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 17308,
       "precio": 13390000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Chery TIGGO 8 2021",
+      "titulo": "CHERY TIGGO 8 2021 Incluye bono $300.000",
       "marca": "CHERY",
       "ano": 2021,
       "km": 77247,
       "precio": 11490000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Hyundai TUCSON 2025",
+      "titulo": "HYUNDAI TUCSON 2025 Incluye bono $500.000",
       "marca": "HYUNDAI",
       "ano": 2025,
       "km": 24343,
       "precio": 21190000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Omoda C5 2024",
+      "titulo": "OMODA C5 2024 Incluye bono $1.000.000",
       "marca": "OMODA",
       "ano": 2024,
       "km": 21260,
       "precio": 12790000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Peugeot 2008 2021",
+      "titulo": "PEUGEOT 2008 2021 Incluye bono $300.000",
       "marca": "PEUGEOT",
       "ano": 2008,
       "km": 66000,
       "precio": 9490000,
       "combustible": "Gasolina",
-      "transmision": "Mecanica"
+      "transmision": "Mecánica"
     },
     {
-      "titulo": "Geely COOLRAY 2023",
+      "titulo": "GEELY COOLRAY 2023 Incluye bono $300.000",
       "marca": "GEELY",
       "ano": 2023,
       "km": 15779,
       "precio": 11990000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Chery TIGGO 7 PRO MAX 2025",
+      "titulo": "CHERY TIGGO 7 PRO MAX 2025 Incluye bono $400.000",
       "marca": "CHERY",
       "ano": 2025,
       "km": 19421,
       "precio": 13190000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "Volkswagen TIGUAN 2018",
+      "titulo": "VOLKSWAGEN TIGUAN 2018 Incluye bono $400.000",
       "marca": "VOLKSWAGEN",
       "ano": 2018,
       "km": 109310,
       "precio": 13590000,
       "combustible": "Gasolina",
-      "transmision": "Automatica"
+      "transmision": "Automática"
     }
   ]
 }
