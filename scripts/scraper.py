@@ -197,6 +197,9 @@ def scrape_todo():
             pagina += 1
         browser.close()
     log.info(f"Total extraidos: {len(todos)}")
+    # Log primeros 5 titulos para diagnostico
+    for v in todos[:5]:
+        log.info(f"  MUESTRA titulo='{v['titulo']}' comb='{v['combustible']}' km={v['km']} precio={v['precio']}")
     return todos
 
 # ── Análisis ──────────────────────────────────────────────────────────────────
