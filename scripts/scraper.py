@@ -1,6 +1,6 @@
 """
-bf_scraper.py — Auditoría completa de brunofritsch.cl/autos-usados
-Scraping HTML con selectores MUI + extracción precisa de precio/km/combustible.
+bf_scraper.py - Auditoria brunofritsch.cl/autos-usados
+Usa Playwright para renderizar JS y capturar precios reales.
 """
 
 import re
@@ -13,34 +13,24 @@ from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
 
-import requests
+from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 
-BASE_URL    = "https://www.brunofritsch.cl"
-LIST_URL    = f"{BASE_URL}/autos-usados"
-DELAY_SEG   = 1.5
-MAX_PAGINAS = 20
+LIST_URL    = "https://www.brunofritsch.cl/autos-usados"
 PAGE_SIZE   = 100
+MAX_PAGINAS = 15
 OUTPUT_DIR  = Path(__file__).parent.parent / "docs"
 OUTPUT_FILE = OUTPUT_DIR / "index.html"
 DATA_FILE   = OUTPUT_DIR / "data.json"
-
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
-    "Accept-Language": "es-CL,es;q=0.9",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-}
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 log = logging.getLogger(__name__)
 
 MHEV_KEYWORDS = ["mhev", "mild hybrid", " b5 ", " b4 ", " b6 ", " b8 ", "48v", "e-tsi", "etsi", "phev"]
 
-# ── Scraping HTML ─────────────────────────────────────────────────────────────
+# ── Scraping con Playwright ───────────────────────────────────────────────────
 
 def parsear_precio(txt):
-    """Extrae el primer precio CLP válido del texto de una tarjeta."""
-    # Busca patrones como $45.900.000 o $6.790.000
     matches = re.findall(r"\$\s*([\d]{1,3}(?:[\.\s][\d]{3})+)", txt)
     for m in matches:
         limpio = re.sub(r"[^\d]", "", m)
@@ -53,7 +43,6 @@ def parsear_precio(txt):
     return None
 
 def parsear_km(txt):
-    """Extrae km del texto. Ej: '138.000 km' → 138000"""
     m = re.search(r"([\d]{1,3}(?:\.[\d]{3})*)\s*km", txt, re.I)
     if m:
         try:
@@ -69,107 +58,97 @@ def extraer_ano(txt):
     return int(m.group(1)) if m else None
 
 def extraer_combustible(txt):
-    for palabra in ["Híbrido", "Eléctrico", "Gasolina", "Bencina", "Diésel", "Diesel", "GNC", "GLP"]:
-        if re.search(rf"\b{palabra}\b", txt, re.I):
-            return palabra.capitalize()
+    for p in ["Hibrido", "Electrico", "Gasolina", "Bencina", "Diesel", "GNC", "GLP"]:
+        if re.search(rf"\b{p}\b", txt, re.I):
+            return p.capitalize()
     return ""
 
 def extraer_transmision(txt):
-    if re.search(r"\bAutomática\b", txt, re.I): return "Automática"
-    if re.search(r"\bMecánica\b|\bManual\b",   txt, re.I): return "Mecánica"
-    if re.search(r"\b(cvt|dct|dsg)\b",          txt, re.I): return "Automática"
+    if re.search(r"\bAutomatica\b|\bAutomática\b", txt, re.I): return "Automatica"
+    if re.search(r"\bMecanica\b|\bMecánica\b|\bManual\b",  txt, re.I): return "Mecanica"
     return ""
 
-def scrape_pagina(session, pagina):
+def parsear_tarjeta(t):
+    txt = t.get_text(" ", strip=True)
+    precio = parsear_precio(txt)
+    km     = parsear_km(txt)
+    ano    = extraer_ano(txt)
+
+    titulo = ""
+    for tag in t.find_all("p"):
+        cls = " ".join(tag.get("class", []))
+        if "body1" in cls:
+            candidato = tag.get_text(" ", strip=True)
+            if len(candidato) > 6 and re.search(r"[A-Z]", candidato):
+                titulo = candidato
+                break
+    if not titulo:
+        a = t.find("a")
+        titulo = a.get_text(" ", strip=True)[:120] if a else txt[:80]
+    titulo = re.sub(r"\s+", " ", titulo).strip()
+    marca  = titulo.split()[0].upper() if titulo else "DESCONOCIDA"
+
+    return {
+        "titulo":      titulo,
+        "marca":       marca,
+        "ano":         ano,
+        "km":          km,
+        "precio":      precio,
+        "combustible": extraer_combustible(txt),
+        "transmision": extraer_transmision(txt),
+    }
+
+def scrape_pagina_pw(page, pagina):
     url = f"{LIST_URL}?page={pagina}&pageSize={PAGE_SIZE}"
+    page.goto(url, wait_until="networkidle", timeout=60000)
+    # Esperar que carguen las tarjetas con precio
     try:
-        resp = session.get(url, headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-    except Exception as e:
-        log.error(f"Página {pagina}: {e}")
-        return [], False
+        page.wait_for_selector("#grid-mode-product-card", timeout=15000)
+    except:
+        pass
+    time.sleep(2)  # extra para JS de precios
 
-    soup = BeautifulSoup(resp.text, "lxml")
+    html  = page.content()
+    soup  = BeautifulSoup(html, "lxml")
 
-    # Selector principal confirmado con DevTools
     tarjetas = soup.find_all(id="grid-mode-product-card")
-
-    # Fallbacks
     if not tarjetas:
         tarjetas = soup.find_all(class_=re.compile(r"MuiCard-root", re.I))
     if not tarjetas:
         tarjetas = [
             d for d in soup.find_all("div")
-            if re.search(r"product-card", str(d.get("id","")) + " ".join(d.get("class",[])), re.I)
-        ]
-    if not tarjetas:
-        tarjetas = [
-            d for d in soup.find_all("div")
             if re.search(r"\$\s*[\d\.]{7,}", d.get_text())
-            and re.search(r"\d{1,3}[\.\s]\d{3}\s*km", d.get_text(), re.I)
+            and re.search(r"\d{1,3}\.[\d]{3}\s*km", d.get_text(), re.I)
             and 80 < len(d.get_text()) < 700
         ]
 
-    if not tarjetas:
-        log.warning(f"  Página {pagina}: sin tarjetas.")
-        return [], False
-
-    vehiculos = []
-    for t in tarjetas:
-        txt = t.get_text(" ", strip=True)
-
-        precio = parsear_precio(txt)
-        km     = parsear_km(txt)
-        ano    = extraer_ano(txt)
-
-        # Título: preferir el p con body1 (nombre del auto)
-        titulo = ""
-        for tag in t.find_all("p"):
-            cls = " ".join(tag.get("class", []))
-            if "body1" in cls:
-                candidato = tag.get_text(" ", strip=True)
-                if len(candidato) > 6 and re.search(r"[A-Z]", candidato):
-                    titulo = candidato
-                    break
-        if not titulo:
-            a = t.find("a")
-            titulo = a.get_text(" ", strip=True)[:120] if a else txt[:80]
-
-        titulo = re.sub(r"\s+", " ", titulo).strip()
-        marca  = titulo.split()[0].upper() if titulo else "DESCONOCIDA"
-
-        vehiculos.append({
-            "titulo":      titulo,
-            "marca":       marca,
-            "ano":         ano,
-            "km":          km,
-            "precio":      precio,
-            "combustible": extraer_combustible(txt),
-            "transmision": extraer_transmision(txt),
-            "texto_raw":   txt[:200],
-        })
-
-    # Detectar total en el texto de la página
     total_m = re.search(r"(\d+)\s*autos", soup.get_text())
     total   = int(total_m.group(1)) if total_m else 0
     hay_sig = (pagina * PAGE_SIZE) < total if total else len(tarjetas) >= PAGE_SIZE * 0.7
 
-    log.info(f"  Página {pagina:02d}: {len(vehiculos)} autos  (total sitio: {total})")
+    vehiculos = [parsear_tarjeta(t) for t in tarjetas]
+    log.info(f"  Pagina {pagina:02d}: {len(vehiculos)} autos | precios: {sum(1 for v in vehiculos if v['precio'])} | total sitio: {total}")
     return vehiculos, hay_sig
 
 def scrape_todo():
-    session = requests.Session()
-    todos   = []
-    pagina  = 1
-    log.info(f"Scraping {LIST_URL}")
-    while pagina <= MAX_PAGINAS:
-        items, hay_sig = scrape_pagina(session, pagina)
-        todos.extend(items)
-        if not items or not hay_sig:
-            break
-        pagina += 1
-        time.sleep(DELAY_SEG)
-    log.info(f"Total extraídos: {len(todos)}")
+    todos = []
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch(headless=True)
+        ctx     = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36",
+            locale="es-CL",
+        )
+        page = ctx.new_page()
+        log.info(f"Scraping {LIST_URL}")
+        pagina = 1
+        while pagina <= MAX_PAGINAS:
+            items, hay_sig = scrape_pagina_pw(page, pagina)
+            todos.extend(items)
+            if not items or not hay_sig:
+                break
+            pagina += 1
+        browser.close()
+    log.info(f"Total extraidos: {len(todos)}")
     return todos
 
 # ── Análisis ──────────────────────────────────────────────────────────────────
@@ -185,7 +164,7 @@ def analizar_combustible(veh):
     out = []
     for v in veh:
         c = (v["combustible"] or "").lower()
-        if any(x in c for x in ("híbrido","hibrido","eléctrico","electrico")):
+        if any(x in c for x in ("hibrido","electrico")):
             continue
         tl = " " + v["titulo"].lower() + " "
         for kw in MHEV_KEYWORDS:
@@ -195,8 +174,8 @@ def analizar_combustible(veh):
                     "km":          v["km"],
                     "precio":      v["precio"],
                     "comb_actual": v["combustible"] or "No especificado",
-                    "deberia":     "Híbrido",
-                    "detalle":     f'"{kw.upper().strip()}" indica tecnología mild-hybrid o híbrida.',
+                    "deberia":     "Hibrido",
+                    "detalle":     f'"{kw.upper().strip()}" indica tecnologia mild-hybrid o hibrida.',
                     "sev":         "ALTO",
                 })
                 break
@@ -205,9 +184,7 @@ def analizar_combustible(veh):
 def analizar_km_precio(veh):
     grupos = defaultdict(list)
     for v in veh:
-        if None in (v["km"], v["precio"], v["ano"]):
-            continue
-        if v["km"] == 0:
+        if None in (v["km"], v["precio"], v["ano"]) or v["km"] == 0:
             continue
         grupos[f"{clave_version(v)}|{v['ano']}"].append(v)
     out = []
@@ -246,10 +223,9 @@ def analizar_ano_precio(veh):
         if len(anos) < 2:
             continue
         for a1, a2 in combinations(anos, 2):
-            g1 = sorted([v for v in items if v["ano"] == a1], key=lambda x: x["precio"])
-            g2 = sorted([v for v in items if v["ano"] == a2], key=lambda x: x["precio"])
-            r1 = g1[len(g1)//2]
-            r2 = g2[len(g2)//2]
+            g1 = sorted([v for v in items if v["ano"]==a1], key=lambda x: x["precio"])
+            g2 = sorted([v for v in items if v["ano"]==a2], key=lambda x: x["precio"])
+            r1 = g1[len(g1)//2]; r2 = g2[len(g2)//2]
             if r2["precio"] >= r1["precio"]:
                 continue
             dp = r1["precio"] - r2["precio"]
@@ -264,16 +240,16 @@ def analizar_ano_precio(veh):
     return out[:12]
 
 JERARQUIAS = [
-    (r"prado.*super\s*lujo",   r"prado.*vx-?l",          "Prado: SUPER LUJO < VX-L"),
-    (r"landtrek.*active.*150", r"landtrek.*action.*180",  "Landtrek: ACTIVE 150HP < ACTION 180HP"),
-    (r"sportage.*ex.*2wd",     r"sportage.*ex.*awd",      "Sportage EX: 2WD < AWD"),
-    (r"x-?trail.*\bsense\b",   r"x-?trail.*exclusive",    "X-Trail: SENSE < EXCLUSIVE"),
-    (r"rav4.*\ble\b.*\bmt\b",  r"rav4.*\ble\b.*\bcvt\b",  "RAV4: LE MT < LE CVT"),
-    (r"rav4.*\ble\b",          r"rav4.*\bvx\b",           "RAV4: LE < VX"),
-    (r"tucson.*\bgl\b",        r"tucson.*\bgls\b",        "Tucson: GL < GLS"),
-    (r"\bmg\b.*\bstd\b",       r"\bmg\b.*\blux\b",        "MG: STD < LUX"),
-    (r"tiggo.*\bgls\b",        r"tiggo.*\bglx\b",         "Tiggo: GLS < GLX"),
-    (r"2wd",                   r"4wd|4x4|awd",            "Tracción: 2WD < 4WD/AWD"),
+    (r"prado.*super\s*lujo",   r"prado.*vx-?l",         "Prado: SUPER LUJO < VX-L"),
+    (r"landtrek.*active.*150", r"landtrek.*action.*180", "Landtrek: ACTIVE 150HP < ACTION 180HP"),
+    (r"sportage.*ex.*2wd",     r"sportage.*ex.*awd",     "Sportage EX: 2WD < AWD"),
+    (r"x-?trail.*\bsense\b",   r"x-?trail.*exclusive",   "X-Trail: SENSE < EXCLUSIVE"),
+    (r"rav4.*\ble\b.*\bmt\b",  r"rav4.*\ble\b.*\bcvt\b", "RAV4: LE MT < LE CVT"),
+    (r"rav4.*\ble\b",          r"rav4.*\bvx\b",          "RAV4: LE < VX"),
+    (r"tucson.*\bgl\b",        r"tucson.*\bgls\b",       "Tucson: GL < GLS"),
+    (r"\bmg\b.*\bstd\b",       r"\bmg\b.*\blux\b",       "MG: STD < LUX"),
+    (r"tiggo.*\bgls\b",        r"tiggo.*\bglx\b",        "Tiggo: GLS < GLX"),
+    (r"2wd",                   r"4wd|4x4|awd",           "Traccion: 2WD < 4WD/AWD"),
 ]
 
 def analizar_version_precio(veh):
@@ -282,29 +258,25 @@ def analizar_version_precio(veh):
         if None in (v["precio"], v["ano"]):
             continue
         grupos[f"{v['marca']}|{v['ano']}"].append(v)
-    out = []
-    seen = set()
+    out = []; seen = set()
     for clave, items in grupos.items():
         for pi, ps, desc in JERARQUIAS:
-            inf = [v for v in items if re.search(pi, v["titulo"], re.I) and not re.search(ps, v["titulo"], re.I)]
-            sup = [v for v in items if re.search(ps, v["titulo"], re.I)]
-            if not inf or not sup:
-                continue
+            inf = [v for v in items if re.search(pi,v["titulo"],re.I) and not re.search(ps,v["titulo"],re.I)]
+            sup = [v for v in items if re.search(ps,v["titulo"],re.I)]
+            if not inf or not sup: continue
             mi = max(inf, key=lambda x: x["precio"])
             ms = max(sup, key=lambda x: x["precio"])
-            if mi["precio"] <= ms["precio"]:
-                continue
+            if mi["precio"] <= ms["precio"]: continue
             kd = f"{mi['titulo']}|{ms['titulo']}"
-            if kd in seen:
-                continue
+            if kd in seen: continue
             seen.add(kd)
             diff = mi["precio"] - ms["precio"]
             dk   = abs((mi["km"] or 0) - (ms["km"] or 0))
             out.append({
                 "modelo":    f"{clave.split('|')[0]} {clave.split('|')[1]}",
                 "desc":      desc,
-                "ver_inf":   mi["titulo"], "km_inf":   mi["km"], "precio_inf": mi["precio"],
-                "ver_sup":   ms["titulo"], "km_sup":   ms["km"], "precio_sup": ms["precio"],
+                "ver_inf":   mi["titulo"], "km_inf":  mi["km"], "precio_inf": mi["precio"],
+                "ver_sup":   ms["titulo"], "km_sup":  ms["km"], "precio_sup": ms["precio"],
                 "diff": diff, "diff_km": dk,
                 "sev": "ALTO" if diff >= 1_000_000 else "MEDIO",
             })
@@ -314,15 +286,13 @@ def analizar_version_precio(veh):
 def estadisticas(veh):
     precios = [v["precio"] for v in veh if v["precio"]]
     kms     = [v["km"]     for v in veh if v["km"] and v["km"] > 0]
-    marcas  = defaultdict(int)
-    combs   = defaultdict(int)
-    anos    = defaultdict(int)
-    trans   = defaultdict(int)
+    marcas  = defaultdict(int); combs = defaultdict(int)
+    anos    = defaultdict(int); trans = defaultdict(int)
     for v in veh:
         marcas[v["marca"]] += 1
         combs[v["combustible"] or "No especificado"] += 1
-        if v["ano"]:          anos[v["ano"]] += 1
-        if v["transmision"]:  trans[v["transmision"]] += 1
+        if v["ano"]:         anos[v["ano"]] += 1
+        if v["transmision"]: trans[v["transmision"]] += 1
     return {
         "total":       len(veh),
         "con_precio":  len(precios),
@@ -338,27 +308,23 @@ def estadisticas(veh):
 
 # ── HTML ──────────────────────────────────────────────────────────────────────
 
-def fp(n): return f"${n:,.0f}".replace(",", ".") if n else "—"
-def fk(n): return f"{n:,.0f} km".replace(",", ".") if n else "—"
-
+def fp(n): return f"${n:,.0f}".replace(",", ".") if n else "-"
+def fk(n): return f"{n:,.0f} km".replace(",", ".") if n else "-"
 def badge(s):
     c = {"ALTO": "#dc2626", "MEDIO": "#d97706", "BAJO": "#16a34a"}.get(s, "#6b7280")
     return f'<span class="badge" style="background:{c}">{s}</span>'
-
 def empty_row(cols):
-    return f'<tr><td colspan="{cols}" class="empty">Sin inconsistencias detectadas ✓</td></tr>'
+    return f'<tr><td colspan="{cols}" class="empty">Sin inconsistencias detectadas</td></tr>'
 
 def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
-    # Combustible
     fc = ""
     for h in comb_err:
         fc += (f"<tr><td><strong>{h['vehiculo']}</strong></td>"
                f"<td>{fk(h['km'])}</td><td>{fp(h['precio'])}</td>"
-               f"<td>{h['comb_actual']}</td><td>Híbrido</td>"
+               f"<td>{h['comb_actual']}</td><td>Hibrido</td>"
                f"<td class='note'>{h['detalle']}</td><td>{badge(h['sev'])}</td></tr>")
     if not fc: fc = empty_row(7)
 
-    # Km vs precio
     fkp = ""
     for h in km_p[:15]:
         partes = []
@@ -366,42 +332,38 @@ def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
             cls  = ' class="sube"' if p["sube"] else ""
             icon = " SUBE"         if p["sube"] else ""
             partes.append(f"<span{cls}>{fk(p['km'])} {fp(p['precio'])}{icon}</span>")
-        seq = " ".join(partes)
-        fkp += f"<tr><td><strong>{h['vehiculo']}</strong></td><td class='seq'>{seq}</td><td>{badge(h['sev'])}</td></tr>"
+        fkp += f"<tr><td><strong>{h['vehiculo']}</strong></td><td class='seq'>{' '.join(partes)}</td><td>{badge(h['sev'])}</td></tr>"
     if not fkp: fkp = empty_row(3)
 
-    # Año vs precio
     fa = ""
     for h in ano_p:
         fa += (f"<tr><td>{h['modelo']}</td>"
                f"<td>{h['ano_ant']}<br><small>{fk(h['km_ant'])}<br>{fp(h['precio_ant'])}</small></td>"
                f"<td>{h['ano_nuevo']}<br><small>{fk(h['km_nuevo'])}<br>{fp(h['precio_nuevo'])}</small></td>"
-               f"<td class='note'>{h['ano_nuevo']} más barato en {fp(h['diff_precio'])} con {fk(h['diff_km'])} más.</td>"
+               f"<td class='note'>{h['ano_nuevo']} mas barato en {fp(h['diff_precio'])} con {fk(h['diff_km'])} mas.</td>"
                f"<td>{badge(h['sev'])}</td></tr>")
     if not fa: fa = empty_row(5)
 
-    # Versión vs precio
     fv = ""
     for h in ver_p:
         fv += (f"<tr><td>{h['modelo']}<br><small style='color:#6b7280'>{h['desc']}</small></td>"
-               f"<td><span class='tag-inf'>INFERIOR</span><br><small>{h['ver_inf']}<br>{fk(h['km_inf'])} · {fp(h['precio_inf'])}</small></td>"
-               f"<td><span class='tag-sup'>SUPERIOR</span><br><small>{h['ver_sup']}<br>{fk(h['km_sup'])} · {fp(h['precio_sup'])}</small></td>"
-               f"<td class='note'>Versión inferior {fp(h['diff'])} más cara con {fk(h['diff_km'])} diferencia.</td>"
+               f"<td><span class='tag-inf'>INFERIOR</span><br><small>{h['ver_inf']}<br>{fk(h['km_inf'])} {fp(h['precio_inf'])}</small></td>"
+               f"<td><span class='tag-sup'>SUPERIOR</span><br><small>{h['ver_sup']}<br>{fk(h['km_sup'])} {fp(h['precio_sup'])}</small></td>"
+               f"<td class='note'>Version inferior {fp(h['diff'])} mas cara con {fk(h['diff_km'])} diferencia.</td>"
                f"<td>{badge(h['sev'])}</td></tr>")
     if not fv: fv = empty_row(5)
 
-    # Stats
-    mh  = "".join(f"<tr><td>{m}</td><td><strong>{c}</strong></td></tr>" for m, c in stats["top_marcas"])
+    mh  = "".join(f"<tr><td>{m}</td><td><strong>{c}</strong></td></tr>" for m,c in stats["top_marcas"])
     tc  = sum(stats["combustible"].values()) or 1
-    ch  = "".join(f"<tr><td>{c}</td><td>{n} ({n*100//tc}%)</td></tr>" for c, n in list(stats["combustible"].items())[:7])
-    ah  = "".join(f"<tr><td>{a}</td><td><strong>{n}</strong></td></tr>" for a, n in list(stats["anos"].items()))
+    ch  = "".join(f"<tr><td>{c}</td><td>{n} ({n*100//tc}%)</td></tr>" for c,n in list(stats["combustible"].items())[:7])
+    ah  = "".join(f"<tr><td>{a}</td><td><strong>{n}</strong></td></tr>" for a,n in list(stats["anos"].items()))
     tt  = sum(stats["transmision"].values()) or 1
-    th2 = "".join(f"<tr><td>{t}</td><td>{n} ({n*100//tt}%)</td></tr>" for t, n in stats["transmision"].items())
+    th2 = "".join(f"<tr><td>{t}</td><td>{n} ({n*100//tt}%)</td></tr>" for t,n in stats["transmision"].items())
 
-    nca = sum(1 for h in comb_err if h["sev"] == "ALTO")
-    nka = sum(1 for h in km_p     if h["sev"] == "ALTO")
-    nva = sum(1 for h in ver_p    if h["sev"] == "ALTO")
-    pp  = stats["con_precio"] * 100 // stats["total"] if stats["total"] else 0
+    nca = sum(1 for h in comb_err if h["sev"]=="ALTO")
+    nka = sum(1 for h in km_p     if h["sev"]=="ALTO")
+    nva = sum(1 for h in ver_p    if h["sev"]=="ALTO")
+    pp  = stats["con_precio"]*100//stats["total"] if stats["total"] else 0
 
     return f"""<!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -423,7 +385,7 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgro
 .sec-title .cnt{{margin-left:auto;background:#e2e8f0;border-radius:20px;padding:1px 10px;font-size:11px;color:#475569;font-weight:600}}
 .hint{{font-size:11px;color:var(--muted);margin-bottom:10px}}
 table{{width:100%;border-collapse:collapse}}
-th{{background:#f1f5f9;text-align:left;padding:7px 10px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border)}}
+th{{background:#f1f5f9;text-align:left;padding:7px 10px;font-size:11px;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--border)}}
 td{{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12px}}
 tr:last-child td{{border-bottom:none}}tr:hover td{{background:#fafbff}}
 td.note{{font-size:11px;color:#475569;max-width:260px}}
@@ -435,7 +397,7 @@ td.empty{{text-align:center;color:var(--muted);padding:20px}}
 .tag-sup{{display:inline-block;background:#f0fdf4;color:var(--bajo);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px}}
 .stats-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}}
 .stat-card{{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px}}
-.stat-card h4{{font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin-bottom:8px}}
+.stat-card h4{{font-size:11px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}}
 .stat-card td{{padding:3px 4px;border:none;font-size:12px}}
 .res-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}}
 .res-card{{border-radius:10px;padding:14px;border-left:4px solid}}
@@ -469,7 +431,7 @@ footer{{text-align:center;padding:20px;color:var(--muted);font-size:11px;border-
 <table><thead><tr><th>Vehiculo</th><th>Km</th><th>Precio</th><th>Actual</th><th>Deberia ser</th><th>Detalle</th><th>Sev.</th></tr></thead><tbody>{fc}</tbody></table></div>
 <div class="section"><div class="sec-title">Mismo modelo/año/version - Mas km, precio mayor <span class="cnt">{len(km_p)} grupos</span></div>
 <p class="hint">Criterio: misma version y año exactos, el precio deberia bajar al subir los km.</p>
-<table><thead><tr><th>Vehiculo</th><th>Secuencia km - precio (SUBE cuando no deberia)</th><th>Sev.</th></tr></thead><tbody>{fkp}</tbody></table></div>
+<table><thead><tr><th>Vehiculo</th><th>Secuencia km - precio</th><th>Sev.</th></tr></thead><tbody>{fkp}</tbody></table></div>
 <div class="section"><div class="sec-title">Año mas nuevo con precio menor <span class="cnt">{len(ano_p)} casos</span></div>
 <table><thead><tr><th>Modelo</th><th>Año antiguo</th><th>Año nuevo</th><th>Nota</th><th>Sev.</th></tr></thead><tbody>{fa}</tbody></table></div>
 <div class="section"><div class="sec-title">Version inferior mas cara que version superior <span class="cnt">{len(ver_p)} casos</span></div>
@@ -486,11 +448,11 @@ footer{{text-align:center;padding:20px;color:var(--muted);font-size:11px;border-
 <div class="res-grid">
   <div class="res-card r"><h4>Prioridad Alta</h4><ul><li>Combustible incorrecto: <strong>{nca}</strong></li><li>Km vs precio (ALTO): <strong>{nka}</strong></li><li>Version inferior mas cara (ALTO): <strong>{nva}</strong></li></ul></div>
   <div class="res-card o"><h4>Prioridad Media</h4><ul><li>Km vs precio (MEDIO/BAJO): <strong>{len(km_p)-nka}</strong></li><li>Año vs precio: <strong>{len(ano_p)}</strong></li></ul></div>
-  <div class="res-card y"><h4>Revisar</h4><ul><li>MHEV, B4-B8, E-TSI catalogar como Hibrido</li><li>AWD/4WD vs 2WD</li><li>Top trim mas barato que base</li></ul></div>
-  <div class="res-card g"><h4>Cobertura</h4><ul><li><strong>{stats['total']}</strong> vehiculos procesados</li><li><strong>{pp}%</strong> con precio visible</li><li>Actualizacion: lunes automatico</li></ul></div>
+  <div class="res-card y"><h4>Revisar</h4><ul><li>MHEV, B4-B8, E-TSI como Hibrido</li><li>AWD/4WD vs 2WD</li><li>Top trim mas barato que base</li></ul></div>
+  <div class="res-card g"><h4>Cobertura</h4><ul><li><strong>{stats['total']}</strong> vehiculos</li><li><strong>{pp}%</strong> con precio</li><li>Actualizacion: lunes automatico</li></ul></div>
 </div></div>
 </div>
-<footer>Informe generado automaticamente · Bruno Fritsch Autos Usados · brunofritsch.cl · {fecha_gen} {hora_gen} · {stats['total']} vehiculos</footer>
+<footer>Informe generado automaticamente - Bruno Fritsch Autos Usados - brunofritsch.cl - {fecha_gen} {hora_gen} - {stats['total']} vehiculos</footer>
 </body></html>"""
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -501,7 +463,7 @@ def main():
     hora_gen  = now.strftime("%H:%M")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     log.info("=" * 50)
-    log.info("  AUDITORIA BF USADOS")
+    log.info("  AUDITORIA BF USADOS (Playwright)")
     log.info(f"  {fecha_gen} {hora_gen}")
     log.info("=" * 50)
     veh = scrape_todo()
@@ -516,17 +478,13 @@ def main():
     html     = generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen)
     OUTPUT_FILE.write_text(html, encoding="utf-8")
     DATA_FILE.write_text(
-        json.dumps({
-            "generado": now.isoformat(), "total": len(veh),
-            "con_precio": stats["con_precio"], "vehiculos": veh[:50]
-        }, ensure_ascii=False, indent=2),
+        json.dumps({"generado": now.isoformat(), "total": len(veh),
+                    "con_precio": stats["con_precio"], "vehiculos": veh[:50]},
+                   ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
-    log.info(
-        f"Total:{stats['total']} | Precio:{stats['con_precio']} | Km_prom:{stats['km_prom']} | "
-        f"Combustible:{len(comb_err)} | KmPrecio:{len(km_p)} | "
-        f"AnoPrecio:{len(ano_p)} | Version:{len(ver_p)}"
-    )
+    log.info(f"Total:{stats['total']} | Precio:{stats['con_precio']} | Km_prom:{stats['km_prom']} | "
+             f"Combustible:{len(comb_err)} | KmPrecio:{len(km_p)} | AnoPrecio:{len(ano_p)} | Version:{len(ver_p)}")
 
 if __name__ == "__main__":
     main()
