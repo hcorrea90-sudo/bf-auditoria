@@ -1,6 +1,7 @@
 """
 bf_scraper.py — Auditoría completa de brunofritsch.cl/autos-usados
-Recorre TODAS las páginas del inventario y genera docs/index.html
+Usa la API interna Oracle Commerce (ccstore/v1) para obtener datos precisos
+incluyendo precios, km, combustible, transmisión y versión.
 """
 
 import re
@@ -8,22 +9,29 @@ import sys
 import time
 import json
 import logging
-from datetime import date, datetime
+from datetime import datetime
 from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
 
 import requests
-from bs4 import BeautifulSoup
 
 # ── Configuración ─────────────────────────────────────────────────────────────
-BASE_URL    = "https://www.brunofritsch.cl/autos-usados"
-PAGE_SIZE   = 100
-DELAY_SEG   = 1.5
-MAX_PAGINAS = 50
+BASE_URL    = "https://www.brunofritsch.cl"
+DELAY_SEG   = 1.0
+MAX_PAGINAS = 20
+PAGE_SIZE   = 50      # Oracle Commerce suele soportar hasta 50-100
 OUTPUT_DIR  = Path(__file__).parent.parent / "docs"
 OUTPUT_FILE = OUTPUT_DIR / "index.html"
 DATA_FILE   = OUTPUT_DIR / "data.json"
+
+# Campos que devuelve la API (vistos en el header de la request)
+FIELDS = (
+    "repositoryId,displayName,listPrices,brand,"
+    "x_modelo,x_version,x_km,x_anio,x_combustible,"
+    "x_transmision,x_tipo,x_UbicacionFisica,"
+    "x_preStock,parentCategories,mediumImageURLs"
+)
 
 HEADERS = {
     "User-Agent": (
@@ -31,8 +39,10 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/124.0 Safari/537.36"
     ),
+    "Accept": "application/json, text/plain, */*",
     "Accept-Language": "es-CL,es;q=0.9",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Referer": "https://www.brunofritsch.cl/autos-usados",
+    "x-ccsite": "brunofritsch",
 }
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
@@ -40,166 +50,179 @@ log = logging.getLogger(__name__)
 
 MHEV_KEYWORDS = [
     "mhev", "mild hybrid", " b5 ", " b4 ", " b6 ", " b8 ",
-    "48v", "e-tsi", "etsi", "phev", "hev",
+    "48v", "e-tsi", "etsi", "phev",
 ]
 
-# ── Parsers ───────────────────────────────────────────────────────────────────
+# ── API Search ────────────────────────────────────────────────────────────────
 
-def parsear_precio(texto: str) -> int | None:
-    limpio = re.sub(r"[^\d]", "", str(texto or ""))
-    v = int(limpio) if limpio else None
-    return v if v and 1_000_000 <= v <= 200_000_000 else None
-
-def parsear_km(texto: str) -> int | None:
-    limpio = re.sub(r"[^\d]", "", str(texto or ""))
-    v = int(limpio) if limpio else None
-    return v if v and 0 <= v <= 999_999 else None
-
-def extraer_ano(texto: str) -> int | None:
-    m = re.search(r"\b(199\d|20[012]\d)\b", str(texto or ""))
-    return int(m.group(1)) if m else None
-
-# ── Scraping ──────────────────────────────────────────────────────────────────
-
-def scrape_pagina(session: requests.Session, pagina: int) -> tuple[list[dict], bool]:
-    url = f"{BASE_URL}?page={pagina}&pageSize={PAGE_SIZE}"
+def buscar_pagina(session: requests.Session, offset: int) -> tuple[list[dict], int]:
+    """
+    Usa el endpoint de búsqueda/assemblage que usa el sitio para listar autos usados.
+    Retorna (items, total).
+    """
+    # Endpoint principal: assemblage search que usa la página
+    url = f"{BASE_URL}/ccstore/v1/assembler/pages/Default/osf/search"
+    params = {
+        "Nr":     "AND(product.type:Usado,product.active:1)",
+        "Nrpp":   PAGE_SIZE,
+        "No":     offset,
+        "Ns":     "product.dateAvailable|1",
+        "fields": FIELDS,
+    }
     try:
-        resp = session.get(url, headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-    except requests.RequestException as e:
-        log.error(f"Página {pagina}: {e}")
-        return [], False
+        resp = session.get(url, params=params, headers=HEADERS, timeout=30)
+        if resp.status_code == 200:
+            data = resp.json()
+            items = extraer_items_assemblage(data)
+            total = data.get("resultsList", {}).get("totalNumRecs", 0) or len(items)
+            return items, total
+    except Exception as e:
+        log.debug(f"Assemblage falló: {e}")
 
-    soup = BeautifulSoup(resp.text, "lxml")
+    # Fallback: endpoint /ccstore/v1/products con filtro de categoría
+    url2 = f"{BASE_URL}/ccstore/v1/products"
+    params2 = {
+        "Nr":     "AND(product.type:Usado)",
+        "Nrpp":   PAGE_SIZE,
+        "No":     offset,
+        "fields": FIELDS,
+    }
+    try:
+        resp2 = session.get(url2, params=params2, headers=HEADERS, timeout=30)
+        if resp2.status_code == 200:
+            data2 = resp2.json()
+            items2 = data2.get("items", [])
+            total2 = data2.get("total", len(items2))
+            return [normalizar_item(i) for i in items2], total2
+    except Exception as e:
+        log.debug(f"Products falló: {e}")
 
-    # ── Selector principal: id="grid-mode-product-card" (visto en DevTools) ──
-    tarjetas = soup.find_all(id="grid-mode-product-card")
+    # Fallback 2: endpoint de colección "usado"
+    url3 = f"{BASE_URL}/ccstore/v1/collections/usado/products"
+    params3 = {"Nrpp": PAGE_SIZE, "No": offset, "fields": FIELDS}
+    try:
+        resp3 = session.get(url3, params=params3, headers=HEADERS, timeout=30)
+        if resp3.status_code == 200:
+            data3 = resp3.json()
+            items3 = data3.get("items", [])
+            total3 = data3.get("total", len(items3))
+            return [normalizar_item(i) for i in items3], total3
+    except Exception as e:
+        log.debug(f"Collections falló: {e}")
 
-    # ── Fallback 1: clase MuiCard-root ──
-    if not tarjetas:
-        tarjetas = soup.find_all(class_=re.compile(r"MuiCard-root", re.I))
+    return [], 0
 
-    # ── Fallback 2: cualquier div con "product-card" en el id o clase ──
-    if not tarjetas:
-        tarjetas = soup.find_all(
-            lambda tag: tag.name in ("div", "article", "li")
-            and re.search(r"product-card", str(tag.get("id", "")) + str(tag.get("class", "")), re.I)
-        )
 
-    # ── Fallback 3: divs con precio CLP y km en su texto ──
-    if not tarjetas:
-        candidatos = soup.find_all("div")
-        tarjetas = [
-            d for d in candidatos
-            if re.search(r"\$\s*[\d\.]{6,}", d.get_text())
-            and re.search(r"\d{1,3}[\.,]\d{3}\s*km", d.get_text(), re.I)
-            and 100 < len(d.get_text()) < 600
-        ]
+def extraer_items_assemblage(data: dict) -> list[dict]:
+    """Extrae ítems del formato assemblage."""
+    try:
+        records = data["resultsList"]["records"]
+        items = []
+        for r in records:
+            attrs = r.get("attributes", {})
+            items.append({
+                "repositoryId": attrs.get("product.repositoryId", [""])[0],
+                "displayName":  attrs.get("product.displayName", [""])[0],
+                "listPrices":   {"defaultPriceGroup": attrs.get("product.listPrice", [None])[0]},
+                "x_km":         attrs.get("product.x_km", [None])[0],
+                "x_anio":       attrs.get("product.x_anio", [None])[0],
+                "x_combustible":attrs.get("product.x_combustible", [""])[0],
+                "x_transmision":attrs.get("product.x_transmision", [""])[0],
+                "brand":        attrs.get("product.brand", [""])[0],
+                "x_modelo":     attrs.get("product.x_modelo", [""])[0],
+                "x_version":    attrs.get("product.x_version", [""])[0],
+            })
+        return [normalizar_item(i) for i in items]
+    except (KeyError, IndexError, TypeError):
+        return []
 
-    if not tarjetas:
-        log.warning(f"  Página {pagina}: sin tarjetas.")
-        return [], False
 
-    vehiculos = []
-    for t in tarjetas:
-        txt = t.get_text(" ", strip=True)
-
-        # ── Precio: buscar p.MuiTypography-body2 con $ ──
-        precio = None
-        for tag in t.find_all("p"):
-            m = re.search(r"\$\s*([\d\.]+)", tag.get_text())
-            if m:
-                v = parsear_precio(m.group(1))
-                if v:
-                    precio = v
-                    break
-        if not precio:
-            m = re.search(r"\$\s*([\d\.]+)", txt)
-            precio = parsear_precio(m.group(1)) if m else None
-
-        # ── Km ──
-        km = None
-        km_m = re.search(r"([\d\.]+)\s*km", txt, re.I)
-        if km_m:
-            km = parsear_km(km_m.group(1).replace(".", ""))
-
-        # ── Año (desde el título) ──
-        ano = extraer_ano(txt)
-
-        # ── Título: p.MuiTypography-body1 suele tener marca/modelo/año ──
-        titulo = ""
-        for tag in t.find_all("p"):
-            clases = " ".join(tag.get("class", []))
-            if "body1" in clases or "gutterBottom" in clases:
-                candidato = tag.get_text(" ", strip=True)
-                if len(candidato) > 8 and re.search(r"[A-Z]", candidato):
-                    titulo = candidato
-                    break
-
-        # Fallback título desde enlace
-        if not titulo:
-            a = t.find("a")
-            if a:
-                titulo = a.get_text(" ", strip=True)[:100]
-
-        if not titulo or len(titulo) < 5:
-            titulo = txt[:80].strip()
-
-        titulo = re.sub(r"\s+", " ", titulo).strip()
-        partes = titulo.split(None, 1)
-        marca  = partes[0].upper() if partes else "DESCONOCIDA"
-
-        # ── Combustible ──
-        comb = ""
-        for palabra in ["Híbrido", "Hibrido", "Eléctrico", "Electrico",
-                        "Gasolina", "Bencina", "Diésel", "Diesel", "GNC", "GLP"]:
-            if re.search(rf"\b{palabra}\b", txt, re.I):
-                comb = palabra.capitalize()
+def normalizar_item(item: dict) -> dict:
+    """Convierte un item de la API al formato interno."""
+    # Precio
+    precios = item.get("listPrices", {})
+    precio = None
+    if isinstance(precios, dict):
+        for v in precios.values():
+            if v and isinstance(v, (int, float)) and v > 100:
+                precio = int(v)
                 break
+    elif isinstance(precios, (int, float)):
+        precio = int(precios)
 
-        # ── Transmisión ──
-        trans = ""
-        if re.search(r"\bAutomática\b", txt, re.I):
-            trans = "Automática"
-        elif re.search(r"\bMecánica\b|\bManual\b", txt, re.I):
-            trans = "Mecánica"
-        elif re.search(r"\b(cvt|dct|dsg|at)\b", titulo, re.I):
-            trans = "Automática"
-        elif re.search(r"\bmt\b", titulo, re.I):
-            trans = "Mecánica"
+    # Km
+    km_raw = item.get("x_km") or item.get("x_Km") or ""
+    try:
+        km = int(re.sub(r"[^\d]", "", str(km_raw))) if km_raw else None
+        if km and (km < 0 or km > 999_999):
+            km = None
+    except:
+        km = None
 
-        vehiculos.append({
-            "titulo":      titulo,
-            "marca":       marca,
-            "ano":         ano,
-            "km":          km,
-            "precio":      precio,
-            "combustible": comb,
-            "transmision": trans,
-            "texto_raw":   txt[:200],
-        })
+    # Año
+    ano_raw = item.get("x_anio") or item.get("x_Anio") or ""
+    try:
+        ano = int(str(ano_raw)[:4]) if ano_raw else None
+        if ano and (ano < 1990 or ano > 2030):
+            ano = None
+    except:
+        ano = None
 
-    # ── ¿Hay página siguiente? ──
-    total_m = re.search(r"(\d+)\s*autos", soup.get_text())
-    total   = int(total_m.group(1)) if total_m else 0
-    hay_sig = (pagina * PAGE_SIZE) < total if total else len(tarjetas) >= PAGE_SIZE * 0.7
+    # Título
+    nombre  = item.get("displayName", "")
+    marca   = item.get("brand", "")
+    modelo  = item.get("x_modelo", "")
+    version = item.get("x_version", "")
+    if nombre:
+        titulo = nombre
+    elif marca and modelo:
+        titulo = f"{marca} {modelo} {ano or ''} {version or ''}".strip()
+    else:
+        titulo = str(item.get("repositoryId", ""))
 
-    log.info(f"  Página {pagina:02d}: {len(vehiculos)} vehículos  (total sitio: {total})")
-    return vehiculos, hay_sig
+    titulo = re.sub(r"\s+", " ", titulo).strip()
+    marca_norm = (marca or titulo.split()[0] if titulo else "DESCONOCIDA").upper()
+
+    return {
+        "titulo":      titulo,
+        "marca":       marca_norm,
+        "ano":         ano,
+        "km":          km,
+        "precio":      precio,
+        "combustible": str(item.get("x_combustible", "") or "").strip(),
+        "transmision": str(item.get("x_transmision", "") or "").strip(),
+        "texto_raw":   titulo[:200],
+    }
 
 
 def scrape_todo() -> list[dict]:
     session = requests.Session()
     todos   = []
-    pagina  = 1
-    log.info(f"Scraping {BASE_URL}")
-    while pagina <= MAX_PAGINAS:
-        items, hay_sig = scrape_pagina(session, pagina)
-        todos.extend(items)
-        if not items or not hay_sig:
+    offset  = 0
+    total   = None
+    log.info(f"Scraping API: {BASE_URL}")
+
+    while True:
+        items, total_api = buscar_pagina(session, offset)
+        if total is None:
+            total = total_api
+            log.info(f"Total en sitio: {total}")
+
+        if not items:
+            log.warning(f"Sin items en offset {offset}, deteniendo.")
             break
-        pagina += 1
+
+        todos.extend(items)
+        log.info(f"  Offset {offset:04d}: +{len(items)} items (total acumulado: {len(todos)})")
+
+        offset += PAGE_SIZE
+        if total and offset >= total:
+            break
+        if len(todos) >= total if total else offset > MAX_PAGINAS * PAGE_SIZE:
+            break
+
         time.sleep(DELAY_SEG)
+
     log.info(f"Total extraídos: {len(todos)}")
     return todos
 
@@ -351,7 +374,8 @@ def estadisticas(veh: list[dict]) -> dict:
     trans:  dict[str,int] = defaultdict(int)
     for v in veh:
         marcas[v["marca"]] += 1
-        combs[v["combustible"] or "No especificado"] += 1
+        c = v["combustible"] or "No especificado"
+        combs[c] += 1
         if v["ano"]: anos[v["ano"]] += 1
         if v["transmision"]: trans[v["transmision"]] += 1
     return {
@@ -571,11 +595,15 @@ def main():
     html = generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen)
     OUTPUT_FILE.write_text(html, encoding="utf-8")
     DATA_FILE.write_text(
-        json.dumps({"generado": now.isoformat(), "total": len(veh), "vehiculos": veh[:50]}, ensure_ascii=False, indent=2),
+        json.dumps({"generado": now.isoformat(), "total": len(veh),
+                    "con_precio": stats["con_precio"], "vehiculos": veh[:50]},
+                   ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
-    log.info(f"Informe generado: {OUTPUT_FILE}")
-    log.info(f"Vehículos: {stats['total']} | Combustible: {len(comb_err)} | Km/precio: {len(km_p)} | Año/precio: {len(ano_p)} | Versión: {len(ver_p)}")
+    log.info(f"✓ Informe: {OUTPUT_FILE}")
+    log.info(f"✓ Total: {stats['total']} | Con precio: {stats['con_precio']} | "
+             f"Combustible: {len(comb_err)} | Km/precio: {len(km_p)} | "
+             f"Año/precio: {len(ano_p)} | Versión: {len(ver_p)}")
 
 if __name__ == "__main__":
     main()
