@@ -1,10 +1,10 @@
 {
-  "generado": "2026-06-11T20:49:04.437116",
+  "generado": "2026-06-11T20:57:27.653862",
   "total": 943,
-  "con_precio": 943,
+  "con_precio": 942,
   "vehiculos": [
     {
-      "titulo": "MG ZS 2022",
+      "titulo": "MG ZS 2022 SALE",
       "marca": "MG",
       "ano": 2022,
       "km": 57501,
@@ -13,7 +13,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "CHERY TIGGO 3 2021",
+      "titulo": "CHERY TIGGO 3 2021 1.5 GLS 4X2 5MT 5P",
       "marca": "CHERY",
       "ano": 2021,
       "km": 76112,
@@ -22,7 +22,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "CHERY TIGGO 7 PRO MAX 2025",
+      "titulo": "CHERY TIGGO 7 PRO MAX 2025 1.5T LIMITED 2WD CVT AT 5P",
       "marca": "CHERY",
       "ano": 2025,
       "km": 27225,
@@ -31,7 +31,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "MG RX5 2019",
+      "titulo": "MG RX5 2019 1.5T COMFORT 2WD AT 5P",
       "marca": "MG",
       "ano": 2019,
       "km": 83402,
@@ -40,7 +40,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "HYUNDAI VERNA 2021",
+      "titulo": "HYUNDAI VERNA 2021 1.4 CB VALUE 4X2 AT4 4P",
       "marca": "HYUNDAI",
       "ano": 2021,
       "km": 48000,
@@ -49,7 +49,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "MG GT 2023",
+      "titulo": "MG GT 2023 SALE",
       "marca": "MG",
       "ano": 2023,
       "km": 50500,
@@ -58,7 +58,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "PEUGEOT 2008 2021",
+      "titulo": "PEUGEOT 2008 2021 1.2 ACTIVE PURETECH 4X2 130 MT 5P",
       "marca": "PEUGEOT",
       "ano": 2008,
       "km": 66000,
@@ -67,7 +67,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "TOYOTA 4RUNNER 2025",
+      "titulo": "TOYOTA 4RUNNER 2025 Garantía de Fábrica",
       "marca": "TOYOTA",
       "ano": 2025,
       "km": 9262,
@@ -76,7 +76,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "HYUNDAI TUCSON 2026",
+      "titulo": "HYUNDAI TUCSON 2026 Pocos Kilómetros",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 5500,
@@ -85,7 +85,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "KIA SORENTO 2021",
+      "titulo": "KIA SORENTO 2021 2.4 EX GLS 4X2 6AT 5P",
       "marca": "KIA",
       "ano": 2021,
       "km": 63000,
@@ -94,7 +94,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "MAZDA CX-9 2022",
+      "titulo": "MAZDA CX-9 2022 Único Dueño",
       "marca": "MAZDA",
       "ano": 2022,
       "km": 38955,
@@ -103,7 +103,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "TOYOTA RAV4 2026",
+      "titulo": "TOYOTA RAV4 2026 2.0 LE 4X2 CVT AT 5P",
       "marca": "TOYOTA",
       "ano": 2026,
       "km": 12684,
@@ -112,7 +112,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "CHERY TIGGO 8 2022",
+      "titulo": "CHERY TIGGO 8 2022 1.5T GLX 4X2 DCT AT 5P",
       "marca": "CHERY",
       "ano": 2022,
       "km": 45001,
@@ -121,7 +121,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "TOYOTA COROLLA CROSS 2026",
+      "titulo": "TOYOTA COROLLA CROSS 2026 Único Dueño",
       "marca": "TOYOTA",
       "ano": 2026,
       "km": 15105,
@@ -130,7 +130,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "TOYOTA COROLLA CROSS 2026",
+      "titulo": "TOYOTA COROLLA CROSS 2026 1.8 XEI HYBRID 4X2 CVT AT 5P",
       "marca": "TOYOTA",
       "ano": 2026,
       "km": 13119,
@@ -139,7 +139,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "OPEL CORSA 2023",
+      "titulo": "OPEL CORSA 2023 1.2 EDITION 4X2 75HP MT5 5P",
       "marca": "OPEL",
       "ano": 2023,
       "km": 52335,
@@ -148,7 +148,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "HYUNDAI I20 2026",
+      "titulo": "HYUNDAI I20 2026 Pocos Kilómetros",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 11260,
@@ -157,7 +157,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "CHERY TIGGO 2 PRO MAX 2025",
+      "titulo": "CHERY TIGGO 2 PRO MAX 2025 Pocos Kilómetros",
       "marca": "CHERY",
       "ano": 2025,
       "km": 11666,
@@ -166,7 +166,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "SUZUKI SWIFT 2016",
+      "titulo": "SUZUKI SWIFT 2016 1.2 GLX 4X2 AC AT 5P",
       "marca": "SUZUKI",
       "ano": 2016,
       "km": 106345,
@@ -175,7 +175,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "NISSAN VERSA 2023",
+      "titulo": "NISSAN VERSA 2023 Pocos Kilómetros",
       "marca": "NISSAN",
       "ano": 2023,
       "km": 27224,
@@ -184,7 +184,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "DS DS4 2020",
+      "titulo": "DS DS4 2020 SALE",
       "marca": "DS",
       "ano": 2020,
       "km": 84000,
@@ -193,7 +193,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "CHERY TIGGO 3 2023",
+      "titulo": "CHERY TIGGO 3 2023 1.5 GLS 4X2 CVT AT 5P",
       "marca": "CHERY",
       "ano": 2023,
       "km": 61000,
@@ -202,7 +202,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "SUBARU XV 2019",
+      "titulo": "SUBARU XV 2019 Único Dueño",
       "marca": "SUBARU",
       "ano": 2019,
       "km": 60741,
@@ -211,7 +211,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "MG ZX 2024",
+      "titulo": "MG ZX 2024 Garantía de Fábrica",
       "marca": "MG",
       "ano": 2024,
       "km": 20212,
@@ -220,7 +220,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "PEUGEOT 5008 2018",
+      "titulo": "PEUGEOT 5008 2018 Único Dueño",
       "marca": "PEUGEOT",
       "ano": 2018,
       "km": 109549,
@@ -229,7 +229,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "TOYOTA 4RUNNER 2023",
+      "titulo": "TOYOTA 4RUNNER 2023 4.0 SR5 CONNECTED EURO V 4X4 AT 5P",
       "marca": "TOYOTA",
       "ano": 2023,
       "km": 33000,
@@ -238,7 +238,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "RAM 1500 2023",
+      "titulo": "RAM 1500 2023 3.6 SLT DS 4X4 CREW CAB AT 4P",
       "marca": "RAM",
       "ano": 2023,
       "km": 64015,
@@ -247,7 +247,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "MAHINDRA XUV 300 2024",
+      "titulo": "MAHINDRA XUV 300 2024 Único Dueño",
       "marca": "MAHINDRA",
       "ano": 2024,
       "km": 32806,
@@ -256,7 +256,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "HYUNDAI CRETA 2023",
+      "titulo": "HYUNDAI CRETA 2023 1.5 PLUS SU2I 4X2 AT 5P",
       "marca": "HYUNDAI",
       "ano": 2023,
       "km": 49821,
@@ -265,7 +265,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "MG 5 2024",
+      "titulo": "MG 5 2024 Único Dueño",
       "marca": "MG",
       "ano": 2024,
       "km": 51000,
@@ -274,7 +274,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "NISSAN KICKS 2022",
+      "titulo": "NISSAN KICKS 2022 Único Dueño",
       "marca": "NISSAN",
       "ano": 2022,
       "km": 35964,
@@ -283,7 +283,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "NISSAN NP300 2019",
+      "titulo": "NISSAN NP300 2019 2.3 LE DIESEL 4WD DOB.CAB. AT 4P",
       "marca": "NISSAN",
       "ano": 2019,
       "km": 122897,
@@ -292,7 +292,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "GAC EMKOO 2024",
+      "titulo": "GAC EMKOO 2024 1.5T GL 4X2 AT 5P",
       "marca": "GAC",
       "ano": 2024,
       "km": 29465,
@@ -301,7 +301,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "FORD ECOSPORT 2020",
+      "titulo": "FORD ECOSPORT 2020 1.5 FREESTYLE 4X2 MT 5P",
       "marca": "FORD",
       "ano": 2020,
       "km": 84395,
@@ -310,7 +310,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "SUZUKI GRAND NOMADE 2015",
+      "titulo": "SUZUKI GRAND NOMADE 2015 2.4 GLX SPORT 4X2 MT 5P",
       "marca": "SUZUKI",
       "ano": 2015,
       "km": 138000,
@@ -319,7 +319,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "MERCEDES BENZ GLC200 2024",
+      "titulo": "MERCEDES BENZ GLC200 2024 Pocos Kilómetros",
       "marca": "MERCEDES",
       "ano": 2024,
       "km": 18965,
@@ -328,7 +328,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "CHERY TIGGO 2 PRO 2025",
+      "titulo": "CHERY TIGGO 2 PRO 2025 1.5 GLS 4X2 MT 5P",
       "marca": "CHERY",
       "ano": 2025,
       "km": 44948,
@@ -337,7 +337,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "SUBARU CROSSTREK 2024",
+      "titulo": "SUBARU CROSSTREK 2024 2.0 TOURING ES HK AWD CVT AT 5P",
       "marca": "SUBARU",
       "ano": 2024,
       "km": 60000,
@@ -346,7 +346,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "CHERY TIGGO 7 PRO 2023",
+      "titulo": "CHERY TIGGO 7 PRO 2023 1.5T GLX 4X2 CVT AT 5P",
       "marca": "CHERY",
       "ano": 2023,
       "km": 54879,
@@ -355,7 +355,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "MAZDA CX-3 2025",
+      "titulo": "MAZDA CX-3 2025 2.0 CORE 2WD 6MT 5P",
       "marca": "MAZDA",
       "ano": 2025,
       "km": 25830,
@@ -364,7 +364,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "CHEVROLET SPIN 2018",
+      "titulo": "CHEVROLET SPIN 2018 1.8 LTZ 4X2 MT 5P",
       "marca": "CHEVROLET",
       "ano": 2018,
       "km": 98701,
@@ -373,7 +373,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "CHERY TIGGO 8 2022",
+      "titulo": "CHERY TIGGO 8 2022 1.5T GLX 4X2 DCT AT 5P",
       "marca": "CHERY",
       "ano": 2022,
       "km": 54970,
@@ -382,7 +382,7 @@
       "transmision": "Automática"
     },
     {
-      "titulo": "OPEL MOKKA 2025",
+      "titulo": "OPEL MOKKA 2025 1.2T ELEGANCE 4X2 MT6 5P",
       "marca": "OPEL",
       "ano": 2025,
       "km": 15049,
@@ -391,7 +391,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "HYUNDAI I20 2026",
+      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 18035,
@@ -400,7 +400,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "HYUNDAI I20 2026",
+      "titulo": "HYUNDAI I20 2026 Pocos Kilómetros",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 10892,
@@ -409,7 +409,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "TOYOTA RAIZE 2023",
+      "titulo": "TOYOTA RAIZE 2023 Pocos Kilómetros",
       "marca": "TOYOTA",
       "ano": 2023,
       "km": 19307,
@@ -418,7 +418,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "HYUNDAI I20 2026",
+      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 17299,
@@ -427,7 +427,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "HYUNDAI I20 2026",
+      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 13118,
@@ -436,7 +436,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "HYUNDAI I20 2026",
+      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 17148,
@@ -445,7 +445,7 @@
       "transmision": "Mecánica"
     },
     {
-      "titulo": "HYUNDAI I20 2026",
+      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
       "marca": "HYUNDAI",
       "ano": 2026,
       "km": 15047,
