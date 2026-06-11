@@ -1,8 +1,44 @@
 {
-  "generado": "2026-06-11T19:47:37.845668",
-  "total": 949,
-  "con_precio": 946,
+  "generado": "2026-06-11T20:05:04.095644",
+  "total": 946,
+  "con_precio": 942,
   "vehiculos": [
+    {
+      "titulo": "HYUNDAI VERNA 2021 Incluye bono $200.000",
+      "marca": "HYUNDAI",
+      "ano": 2021,
+      "km": 48000,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "MG GT 2023 Incluye bono $800.000",
+      "marca": "MG",
+      "ano": 2023,
+      "km": 50500,
+      "precio": 8890000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "PEUGEOT 2008 2021 Incluye bono $300.000",
+      "marca": "PEUGEOT",
+      "ano": 2008,
+      "km": 66000,
+      "precio": 9490000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "TOYOTA 4RUNNER 2025 Incluye bono $800.000",
+      "marca": "TOYOTA",
+      "ano": 2025,
+      "km": 9262,
+      "precio": 46990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
     {
       "titulo": "HYUNDAI TUCSON 2026 Incluye bono $500.000",
       "marca": "HYUNDAI",
@@ -414,42 +450,6 @@
       "ano": 2024,
       "km": 21260,
       "precio": 12790000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "PEUGEOT 2008 2021 Incluye bono $300.000",
-      "marca": "PEUGEOT",
-      "ano": 2008,
-      "km": 66000,
-      "precio": 9490000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "GEELY COOLRAY 2023 Incluye bono $300.000",
-      "marca": "GEELY",
-      "ano": 2023,
-      "km": 15779,
-      "precio": 11990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "CHERY TIGGO 7 PRO MAX 2025 Incluye bono $400.000",
-      "marca": "CHERY",
-      "ano": 2025,
-      "km": 19421,
-      "precio": 13190000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "VOLKSWAGEN TIGUAN 2018 Incluye bono $400.000",
-      "marca": "VOLKSWAGEN",
-      "ano": 2018,
-      "km": 109310,
-      "precio": 13590000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     }
