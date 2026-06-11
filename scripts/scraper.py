@@ -371,7 +371,12 @@ def generar_html(veh,comb_err,km_p,ano_p,ver_p,stats,fecha_gen,hora_gen):
 
     fk2=""
     for h in km_p[:15]:
-        seq="".join(f'<span{"  class=\"sube\"" if p["sube"] else ""}>{fk(p["km"])} {fp(p["precio"])}{"  ⚠ SUBE" if p["sube"] else ""}</span> ' for p in h["secuencia"])
+        partes = []
+        for p in h["secuencia"]:
+            cls  = ' class="sube"' if p["sube"] else ""
+            icon = " ⚠ SUBE"      if p["sube"] else ""
+            partes.append(f"<span{cls}>{fk(p['km'])} {fp(p['precio'])}{icon}</span>")
+        seq = " ".join(partes)
         fk2+=f"<tr><td><strong>{h['vehiculo']}</strong></td><td class='seq'>{seq}</td><td>{badge(h['sev'])}</td></tr>"
 
     fa=""
