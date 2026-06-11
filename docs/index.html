@@ -1,131 +1,89 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Auditoría BF Usados — 11/06/2026</title>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auditoria BF Usados - 11/06/2026</title>
 <style>
 :root{--bg:#f8fafc;--card:#fff;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--accent:#2563eb;--alto:#dc2626;--medio:#d97706;--bajo:#16a34a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
 .hdr{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);color:#fff;padding:28px 40px 20px}
-.hdr h1{font-size:20px;font-weight:800;letter-spacing:-.3px}
-.hdr .sub{color:#94a3b8;font-size:12px;margin-top:3px}
+.hdr h1{font-size:20px;font-weight:800}.hdr .sub{color:#94a3b8;font-size:12px;margin-top:3px}
 .hdr .meta{display:flex;gap:20px;margin-top:14px;flex-wrap:wrap;font-size:12px}
 .hdr .meta span{color:#cbd5e1}.hdr .meta strong{color:#fff}
-.update-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.25);border:1px solid rgba(37,99,235,.4);color:#93c5fd;border-radius:20px;padding:3px 10px;font-size:11px;margin-top:10px}
+.ubadge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.25);border:1px solid rgba(37,99,235,.4);color:#93c5fd;border-radius:20px;padding:3px 10px;font-size:11px;margin-top:10px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;padding:20px 40px;background:#fff;border-bottom:1px solid var(--border)}
 .kpi{background:#eff6ff;border-radius:8px;padding:12px;text-align:center}
-.kpi .num{font-size:22px;font-weight:800;color:var(--accent)}
-.kpi .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.content{padding:28px 40px;max-width:1400px;margin:0 auto}
-.section{margin-bottom:36px}
+.kpi .num{font-size:22px;font-weight:800;color:var(--accent)}.kpi .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.content{padding:28px 40px;max-width:1400px;margin:0 auto}.section{margin-bottom:36px}
 .sec-title{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;border-bottom:2px solid var(--border);padding-bottom:8px;margin-bottom:14px}
 .sec-title .cnt{margin-left:auto;background:#e2e8f0;border-radius:20px;padding:1px 10px;font-size:11px;color:#475569;font-weight:600}
 .hint{font-size:11px;color:var(--muted);margin-bottom:10px}
 table{width:100%;border-collapse:collapse}
 th{background:#f1f5f9;text-align:left;padding:7px 10px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border)}
 td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12px}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:#fafbff}
+tr:last-child td{border-bottom:none}tr:hover td{background:#fafbff}
 td.note{font-size:11px;color:#475569;max-width:260px}
-td.seq span{display:inline-block;margin-right:10px;margin-bottom:3px;font-size:11px;background:#f1f5f9;border-radius:4px;padding:2px 6px}
+td.seq span{display:inline-block;margin-right:8px;margin-bottom:3px;font-size:11px;background:#f1f5f9;border-radius:4px;padding:2px 6px}
 td.seq span.sube{background:#fef2f2;color:var(--alto);font-weight:600}
 td.empty{text-align:center;color:var(--muted);padding:20px}
-.badge{display:inline-block;color:#fff;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;white-space:nowrap}
+.badge{display:inline-block;color:#fff;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
 .tag-inf{display:inline-block;background:#fef2f2;color:var(--alto);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px}
 .tag-sup{display:inline-block;background:#f0fdf4;color:var(--bajo);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px}
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px}
 .stat-card h4{font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin-bottom:8px}
 .stat-card td{padding:3px 4px;border:none;font-size:12px}
-.pct{color:var(--muted);font-size:11px}
 .res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
 .res-card{border-radius:10px;padding:14px;border-left:4px solid}
-.res-card.r{background:#fff5f5;border-color:var(--alto)}
-.res-card.o{background:#fffbeb;border-color:var(--medio)}
-.res-card.y{background:#fefce8;border-color:#ca8a04}
-.res-card.g{background:#f0fdf4;border-color:var(--bajo)}
+.res-card.r{background:#fff5f5;border-color:var(--alto)}.res-card.o{background:#fffbeb;border-color:var(--medio)}
+.res-card.y{background:#fefce8;border-color:#ca8a04}.res-card.g{background:#f0fdf4;border-color:var(--bajo)}
 .res-card h4{font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:7px}
 .res-card ul{padding-left:14px;font-size:11px;line-height:1.9}
 footer{text-align:center;padding:20px;color:var(--muted);font-size:11px;border-top:1px solid var(--border)}
-@media(max-width:680px){.hdr,.kpis,.content{padding-left:16px;padding-right:16px}.kpi .num{font-size:18px}}
-</style>
-</head>
-<body>
+@media(max-width:680px){.hdr,.kpis,.content{padding-left:16px;padding-right:16px}}
+</style></head><body>
 <div class="hdr">
-  <h1>INFORME ANÁLISIS — AUTOS USADOS BRUNO FRITSCH</h1>
-  <div class="sub">Revisión de consistencia: precio vs año/km y equipamiento declarado</div>
-  <div class="meta">
-    <span>Generado: <strong>11/06/2026 18:07</strong></span>
-    <span>Fuente: <strong>brunofritsch.cl/autos-usados</strong></span>
-    <span>Total: <strong>250 vehículos</strong></span>
-  </div>
-  <div class="update-badge">🔄 Se actualiza automáticamente cada lunes</div>
+  <h1>INFORME ANALISIS - AUTOS USADOS BRUNO FRITSCH</h1>
+  <div class="sub">Revision de consistencia: precio vs año/km y equipamiento declarado</div>
+  <div class="meta"><span>Generado: <strong>11/06/2026 18:50</strong></span><span>Fuente: <strong>brunofritsch.cl/autos-usados</strong></span><span>Total: <strong>949 vehiculos</strong></span></div>
+  <div class="ubadge">Se actualiza automaticamente cada lunes</div>
 </div>
 <div class="kpis">
-  <div class="kpi"><div class="num">250</div><div class="lbl">Autos totales</div></div>
-  <div class="kpi"><div class="num">238</div><div class="lbl">Con precio (95%)</div></div>
+  <div class="kpi"><div class="num">949</div><div class="lbl">Autos totales</div></div>
+  <div class="kpi"><div class="num">0</div><div class="lbl">Con precio (0%)</div></div>
   <div class="kpi"><div class="num">0</div><div class="lbl">Combustible incorrecto</div></div>
   <div class="kpi"><div class="num">0</div><div class="lbl">Km vs precio</div></div>
   <div class="kpi"><div class="num">0</div><div class="lbl">Año vs precio</div></div>
-  <div class="kpi"><div class="num">0</div><div class="lbl">Versión vs precio</div></div>
-  <div class="kpi"><div class="num">$6.590.000</div><div class="lbl">Precio mínimo</div></div>
-  <div class="kpi"><div class="num">$86.990.000</div><div class="lbl">Precio máximo</div></div>
-  <div class="kpi"><div class="num">$23.074.400</div><div class="lbl">Precio promedio</div></div>
-  <div class="kpi"><div class="num">—</div><div class="lbl">Km promedio</div></div>
+  <div class="kpi"><div class="num">0</div><div class="lbl">Version vs precio</div></div>
+  <div class="kpi"><div class="num">—</div><div class="lbl">Precio minimo</div></div>
+  <div class="kpi"><div class="num">—</div><div class="lbl">Precio maximo</div></div>
+  <div class="kpi"><div class="num">—</div><div class="lbl">Precio promedio</div></div>
+  <div class="kpi"><div class="num">49.210 km</div><div class="lbl">Km promedio</div></div>
 </div>
 <div class="content">
-<div class="section">
-  <div class="sec-title">⚠️ Combustible mal catalogado <span class="cnt">0 casos</span></div>
-  <table><thead><tr><th>Vehículo</th><th>Km</th><th>Precio</th><th>Actual</th><th>Debería ser</th><th>Detalle</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="7" class="empty">Sin inconsistencias detectadas ✓</td></tr></tbody></table>
+<div class="section"><div class="sec-title">Combustible mal catalogado <span class="cnt">0 casos</span></div>
+<table><thead><tr><th>Vehiculo</th><th>Km</th><th>Precio</th><th>Actual</th><th>Deberia ser</th><th>Detalle</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="7" class="empty">Sin inconsistencias detectadas ✓</td></tr></tbody></table></div>
+<div class="section"><div class="sec-title">Mismo modelo/año/version - Mas km, precio mayor <span class="cnt">0 grupos</span></div>
+<p class="hint">Criterio: misma version y año exactos, el precio deberia bajar al subir los km.</p>
+<table><thead><tr><th>Vehiculo</th><th>Secuencia km - precio (SUBE cuando no deberia)</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="3" class="empty">Sin inconsistencias detectadas ✓</td></tr></tbody></table></div>
+<div class="section"><div class="sec-title">Año mas nuevo con precio menor <span class="cnt">0 casos</span></div>
+<table><thead><tr><th>Modelo</th><th>Año antiguo</th><th>Año nuevo</th><th>Nota</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="5" class="empty">Sin inconsistencias detectadas ✓</td></tr></tbody></table></div>
+<div class="section"><div class="sec-title">Version inferior mas cara que version superior <span class="cnt">0 casos</span></div>
+<p class="hint">Version de menor equipamiento aparece mas cara sin que los km justifiquen la brecha.</p>
+<table><thead><tr><th>Modelo / Año</th><th>Version inferior</th><th>Version superior</th><th>Analisis</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="5" class="empty">Sin inconsistencias detectadas ✓</td></tr></tbody></table></div>
+<div class="section"><div class="sec-title">Estadisticas del inventario</div>
+<div class="stats-grid">
+  <div class="stat-card"><h4>Top 10 marcas</h4><table><tbody><tr><td>TOYOTA</td><td><strong>108</strong></td></tr><tr><td>HYUNDAI</td><td><strong>108</strong></td></tr><tr><td>CHERY</td><td><strong>98</strong></td></tr><tr><td>PEUGEOT</td><td><strong>74</strong></td></tr><tr><td>MG</td><td><strong>69</strong></td></tr><tr><td>JAECOO</td><td><strong>64</strong></td></tr><tr><td>NISSAN</td><td><strong>51</strong></td></tr><tr><td>FORD</td><td><strong>31</strong></td></tr><tr><td>CHEVROLET</td><td><strong>30</strong></td></tr><tr><td>VOLKSWAGEN</td><td><strong>27</strong></td></tr></tbody></table></div>
+  <div class="stat-card"><h4>Combustible</h4><table><tbody><tr><td>Gasolina</td><td>864 (91%)</td></tr><tr><td>Diesel</td><td>50 (5%)</td></tr><tr><td>Híbrido</td><td>33 (3%)</td></tr><tr><td>Eléctrico</td><td>2 (0%)</td></tr></tbody></table></div>
+  <div class="stat-card"><h4>Transmision</h4><table><tbody><tr><td>Automática</td><td>604 (63%)</td></tr><tr><td>Mecánica</td><td>344 (36%)</td></tr></tbody></table></div>
+  <div class="stat-card"><h4>Por año</h4><table><tbody><tr><td>2026</td><td><strong>124</strong></td></tr><tr><td>2025</td><td><strong>181</strong></td></tr><tr><td>2024</td><td><strong>128</strong></td></tr><tr><td>2023</td><td><strong>155</strong></td></tr><tr><td>2022</td><td><strong>99</strong></td></tr><tr><td>2021</td><td><strong>65</strong></td></tr><tr><td>2020</td><td><strong>45</strong></td></tr><tr><td>2019</td><td><strong>53</strong></td></tr><tr><td>2018</td><td><strong>36</strong></td></tr><tr><td>2017</td><td><strong>19</strong></td></tr><tr><td>2016</td><td><strong>15</strong></td></tr><tr><td>2015</td><td><strong>7</strong></td></tr><tr><td>2014</td><td><strong>3</strong></td></tr><tr><td>2013</td><td><strong>2</strong></td></tr></tbody></table></div>
+</div></div>
+<div class="section"><div class="sec-title">Resumen y recomendaciones</div>
+<div class="res-grid">
+  <div class="res-card r"><h4>Prioridad Alta</h4><ul><li>Combustible incorrecto: <strong>0</strong></li><li>Km vs precio (ALTO): <strong>0</strong></li><li>Version inferior mas cara (ALTO): <strong>0</strong></li></ul></div>
+  <div class="res-card o"><h4>Prioridad Media</h4><ul><li>Km vs precio (MEDIO/BAJO): <strong>0</strong></li><li>Año vs precio: <strong>0</strong></li></ul></div>
+  <div class="res-card y"><h4>Revisar</h4><ul><li>MHEV, B4-B8, E-TSI catalogar como Hibrido</li><li>AWD/4WD vs 2WD</li><li>Top trim mas barato que base</li></ul></div>
+  <div class="res-card g"><h4>Cobertura</h4><ul><li><strong>949</strong> vehiculos procesados</li><li><strong>0%</strong> con precio visible</li><li>Actualizacion: lunes automatico</li></ul></div>
+</div></div>
 </div>
-<div class="section">
-  <div class="sec-title">📈 Mismo modelo/año/versión — Más km, precio mayor <span class="cnt">0 grupos · top 15</span></div>
-  <p class="hint">Criterio: misma versión y año exactos → el precio debería bajar al subir los km.</p>
-  <table><thead><tr><th>Vehículo</th><th>Secuencia km → precio (⚠ sube cuando no debería)</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="3" class="empty">Sin inconsistencias detectadas ✓</td></tr></tbody></table>
-</div>
-<div class="section">
-  <div class="sec-title">🟡 Año más nuevo con precio menor <span class="cnt">0 casos</span></div>
-  <table><thead><tr><th>Modelo</th><th>Año antiguo</th><th>Año nuevo</th><th>Nota</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="5" class="empty">Sin inconsistencias detectadas ✓</td></tr></tbody></table>
-</div>
-<div class="section">
-  <div class="sec-title">🏆 Versión inferior más cara que versión superior <span class="cnt">0 casos</span></div>
-  <p class="hint">Versión de menor equipamiento aparece más cara sin que los km justifiquen la brecha.</p>
-  <table><thead><tr><th>Modelo / Año</th><th>Versión inferior</th><th>Versión superior</th><th>Análisis</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="5" class="empty">Sin inconsistencias detectadas ✓</td></tr></tbody></table>
-</div>
-<div class="section">
-  <div class="sec-title">📊 Estadísticas del inventario</div>
-  <div class="stats-grid">
-    <div class="stat-card"><h4>Top 10 marcas</h4><table><tbody><tr><td>HYUNDAI</td><td><strong>60</strong></td></tr><tr><td>PEUGEOT</td><td><strong>50</strong></td></tr><tr><td>MG</td><td><strong>31</strong></td></tr><tr><td>TOYOTA</td><td><strong>26</strong></td></tr><tr><td>JAECOO</td><td><strong>25</strong></td></tr><tr><td>CHERY</td><td><strong>13</strong></td></tr><tr><td>NISSAN</td><td><strong>12</strong></td></tr><tr><td>LEXUS</td><td><strong>10</strong></td></tr><tr><td>OMODA</td><td><strong>9</strong></td></tr><tr><td>EXEED</td><td><strong>6</strong></td></tr></tbody></table></div>
-    <div class="stat-card"><h4>Combustible</h4><table><tbody><tr><td>Gasolina</td><td>172 <span class='pct'>(68%)</span></td></tr><tr><td>Diesel</td><td>40 <span class='pct'>(16%)</span></td></tr><tr><td>Híbrido</td><td>33 <span class='pct'>(13%)</span></td></tr><tr><td>Eléctrico</td><td>5 <span class='pct'>(2%)</span></td></tr></tbody></table></div>
-    <div class="stat-card"><h4>Transmisión</h4><table><tbody><tr><td>Automática</td><td>167 <span class='pct'>(66%)</span></td></tr><tr><td>Mecánica</td><td>83 <span class='pct'>(33%)</span></td></tr></tbody></table></div>
-    <div class="stat-card"><h4>Por año</h4><table><tbody></tbody></table></div>
-  </div>
-</div>
-<div class="section">
-  <div class="sec-title">📋 Resumen y recomendaciones</div>
-  <div class="res-grid">
-    <div class="res-card r"><h4>🔴 Prioridad Alta</h4><ul>
-      <li>Combustible incorrecto: <strong>0</strong> casos</li>
-      <li>Km vs precio (ALTO): <strong>0</strong> grupos</li>
-      <li>Versión inferior más cara (ALTO): <strong>0</strong> casos</li>
-    </ul></div>
-    <div class="res-card o"><h4>🟠 Prioridad Media</h4><ul>
-      <li>Km vs precio (MEDIO/BAJO): <strong>0</strong> grupos</li>
-      <li>Año vs precio revisable: <strong>0</strong> casos</li>
-    </ul></div>
-    <div class="res-card y"><h4>🟡 Revisar etiquetas</h4><ul>
-      <li>Sufijos MHEV, B4, B5, B6, E-TSI → Híbrido</li>
-      <li>Verificar AWD/4WD vs 2WD</li>
-      <li>Tops de gama más baratos que base</li>
-    </ul></div>
-    <div class="res-card g"><h4>✅ Cobertura</h4><ul>
-      <li><strong>250</strong> vehículos procesados</li>
-      <li><strong>95%</strong> con precio visible</li>
-      <li>Actualización: cada lunes automático</li>
-    </ul></div>
-  </div>
-</div>
-</div>
-<footer>Informe generado automáticamente · Bruno Fritsch Autos Usados · brunofritsch.cl · 11/06/2026 18:07 · 250 vehículos</footer>
+<footer>Informe generado automaticamente · Bruno Fritsch Autos Usados · brunofritsch.cl · 11/06/2026 18:50 · 949 vehiculos</footer>
 </body></html>
