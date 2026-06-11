@@ -134,14 +134,18 @@ def scrape_pagina_pw(page, pagina):
                 titulo = text;
                 break;
             }
-            // Version: buscar en spans (ej: "1.5T LIMITED 2WD CVT AT 5P")
+            // Version: primer span que no sea km, combustible, transmision ni precio
+            const skipVersion = /^(Gasolina|Bencina|Di.sel|H.brido|El.ctrico|Autom.tica|Mec.nica|Manual|GNC|GLP)$/i;
             for (const el of t.querySelectorAll('span')) {
                 const text = el.innerText.trim();
-                // La version tiene patron: numero.letras seguido de traccion/transmision
-                if (/\d+\.\d+.*\b(4[Xx][24]|2[Ww][Dd]|[Aa][Ww][Dd]|[Mm][Tt]|[Cc][Vv][Tt]|[Aa][Tt])\b/.test(text)) {
-                    version = text;
-                    break;
-                }
+                if (text.length < 4) continue;
+                if (/km$/i.test(text)) continue;
+                if (/^\$/.test(text)) continue;
+                if (/bono|incluye/i.test(text)) continue;
+                if (skipVersion.test(text)) continue;
+                if (text === titulo) continue;
+                version = text;
+                break;
             }
 
             // Precio: p o span que empiece con $ y tenga digitos largos
