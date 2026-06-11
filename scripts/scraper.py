@@ -101,33 +101,81 @@ def parsear_tarjeta(t):
 def scrape_pagina_pw(page, pagina):
     url = f"{LIST_URL}?page={pagina}&pageSize={PAGE_SIZE}"
     page.goto(url, wait_until="networkidle", timeout=60000)
-    # Esperar que carguen las tarjetas con precio
     try:
         page.wait_for_selector("#grid-mode-product-card", timeout=15000)
     except:
         pass
-    time.sleep(2)  # extra para JS de precios
+    time.sleep(2)
 
-    html  = page.content()
-    soup  = BeautifulSoup(html, "lxml")
+    # Extraer datos estructurados via JavaScript directamente desde el DOM
+    datos_js = page.evaluate("""() => {
+        const tarjetas = document.querySelectorAll('#grid-mode-product-card');
+        const resultado = [];
+        tarjetas.forEach(t => {
+            const txt = t.innerText || '';
+            let titulo = '';
+            let version = '';
+            let count = 0;
+            const parrafos = t.querySelectorAll('p');
+            for (const p of parrafos) {
+                const text = p.innerText.trim();
+                if (text.length > 6 && /[A-Z]/.test(text) && !/^\$/.test(text)) {
+                    count++;
+                    if (count === 1) titulo = text;
+                    if (count === 2) { version = text; break; }
+                }
+            }
+            let precio = '';
+            for (const p of parrafos) {
+                if (/\$[\d\.\s]{5,}/.test(p.innerText)) {
+                    precio = p.innerText.trim(); break;
+                }
+            }
+            if (!precio) {
+                for (const s of t.querySelectorAll('span')) {
+                    if (/\$[\d\.\s]{5,}/.test(s.innerText)) {
+                        precio = s.innerText.trim(); break;
+                    }
+                }
+            }
+            let combustible = '', km = '', transmision = '';
+            for (const el of t.querySelectorAll('p, span, div')) {
+                const text = el.innerText.trim();
+                if (/^(Gasolina|Bencina|Di[eé]sel|H[ií]brido|El[eé]ctrico|GNC|GLP)$/i.test(text)) combustible = text;
+                if (/^\d{1,3}[\.\s]\d{3}\s*km$/i.test(text)) km = text;
+                if (/^(Autom[aá]tica|Mec[aá]nica|Manual)$/i.test(text)) transmision = text;
+            }
+            resultado.push({ titulo, version, precio_txt: precio, combustible, km_txt: km, transmision, txt_full: txt.substring(0, 300) });
+        });
+        return resultado;
+    }""")
 
-    tarjetas = soup.find_all(id="grid-mode-product-card")
-    if not tarjetas:
-        tarjetas = soup.find_all(class_=re.compile(r"MuiCard-root", re.I))
-    if not tarjetas:
-        tarjetas = [
-            d for d in soup.find_all("div")
-            if re.search(r"\$\s*[\d\.]{7,}", d.get_text())
-            and re.search(r"\d{1,3}\.[\d]{3}\s*km", d.get_text(), re.I)
-            and 80 < len(d.get_text()) < 700
-        ]
-
+    html    = page.content()
+    soup    = BeautifulSoup(html, "lxml")
     total_m = re.search(r"(\d+)\s*autos", soup.get_text())
     total   = int(total_m.group(1)) if total_m else 0
-    hay_sig = (pagina * PAGE_SIZE) < total if total else len(tarjetas) >= PAGE_SIZE * 0.7
+    hay_sig = (pagina * PAGE_SIZE) < total if total else len(datos_js) >= PAGE_SIZE * 0.7
 
-    vehiculos = [parsear_tarjeta(t) for t in tarjetas]
-    log.info(f"  Pagina {pagina:02d}: {len(vehiculos)} autos | precios: {sum(1 for v in vehiculos if v['precio'])} | total sitio: {total}")
+    vehiculos = []
+    for d in datos_js:
+        precio = parsear_precio(d["precio_txt"] or d["txt_full"])
+        km     = parsear_km(d["km_txt"]) or parsear_km(d["txt_full"])
+        titulo = d["titulo"]
+        if d["version"] and d["version"] not in titulo:
+            titulo = f"{titulo} {d['version']}".strip()
+        titulo = re.sub(r"\s+", " ", titulo).strip()
+        if not titulo:
+            titulo = d["txt_full"][:80].strip()
+        ano   = extraer_ano(titulo) or extraer_ano(d["txt_full"])
+        marca = titulo.split()[0].upper() if titulo else "DESCONOCIDA"
+        comb  = d["combustible"] or extraer_combustible(d["txt_full"])
+        trans = d["transmision"] or extraer_transmision(d["txt_full"])
+        vehiculos.append({
+            "titulo": titulo, "marca": marca, "ano": ano,
+            "km": km, "precio": precio, "combustible": comb, "transmision": trans,
+        })
+
+    log.info(f"  Pagina {pagina:02d}: {len(vehiculos)} autos | precios: {sum(1 for v in vehiculos if v['precio'])} | combustible: {sum(1 for v in vehiculos if v['combustible'])} | total sitio: {total}")
     return vehiculos, hay_sig
 
 def scrape_todo():
