@@ -126,17 +126,23 @@ def scrape_pagina_pw(page, pagina):
             // Titulo: primer p con mayusculas que NO sea bono ni precio
             let titulo = '', version = '';
             const parrafos = t.querySelectorAll('p');
-            const candidatos = [];
+            // Titulo: primer parrafo con texto del auto (no precio ni bono)
             for (const p of parrafos) {
                 const text = p.innerText.trim();
-                // Saltar si contiene "bono", "$", o es solo numeros/km
-                if (/bono|incluye/i.test(text)) continue;
-                if (/^\$/.test(text)) continue;
-                if (text.length < 4) continue;
-                if (/[A-Z]/.test(text)) candidatos.push(text);
+                if (/bono|incluye|^\$/i.test(text)) continue;
+                if (text.length < 3) continue;
+                titulo = text;
+                break;
             }
-            if (candidatos.length >= 1) titulo   = candidatos[0];
-            if (candidatos.length >= 2) version  = candidatos[1];
+            // Version: buscar en spans (ej: "1.5T LIMITED 2WD CVT AT 5P")
+            for (const el of t.querySelectorAll('span')) {
+                const text = el.innerText.trim();
+                // La version tiene patron: numero.letras seguido de traccion/transmision
+                if (/\d+\.\d+.*\b(4[Xx][24]|2[Ww][Dd]|[Aa][Ww][Dd]|[Mm][Tt]|[Cc][Vv][Tt]|[Aa][Tt])\b/.test(text)) {
+                    version = text;
+                    break;
+                }
+            }
 
             // Precio: p o span que empiece con $ y tenga digitos largos
             let precio = '';
