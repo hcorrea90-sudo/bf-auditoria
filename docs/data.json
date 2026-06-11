@@ -1,8 +1,26 @@
 {
-  "generado": "2026-06-11T20:12:32.474537",
+  "generado": "2026-06-11T20:49:04.437116",
   "total": 943,
-  "con_precio": 942,
+  "con_precio": 943,
   "vehiculos": [
+    {
+      "titulo": "MG ZS 2022",
+      "marca": "MG",
+      "ano": 2022,
+      "km": 57501,
+      "precio": 7690000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "CHERY TIGGO 3 2021",
+      "marca": "CHERY",
+      "ano": 2021,
+      "km": 76112,
+      "precio": 7990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
     {
       "titulo": "CHERY TIGGO 7 PRO MAX 2025",
       "marca": "CHERY",
@@ -432,24 +450,6 @@
       "ano": 2026,
       "km": 15047,
       "precio": 13390000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "HYUNDAI I20 2026",
-      "marca": "HYUNDAI",
-      "ano": 2026,
-      "km": 17308,
-      "precio": 13390000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "CHERY TIGGO 8 2021",
-      "marca": "CHERY",
-      "ano": 2021,
-      "km": 77247,
-      "precio": 11490000,
       "combustible": "Gasolina",
       "transmision": "Mecánica"
     }
