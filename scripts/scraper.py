@@ -113,39 +113,43 @@ def scrape_pagina_pw(page, pagina):
         const resultado = [];
         tarjetas.forEach(t => {
             const txt = t.innerText || '';
-            let titulo = '';
-            let version = '';
-            let count = 0;
-            const parrafos = t.querySelectorAll('p');
-            for (const p of parrafos) {
-                const text = p.innerText.trim();
-                if (text.length > 6 && /[A-Z]/.test(text) && !/^\$/.test(text)) {
-                    count++;
-                    if (count === 1) titulo = text;
-                    if (count === 2) { version = text; break; }
-                }
-            }
-            let precio = '';
-            for (const p of parrafos) {
-                if (/\$[\d\.\s]{5,}/.test(p.innerText)) {
-                    precio = p.innerText.trim(); break;
-                }
-            }
-            if (!precio) {
-                for (const s of t.querySelectorAll('span')) {
-                    if (/\$[\d\.\s]{5,}/.test(s.innerText)) {
-                        precio = s.innerText.trim(); break;
-                    }
-                }
-            }
+
+            // Combustible, km, transmision desde chips visuales
             let combustible = '', km = '', transmision = '';
             for (const el of t.querySelectorAll('p, span, div')) {
                 const text = el.innerText.trim();
                 if (/^(Gasolina|Bencina|Di[eé]sel|H[ií]brido|El[eé]ctrico|GNC|GLP)$/i.test(text)) combustible = text;
-                if (/^\d{1,3}[\.\s]\d{3}\s*km$/i.test(text)) km = text;
+                if (/^\d{1,3}\.\d{3}\s*km$/i.test(text)) km = text;
                 if (/^(Autom[aá]tica|Mec[aá]nica|Manual)$/i.test(text)) transmision = text;
             }
-            resultado.push({ titulo, version, precio_txt: precio, combustible, km_txt: km, transmision, txt_full: txt.substring(0, 300) });
+
+            // Titulo: primer p con mayusculas que NO sea bono ni precio
+            let titulo = '', version = '';
+            const parrafos = t.querySelectorAll('p');
+            const candidatos = [];
+            for (const p of parrafos) {
+                const text = p.innerText.trim();
+                // Saltar si contiene "bono", "$", o es solo numeros/km
+                if (/bono|incluye/i.test(text)) continue;
+                if (/^\$/.test(text)) continue;
+                if (text.length < 4) continue;
+                if (/[A-Z]/.test(text)) candidatos.push(text);
+            }
+            if (candidatos.length >= 1) titulo   = candidatos[0];
+            if (candidatos.length >= 2) version  = candidatos[1];
+
+            // Precio: p o span que empiece con $ y tenga digitos largos
+            let precio = '';
+            for (const el of t.querySelectorAll('p, span')) {
+                const text = el.innerText.trim();
+                if (/^\$[\d\.\s]{6,}/.test(text)) { precio = text; break; }
+            }
+
+            resultado.push({
+                titulo, version, precio_txt: precio,
+                combustible, km_txt: km, transmision,
+                txt_full: txt.substring(0, 300)
+            });
         });
         return resultado;
     }""")
