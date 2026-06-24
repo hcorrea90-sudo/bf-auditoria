@@ -244,8 +244,10 @@ def analizar_combustible(veh):
     out = []
     for v in veh:
         c = (v["combustible"] or "").lower()
-        if any(x in c for x in ("hibrido","electrico")):
+        # Solo alertar si el combustible actual NO es ya hibrido/electrico
+        if any(x in c for x in ("hibrido", "híbrido", "electrico", "eléctrico")):
             continue
+        # Verificar si el titulo sugiere que deberia ser hibrido
         tl = " " + v["titulo"].lower() + " "
         for kw in MHEV_KEYWORDS:
             if kw in tl:
@@ -255,7 +257,7 @@ def analizar_combustible(veh):
                     "precio":      v["precio"],
                     "comb_actual": v["combustible"] or "No especificado",
                     "deberia":     "Hibrido",
-                    "detalle":     f'"{kw.upper().strip()}" indica tecnologia mild-hybrid o hibrida.',
+                    "detalle":     f'"{kw.upper().strip()}" indica tecnologia mild-hybrid o hibrida. Revisar catalogacion.',
                     "sev":         "ALTO",
                 })
                 break
