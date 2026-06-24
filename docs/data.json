@@ -1,14 +1,14 @@
 {
-  "generado": "2026-06-24T20:53:49.665257",
-  "total": 1028,
-  "con_precio": 1021,
+  "generado": "2026-06-24T21:07:10.807332",
+  "total": 1022,
+  "con_precio": 1014,
   "vehiculos": [
     {
       "titulo": "TOYOTA RAV4 2021 2.0 LE 4X2 MT 5P",
       "marca": "TOYOTA",
       "ano": 2021,
       "km": 48600,
-      "precio": 18990000,
+      "precio": 17990000,
       "combustible": "Gasolina",
       "transmision": "Mecánica"
     },
