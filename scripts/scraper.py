@@ -170,16 +170,31 @@ def scrape_pagina_pw(page, pagina):
     total   = int(total_m.group(1)) if total_m else 0
     hay_sig = (pagina * PAGE_SIZE) < total if total else len(datos_js) >= PAGE_SIZE * 0.7
 
+    # Chips de estado que NO son parte de la versión del auto
+    CHIPS_ESTADO = re.compile(
+        r"\b(Pocos\s*Kil[oó]metros|[uú]nico\s*Due[nñ]o|SALE|WINTER\s*SALE|"
+        r"Pocos\s*KM|Nuevo\s*Ingreso|Destacado|Winter\s*Sale)\b",
+        re.I
+    )
+
     vehiculos = []
     for d in datos_js:
         precio = parsear_precio(d["precio_txt"] or d["txt_full"])
         km     = parsear_km(d["km_txt"]) or parsear_km(d["txt_full"])
-        titulo = d["titulo"]
-        if d["version"] and d["version"] not in titulo:
-            titulo = f"{titulo} {d['version']}".strip()
+
+        # Limpiar titulo de chips de estado
+        titulo = CHIPS_ESTADO.sub("", d["titulo"]).strip()
+        titulo = re.sub(r"\s+", " ", titulo).strip()
+
+        # Agregar version si no es un chip de estado
+        version_limpia = CHIPS_ESTADO.sub("", d["version"] or "").strip()
+        if version_limpia and version_limpia not in titulo:
+            titulo = f"{titulo} {version_limpia}".strip()
+
         titulo = re.sub(r"\s+", " ", titulo).strip()
         if not titulo:
             titulo = d["txt_full"][:80].strip()
+
         ano   = extraer_ano(titulo) or extraer_ano(d["txt_full"])
         marca = titulo.split()[0].upper() if titulo else "DESCONOCIDA"
         comb  = d["combustible"] or extraer_combustible(d["txt_full"])
@@ -317,6 +332,14 @@ JERARQUIAS = [
     (r"2wd",                   r"4wd|4x4|awd",           "Traccion: 2WD < 4WD/AWD"),
 ]
 
+def extraer_modelo_base(titulo):
+    """Extrae las primeras palabras del modelo para comparar (ej: TIGGO 7 PRO, RAV4, X-TRAIL)."""
+    # Quitar marca (primera palabra) y año
+    t = re.sub(r"\b(19|20)\d{2}\b", "", titulo)
+    partes = t.split()
+    # Tomar palabras 2-4 como modelo base (ej: TIGGO 7 PRO, RAV4, X-TRAIL)
+    return " ".join(partes[1:4]).upper() if len(partes) > 1 else ""
+
 def analizar_version_precio(veh):
     grupos = defaultdict(list)
     for v in veh:
@@ -332,6 +355,11 @@ def analizar_version_precio(veh):
             mi = max(inf, key=lambda x: x["precio"])
             ms = max(sup, key=lambda x: x["precio"])
             if mi["precio"] <= ms["precio"]: continue
+            # Verificar que sean el mismo modelo base (evitar mezcla Tiggo 7 vs Tiggo 3)
+            modelo_inf = extraer_modelo_base(mi["titulo"])
+            modelo_sup = extraer_modelo_base(ms["titulo"])
+            if modelo_inf and modelo_sup and modelo_inf != modelo_sup:
+                continue
             kd = f"{mi['titulo']}|{ms['titulo']}"
             if kd in seen: continue
             seen.add(kd)
@@ -478,6 +506,12 @@ footer{{text-align:center;padding:20px;color:var(--muted);font-size:11px;border-
   <div class="sub">Revision de consistencia: precio vs año/km y equipamiento declarado</div>
   <div class="meta"><span>Generado: <strong>{fecha_gen} {hora_gen}</strong></span><span>Fuente: <strong>brunofritsch.cl/autos-usados</strong></span><span>Total: <strong>{stats['total']} vehiculos</strong></span></div>
   <div class="ubadge">Se actualiza automaticamente cada lunes</div>
+</div>
+<div style="background:#1e293b;padding:10px 40px;display:flex;gap:24px;flex-wrap:wrap;font-size:11px">
+  <span style="color:#94a3b8;font-weight:600">CRITERIO DE SEVERIDAD:</span>
+  <span><span style="background:#dc2626;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:10px">ALTO</span> <span style="color:#cbd5e1">Diferencia de precio mayor a $1.500.000 o error de equipamiento critico</span></span>
+  <span><span style="background:#d97706;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:10px">MEDIO</span> <span style="color:#cbd5e1">Diferencia entre $600.000 y $1.500.000, requiere revision</span></span>
+  <span><span style="background:#16a34a;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:10px">BAJO</span> <span style="color:#cbd5e1">Diferencia menor a $600.000, puede tener justificacion</span></span>
 </div>
 <div class="kpis">
   <div class="kpi"><div class="num">{stats['total']}</div><div class="lbl">Autos totales</div></div>
