@@ -1,338 +1,131 @@
 {
-  "generado": "2026-07-13T18:06:36.050819",
-  "total": 987,
-  "con_precio": 985,
+  "generado": "2026-07-20T13:02:06.132547",
+  "total": 974,
+  "con_precio": 974,
   "vehiculos": [
     {
-      "titulo": "CHERY TIGGO 2 PRO MAX 2025",
-      "marca": "CHERY",
-      "ano": 2025,
-      "km": 48542,
-      "precio": 9690000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "TOYOTA HILUX 2022 2.4 DX DIESEL 4X2 DOB. CAB. MT 4P",
-      "marca": "TOYOTA",
-      "ano": 2022,
-      "km": 77089,
-      "precio": 22490000,
-      "combustible": "Diesel",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "SUBARU FORESTER 2019",
-      "marca": "SUBARU",
-      "ano": 2019,
-      "km": 113999,
-      "precio": 14990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "CHERY TIGGO 3 2022 1.5 GLS 4X2 5MT 5P",
-      "marca": "CHERY",
-      "ano": 2022,
-      "km": 100512,
-      "precio": 7790000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "JETOUR X70 2025 1.5T LUX FL 4X2 MT 5P",
-      "marca": "JETOUR",
-      "ano": 2025,
-      "km": 400555,
-      "precio": 10690000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "NISSAN QASHQAI 2017",
+      "titulo": "NISSAN VERSA 2023 1.6 SENSE 4X2 MT 4P",
       "marca": "NISSAN",
-      "ano": 2017,
-      "km": 93000,
-      "precio": 8790000,
+      "ano": 2023,
+      "km": 64981,
+      "precio": 10390000,
       "combustible": "Gasolina",
       "transmision": "Mecánica"
     },
     {
-      "titulo": "TOYOTA HILUX 2026",
-      "marca": "TOYOTA",
-      "ano": 2026,
-      "km": 1038,
-      "precio": 35490000,
-      "combustible": "Diesel",
-      "transmision": "Mecánica"
+      "titulo": "JETOUR X90 PLUS 2024",
+      "marca": "JETOUR",
+      "ano": 2024,
+      "km": 33290,
+      "precio": 15990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "KIA CERATO 5 2020 1.6 EX FULL 4X2 HB 6AT 5P",
+      "marca": "KIA",
+      "ano": 2020,
+      "km": 89320,
+      "precio": 13990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "HYUNDAI TUCSON 2023",
+      "marca": "HYUNDAI",
+      "ano": 2023,
+      "km": 53410,
+      "precio": 18490000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "SUBARU OUTBACK 2023 2.5I XS AWD CVT AT 5P",
+      "marca": "SUBARU",
+      "ano": 2023,
+      "km": 41331,
+      "precio": 28490000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "VOLKSWAGEN TIGUAN 2018 1.4 TSI PLUS 4X2 CL MX 150HP AT 5P",
+      "marca": "VOLKSWAGEN",
+      "ano": 2018,
+      "km": 103000,
+      "precio": 11690000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
     },
     {
       "titulo": "GAC GS4 2023 1.5T GB 4X2 AT 5P",
       "marca": "GAC",
       "ano": 2023,
-      "km": 33000,
-      "precio": 9490000,
+      "km": 45000,
+      "precio": 9990000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     },
     {
-      "titulo": "HYUNDAI GRAND I10 2026 1.2 PLUS 4X2 HB MT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2026,
-      "km": 14842,
-      "precio": 9290000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "HYUNDAI GRAND I10 2026 1.2 PLUS 4X2 HB MT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2026,
-      "km": 15613,
-      "precio": 9190000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "HYUNDAI CRETA 2017 1.6 GLS 4X2 ABS 2AB AT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2017,
-      "km": 41362,
-      "precio": 10490000,
-      "combustible": "Gasolina",
+      "titulo": "PEUGEOT 3008 2023 1.5 GT BLACK PACK BLUEHDI DIESEL 130 4X2 EAT8 5P",
+      "marca": "PEUGEOT",
+      "ano": 2023,
+      "km": 41864,
+      "precio": 18990000,
+      "combustible": "Diesel",
       "transmision": "Automática"
     },
     {
-      "titulo": "HYUNDAI ACCENT 2021 1.4 GL 4X2 AC 2AB MT 4P",
-      "marca": "HYUNDAI",
+      "titulo": "VOLKSWAGEN T-CROSS 2023 1.0 TSI TRENDLINE 4X2 MT5 5P",
+      "marca": "VOLKSWAGEN",
+      "ano": 2023,
+      "km": 63108,
+      "precio": 11390000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "CHEVROLET CAPTIVA 2021 1.5T LT FWD MT 5P",
+      "marca": "CHEVROLET",
       "ano": 2021,
-      "km": 96000,
-      "precio": 10190000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "SUZUKI BALENO 2022 1.4 GLS 4X2 HB AT 5P",
-      "marca": "SUZUKI",
-      "ano": 2022,
       "km": 67000,
-      "precio": 10690000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "OMODA C5 2024",
-      "marca": "OMODA",
-      "ano": 2024,
-      "km": 23699,
-      "precio": 12790000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "OMODA C5 2026 1.5 URBAN 4X2 CVT AT 5P",
-      "marca": "OMODA",
-      "ano": 2026,
-      "km": 14218,
-      "precio": 11890000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "OMODA C5 2026 1.5 URBAN 4X2 CVT AT 5P",
-      "marca": "OMODA",
-      "ano": 2026,
-      "km": 19188,
-      "precio": 11590000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "OMODA C5 2026 1.5 URBAN 4X2 CVT AT 5P",
-      "marca": "OMODA",
-      "ano": 2026,
-      "km": 17105,
-      "precio": 11590000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "OMODA C5 2026 1.5 URBAN 4X2 CVT AT 5P",
-      "marca": "OMODA",
-      "ano": 2026,
-      "km": 16091,
-      "precio": 11590000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "SUBARU IMPREZA 2023",
-      "marca": "SUBARU",
-      "ano": 2023,
-      "km": 28000,
-      "precio": 17990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "SUBARU FORESTER 2021 2.0I X AWD AT 5P",
-      "marca": "SUBARU",
-      "ano": 2021,
-      "km": 98642,
-      "precio": 17990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "MG 3 2023",
-      "marca": "MG",
-      "ano": 2023,
-      "km": 31884,
-      "precio": 7990000,
+      "precio": 9990000,
       "combustible": "Gasolina",
       "transmision": "Mecánica"
     },
     {
-      "titulo": "SUBARU IMPREZA 2017 2.0 XS AWD CVT AT 4P",
-      "marca": "SUBARU",
-      "ano": 2017,
-      "km": 128053,
-      "precio": 10490000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "TOYOTA RAV4 2025",
-      "marca": "TOYOTA",
-      "ano": 2025,
-      "km": 15747,
-      "precio": 23490000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "FORD TERRITORY 2024",
-      "marca": "FORD",
-      "ano": 2024,
-      "km": 11000,
-      "precio": 15590000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "KIA SOLUTO 2022 1.4 LX 4X2 MT 4P",
-      "marca": "KIA",
-      "ano": 2022,
-      "km": 90093,
-      "precio": 7490000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "TOYOTA COROLLA CROSS 2025",
-      "marca": "TOYOTA",
-      "ano": 2025,
-      "km": 8633,
-      "precio": 25990000,
-      "combustible": "Híbrido",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "SUZUKI BALENO 2017 1.4 GLS 4X2 HB AT 5P",
-      "marca": "SUZUKI",
-      "ano": 2017,
-      "km": 96588,
-      "precio": 8990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "MG ZS 2024",
-      "marca": "MG",
-      "ano": 2024,
-      "km": 20827,
-      "precio": 8990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "KIA MORNING 2023 1.2 EX 4X2 HB ABS AC 5MT 5P",
+      "titulo": "KIA SPORTAGE 2023",
       "marca": "KIA",
       "ano": 2023,
-      "km": 105667,
-      "precio": 8390000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "MG ZS 2024 1.5 COMFORT 4X2 MT 5P",
-      "marca": "MG",
-      "ano": 2024,
-      "km": 40749,
-      "precio": 8590000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "HAVAL H6 2024 2.0 ELITE 4X2 AT 5P",
-      "marca": "HAVAL",
-      "ano": 2024,
-      "km": 34862,
-      "precio": 16490000,
+      "km": 53628,
+      "precio": 19390000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     },
     {
-      "titulo": "CHERY TIGGO 8 2021 1.5T GLX 4X2 DCT AT6 5P",
-      "marca": "CHERY",
+      "titulo": "MAZDA BT-50 2021",
+      "marca": "MAZDA",
       "ano": 2021,
-      "km": 70776,
-      "precio": 11490000,
-      "combustible": "Gasolina",
+      "km": 97184,
+      "precio": 18990000,
+      "combustible": "Diesel",
       "transmision": "Automática"
     },
     {
-      "titulo": "HYUNDAI CRETA 2023",
-      "marca": "HYUNDAI",
-      "ano": 2023,
-      "km": 49000,
-      "precio": 14990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "TOYOTA COROLLA CROSS 2023 1.8 SEG HYBRID 4X2 CVT AT 5P",
-      "marca": "TOYOTA",
-      "ano": 2023,
-      "km": 142067,
-      "precio": 17490000,
-      "combustible": "Híbrido",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "JEEP WRANGLER 2024",
-      "marca": "JEEP",
+      "titulo": "BMW X4 2024",
+      "marca": "BMW",
       "ano": 2024,
-      "km": 16325,
-      "precio": 49990000,
+      "km": 24000,
+      "precio": 46700000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     },
     {
-      "titulo": "TOYOTA PRIUS 2019",
-      "marca": "TOYOTA",
-      "ano": 2019,
-      "km": 20723,
-      "precio": 12990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "CHERY TIGGO 2 PRO 2023 1.5 GLS 4X2 MT 5P",
+      "titulo": "CHERY TIGGO 2 2024",
       "marca": "CHERY",
-      "ano": 2023,
-      "km": 74641,
-      "precio": 7190000,
+      "ano": 2024,
+      "km": 24853,
+      "precio": 7790000,
       "combustible": "Gasolina",
       "transmision": "Mecánica"
     },
@@ -340,118 +133,325 @@
       "titulo": "OMODA C5 2025",
       "marca": "OMODA",
       "ano": 2025,
-      "km": 8900,
-      "precio": 13690000,
+      "km": 9000,
+      "precio": 12990000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     },
     {
-      "titulo": "CHERY TIGGO 7 PRO 2023 1.5T GLX 4X2 CVT AT 5P",
+      "titulo": "DONGFENG AX7 2018 2.0 ELEGANT 4X2 MT 5P",
+      "marca": "DONGFENG",
+      "ano": 2018,
+      "km": 94408,
+      "precio": 5790000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "MG 5 2025",
+      "marca": "MG",
+      "ano": 2025,
+      "km": 8965,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "NISSAN VERSA 2023",
+      "marca": "NISSAN",
+      "ano": 2023,
+      "km": 127914,
+      "precio": 8490000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "NISSAN X-TRAIL 2016 2.5 SENSE 4X2 CVT AT 5P",
+      "marca": "NISSAN",
+      "ano": 2016,
+      "km": 140000,
+      "precio": 7990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "CHERY TIGGO 2 PRO 2023 1.0 GLX 4X2 CVT AT 5P",
       "marca": "CHERY",
       "ano": 2023,
-      "km": 79000,
-      "precio": 11990000,
+      "km": 46854,
+      "precio": 7990000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     },
     {
-      "titulo": "FORD ESCAPE 2018",
-      "marca": "FORD",
-      "ano": 2018,
-      "km": 100469,
-      "precio": 8890000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "SUZUKI JIMNY 2024",
-      "marca": "SUZUKI",
+      "titulo": "CHEVROLET MONTANA 2024",
+      "marca": "CHEVROLET",
       "ano": 2024,
-      "km": 21000,
-      "precio": 16990000,
+      "km": 70000,
+      "precio": 12990000,
       "combustible": "Gasolina",
-      "transmision": "Mecánica"
+      "transmision": "Automática"
     },
     {
-      "titulo": "HYUNDAI CRETA GRAND 2023",
-      "marca": "HYUNDAI",
-      "ano": 2023,
-      "km": 63546,
-      "precio": 16590000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "OMODA C5 2026 Garantía de Fábrica",
+      "titulo": "OMODA C5 2026",
       "marca": "OMODA",
       "ano": 2026,
-      "km": 3703,
-      "precio": 11990000,
+      "km": 40000,
+      "precio": 10690000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     },
     {
-      "titulo": "PEUGEOT 2008 2026",
+      "titulo": "NISSAN KICKS 2026 Garantía de Fábrica",
+      "marca": "NISSAN",
+      "ano": 2026,
+      "km": 2836,
+      "precio": 21690000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "CHERY TIGGO 2 PRO 2024 1.5 GLS 4X2 MT 5P",
+      "marca": "CHERY",
+      "ano": 2024,
+      "km": 34983,
+      "precio": 8190000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "JAECOO 6 2025 Garantía de Fábrica",
+      "marca": "JAECOO",
+      "ano": 2025,
+      "km": 250000,
+      "precio": 24990000,
+      "combustible": "Eléctrico",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "JAECOO 5 2026 1.5T ELEMENTAL FWD CVT9 AT 5P",
+      "marca": "JAECOO",
+      "ano": 2026,
+      "km": 23654,
+      "precio": 9990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "JAECOO 5 2026 1.5T ELEMENTAL FWD CVT9 AT 5P",
+      "marca": "JAECOO",
+      "ano": 2026,
+      "km": 21453,
+      "precio": 9990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "TOYOTA RAV4 2018 2.0 LUJO 4X2 CVT AT 5P",
+      "marca": "TOYOTA",
+      "ano": 2018,
+      "km": 96172,
+      "precio": 13590000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "PEUGEOT 3008 2025",
       "marca": "PEUGEOT",
-      "ano": 2008,
-      "km": 3493,
-      "precio": 18190000,
+      "ano": 2025,
+      "km": 8650,
+      "precio": 22490000,
       "combustible": "Híbrido",
       "transmision": "Automática"
     },
     {
-      "titulo": "KIA CARNIVAL 2026 Garantía de Fábrica",
-      "marca": "KIA",
-      "ano": 2026,
-      "km": 7800,
-      "precio": 44990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "HONDA RIDGELINE 2020 3.5 RTL AWD AT 4P",
-      "marca": "HONDA",
-      "ano": 2020,
-      "km": 115514,
-      "precio": 21490000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "HYUNDAI TUCSON 2026 Garantía de Fábrica",
+      "titulo": "HYUNDAI I20 2025",
       "marca": "HYUNDAI",
-      "ano": 2026,
-      "km": 5500,
-      "precio": 20990000,
+      "ano": 2025,
+      "km": 5188,
+      "precio": 12990000,
       "combustible": "Gasolina",
       "transmision": "Mecánica"
     },
     {
-      "titulo": "TOYOTA RAV4 2017",
+      "titulo": "SUZUKI VITARA 2023 1.6 GLS 2WD AT 5P",
+      "marca": "SUZUKI",
+      "ano": 2023,
+      "km": 32000,
+      "precio": 16490000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "MAZDA 6 2019 2.0 4X2 6AT 4P",
+      "marca": "MAZDA",
+      "ano": 2019,
+      "km": 110000,
+      "precio": 12990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "HYUNDAI CRETA 2022",
+      "marca": "HYUNDAI",
+      "ano": 2022,
+      "km": 72000,
+      "precio": 13990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "TOYOTA YARIS CROSS 2024 Facturable",
       "marca": "TOYOTA",
-      "ano": 2017,
-      "km": 114752,
-      "precio": 11490000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "OMODA C5 2024",
-      "marca": "OMODA",
       "ano": 2024,
-      "km": 19771,
-      "precio": 11490000,
+      "km": 63170,
+      "precio": 19490000,
+      "combustible": "Híbrido",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "JAC JS2 2023",
+      "marca": "JAC",
+      "ano": 2023,
+      "km": 59000,
+      "precio": 7590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "MAZDA CX-3 2016 2.0 GT AWD GPS 6AT 5P",
+      "marca": "MAZDA",
+      "ano": 2016,
+      "km": 79104,
+      "precio": 12590000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     },
     {
-      "titulo": "NISSAN X-TRAIL 2017 2.5 SENSE 4X2 2F CVT AT 5P",
-      "marca": "NISSAN",
-      "ano": 2017,
-      "km": 127416,
-      "precio": 9190000,
+      "titulo": "CHERY TIGGO 8 2021 1.5T GLX 4X2 DCT AT6 5P",
+      "marca": "CHERY",
+      "ano": 2021,
+      "km": 73702,
+      "precio": 12490000,
       "combustible": "Gasolina",
       "transmision": "Automática"
+    },
+    {
+      "titulo": "SUZUKI IGNIS 2019 1.2 GL FWD MT 5P",
+      "marca": "SUZUKI",
+      "ano": 2019,
+      "km": 73000,
+      "precio": 7490000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "HYUNDAI TUCSON 2019 2.0 PLUS 2WD AT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2019,
+      "km": 60843,
+      "precio": 14990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "CITROEN C3 2023 1.2 PURETECH LIVE 4X2 HB 82 BVM MT 5P",
+      "marca": "CITROEN",
+      "ano": 2023,
+      "km": 56033,
+      "precio": 7590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "SKODA SCALA 2023",
+      "marca": "SKODA",
+      "ano": 2023,
+      "km": 53723,
+      "precio": 14590000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "CHANGAN CS35 2019 1.6 ELITE 4X2 AT 5P",
+      "marca": "CHANGAN",
+      "ano": 2019,
+      "km": 54191,
+      "precio": 7990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "HYUNDAI TUCSON 2024 2.0 NX4 PLUS 2WD AT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2024,
+      "km": 26588,
+      "precio": 19990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "HAVAL H6 2023",
+      "marca": "HAVAL",
+      "ano": 2023,
+      "km": 21200,
+      "precio": 14990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "HYUNDAI ACCENT 2025 1.5 PLUS 4X2 MT 4P",
+      "marca": "HYUNDAI",
+      "ano": 2025,
+      "km": 75800,
+      "precio": 11490000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "MG ZS 2023",
+      "marca": "MG",
+      "ano": 2023,
+      "km": 39612,
+      "precio": 7790000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "JAECOO 7 2025 1.6T PRIME FWD 4X2 AT 5P",
+      "marca": "JAECOO",
+      "ano": 2025,
+      "km": 14306,
+      "precio": 13990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "TOYOTA RAV4 2020 2.0 LE 4X2 MT 5P",
+      "marca": "TOYOTA",
+      "ano": 2020,
+      "km": 128483,
+      "precio": 15490000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "KIA SELTOS 2022 1.6 EX 4X2 6MT 5P",
+      "marca": "KIA",
+      "ano": 2022,
+      "km": 67900,
+      "precio": 12990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "NISSAN KICKS 2023",
+      "marca": "NISSAN",
+      "ano": 2023,
+      "km": 57924,
+      "precio": 12990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
     }
   ]
 }
