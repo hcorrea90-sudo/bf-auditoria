@@ -1,95 +1,1957 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Auditoria BF Usados - 27/07/2026</title>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auditoría Pricing BF — 27/07/2026</title>
 <style>
-:root{--bg:#f8fafc;--card:#fff;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--accent:#2563eb;--alto:#dc2626;--medio:#d97706;--bajo:#16a34a}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
-.hdr{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);color:#fff;padding:28px 40px 20px}
-.hdr h1{font-size:20px;font-weight:800}.hdr .sub{color:#94a3b8;font-size:12px;margin-top:3px}
-.hdr .meta{display:flex;gap:20px;margin-top:14px;flex-wrap:wrap;font-size:12px}
-.hdr .meta span{color:#cbd5e1}.hdr .meta strong{color:#fff}
-.ubadge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.25);border:1px solid rgba(37,99,235,.4);color:#93c5fd;border-radius:20px;padding:3px 10px;font-size:11px;margin-top:10px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;padding:20px 40px;background:#fff;border-bottom:1px solid var(--border)}
-.kpi{background:#eff6ff;border-radius:8px;padding:12px;text-align:center}
-.kpi .num{font-size:22px;font-weight:800;color:var(--accent)}.kpi .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.content{padding:28px 40px;max-width:1400px;margin:0 auto}.section{margin-bottom:36px}
-.sec-title{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;border-bottom:2px solid var(--border);padding-bottom:8px;margin-bottom:14px}
-.sec-title .cnt{margin-left:auto;background:#e2e8f0;border-radius:20px;padding:1px 10px;font-size:11px;color:#475569;font-weight:600}
-.hint{font-size:11px;color:var(--muted);margin-bottom:10px}
-table{width:100%;border-collapse:collapse}
-th{background:#f1f5f9;text-align:left;padding:7px 10px;font-size:11px;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--border)}
-td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12px}
-tr:last-child td{border-bottom:none}tr:hover td{background:#fafbff}
-td.note{font-size:11px;color:#475569;max-width:260px}
-td.seq span{display:inline-block;margin-right:8px;margin-bottom:3px;font-size:11px;background:#f1f5f9;border-radius:4px;padding:2px 6px}
-td.seq span.sube{background:#fef2f2;color:var(--alto);font-weight:600}
-td.empty{text-align:center;color:var(--muted);padding:20px}
-.badge{display:inline-block;color:#fff;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
-.tag-inf{display:inline-block;background:#fef2f2;color:var(--alto);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px}
-.tag-sup{display:inline-block;background:#f0fdf4;color:var(--bajo);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px}
-.stat-card h4{font-size:11px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.stat-card td{padding:3px 4px;border:none;font-size:12px}
-.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
-.res-card{border-radius:10px;padding:14px;border-left:4px solid}
-.res-card.r{background:#fff5f5;border-color:var(--alto)}.res-card.o{background:#fffbeb;border-color:var(--medio)}
-.res-card.y{background:#fefce8;border-color:#ca8a04}.res-card.g{background:#f0fdf4;border-color:var(--bajo)}
-.res-card h4{font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:7px}
-.res-card ul{padding-left:14px;font-size:11px;line-height:1.9}
-footer{text-align:center;padding:20px;color:var(--muted);font-size:11px;border-top:1px solid var(--border)}
-@media(max-width:680px){.hdr,.kpis,.content{padding-left:16px;padding-right:16px}}
-</style></head><body>
+:root{
+  --bg:#f1f5f9;--card:#fff;--border:#e2e8f0;
+  --text:#0f172a;--muted:#64748b;--accent:#1d4ed8;
+  --alto:#dc2626;--medio:#d97706;--bajo:#16a34a;
+  --alto-bg:#fef2f2;--medio-bg:#fffbeb;--bajo-bg:#f0fdf4;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);color:var(--text);font-size:13px;line-height:1.5}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);color:#fff;padding:24px 40px 20px}
+.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+.hdr h1{font-size:18px;font-weight:800;letter-spacing:-.3px}
+.hdr .sub{color:#93c5fd;font-size:11px;margin-top:2px}
+.hdr-meta{text-align:right;font-size:11px;color:#cbd5e1;line-height:1.8}
+.hdr-meta strong{color:#fff}
+.ubadge{display:inline-flex;align-items:center;gap:5px;background:rgba(29,78,216,.3);
+         border:1px solid rgba(99,179,237,.4);color:#93c5fd;
+         border-radius:20px;padding:3px 10px;font-size:10px;margin-top:10px}
+
+/* SEVERITY BAR */
+.sev-bar{background:#1e293b;padding:8px 40px;display:flex;gap:20px;flex-wrap:wrap;font-size:10px;align-items:center}
+.sev-bar .label{color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.sev-item{display:flex;align-items:center;gap:6px;color:#94a3b8}
+
+/* DASHBOARD SUPERIOR */
+.dashboard{background:#fff;border-bottom:2px solid var(--border);padding:0 40px}
+
+/* Fila 1: KPIs inventario */
+.kpis-row{display:flex;align-items:stretch;border-bottom:1px solid var(--border);overflow-x:auto}
+.kpi-group{display:flex;flex:1;min-width:0}
+.kpi-group + .kpi-group{border-left:1px solid var(--border)}
+.kpi{flex:1;padding:14px 16px;text-align:center;min-width:90px}
+.kpi .num{font-size:18px;font-weight:800;color:var(--accent);white-space:nowrap}
+.kpi .lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.kpi-divider{width:1px;background:var(--border);margin:8px 0}
+
+/* Fila 2: Alertas ejecutivas */
+.alerts-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.alert-box{padding:14px 20px;border-right:1px solid var(--border);position:relative}
+.alert-box:last-child{border-right:none}
+.alert-box .n{font-size:28px;font-weight:900;line-height:1}
+.alert-box .desc{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.alert-box .sub{font-size:9px;color:var(--muted);margin-top:2px}
+.alert-box.alto{border-top:3px solid var(--alto)}
+.alert-box.medio{border-top:3px solid var(--medio)}
+.alert-box.bajo{border-top:3px solid var(--bajo)}
+.alert-box.neutro{border-top:3px solid #94a3b8}
+.alert-box.alto .n{color:var(--alto)}
+.alert-box.medio .n{color:var(--medio)}
+.alert-box.bajo .n{color:var(--bajo)}
+.alert-box.neutro .n{color:#475569}
+
+/* CONTENT */
+.content{padding:24px 40px;max-width:1400px;margin:0 auto}
+
+/* SECTION */
+.section{margin-bottom:32px}
+.sec-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;
+          padding-bottom:10px;border-bottom:2px solid var(--border)}
+.sec-hdr h2{font-size:14px;font-weight:700;color:var(--text)}
+.sec-hdr .cnt{margin-left:auto;background:#e2e8f0;color:#475569;
+               border-radius:20px;padding:2px 10px;font-size:11px;font-weight:600}
+.sec-hdr .hint{font-size:10px;color:var(--muted);font-weight:400}
+
+/* MARCA ACCORDION */
+.marca-group{margin-bottom:6px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.marca-btn{width:100%;display:flex;align-items:center;gap:12px;padding:10px 16px;
+            background:#f8fafc;border:none;cursor:pointer;text-align:left;
+            transition:background .15s}
+.marca-btn:hover{background:#f1f5f9}
+.marca-name{font-size:13px;font-weight:700;color:var(--text);letter-spacing:.2px}
+.marca-count{font-size:11px;color:var(--muted);margin-left:4px}
+.marca-alto{background:var(--alto);color:#fff;font-size:9px;font-weight:700;
+             padding:1px 6px;border-radius:3px;margin-left:6px}
+.chevron{margin-left:auto;font-size:10px;color:var(--muted);transition:transform .2s}
+.chevron.open{transform:rotate(90deg)}
+.marca-body{display:none;padding:8px 12px;background:#fff}
+.marca-body.open{display:block}
+
+/* MODELO ACCORDION */
+.modelo-group{margin-bottom:4px}
+.modelo-btn{width:100%;display:flex;align-items:center;gap:8px;padding:8px 12px;
+             background:#f8fafc;border:1px solid var(--border);border-radius:6px;
+             cursor:pointer;text-align:left;transition:background .15s}
+.modelo-btn:hover{background:#eff6ff}
+.modelo-name{font-size:12px;font-weight:600;color:#1e40af}
+.modelo-meta{font-size:10px;color:var(--muted);margin-left:4px}
+.modelo-body{display:none;padding:8px 0;}
+.modelo-body.open{display:block}
+
+/* INCIDENT CARDS */
+.inc-card{border:1px solid var(--border);border-radius:6px;padding:12px;
+           margin:6px 0;background:var(--card)}
+.inc-card.sev-alto{border-left:3px solid var(--alto)}
+.inc-card.sev-medio{border-left:3px solid var(--medio)}
+.inc-card.sev-bajo{border-left:3px solid var(--bajo)}
+.inc-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px}
+.inc-version{font-size:12px;font-weight:600;color:var(--text);display:block}
+.inc-diff{font-size:10px;color:var(--muted);display:block;margin-top:2px}
+
+/* SEQUENCE (km/precio) */
+.seq-row{display:flex;flex-wrap:wrap;gap:6px}
+.seq-item{background:#f8fafc;border:1px solid var(--border);border-radius:5px;
+           padding:6px 10px;min-width:120px}
+.seq-item.sube{background:var(--alto-bg);border-color:#fca5a5}
+.seq-km{font-size:10px;color:var(--muted)}
+.seq-precio{font-size:13px;font-weight:700;color:var(--text)}
+.seq-tag{font-size:9px;color:var(--alto);font-weight:700;margin-top:2px}
+
+/* AÑO COMPARE */
+.ano-compare{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.ano-box{background:#f8fafc;border:1px solid var(--border);border-radius:6px;padding:8px 14px;min-width:130px}
+.ano-box.ano-new{background:var(--alto-bg);border-color:#fca5a5}
+.ano-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:4px}
+.ano-km{font-size:10px;color:var(--muted)}
+.ano-precio{font-size:14px;font-weight:800;color:var(--text)}
+.ano-arrow{text-align:center;padding:0 4px;color:var(--muted)}
+.ano-diff-precio{font-size:11px;font-weight:700;color:var(--alto)}
+.ano-diff-km{font-size:10px;color:var(--muted)}
+
+/* VERSION COMPARE */
+.ver-compare{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.ver-box{border-radius:6px;padding:10px 14px;min-width:180px;flex:1}
+.ver-box.ver-inf{background:var(--alto-bg);border:1px solid #fca5a5}
+.ver-box.ver-sup{background:var(--bajo-bg);border:1px solid #86efac}
+.ver-tag-inf{font-size:9px;font-weight:700;color:var(--alto);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.ver-tag-sup{font-size:9px;font-weight:700;color:var(--bajo);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.ver-name{font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px}
+.ver-detail{font-size:11px;color:var(--muted)}
+.ver-diff{text-align:center;padding:0 8px}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px}
+.stat-card h4{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:8px;font-weight:700}
+.stat-card table{width:100%}
+.stat-card td{padding:3px 0;font-size:11px;border:none}
+
+.empty-state{text-align:center;color:var(--muted);padding:24px;font-size:12px;
+              background:#f8fafc;border-radius:6px;border:1px dashed var(--border)}
+
+footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
+        border-top:1px solid var(--border);margin-top:20px}
+
+@media(max-width:700px){
+  .hdr,.sev-bar,.kpis,.alert-summary,.content{padding-left:16px;padding-right:16px}
+  .ano-compare,.ver-compare{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
 <div class="hdr">
-  <h1>INFORME ANALISIS - AUTOS USADOS BRUNO FRITSCH</h1>
-  <div class="sub">Revision de consistencia: precio vs año/km y equipamiento declarado</div>
-  <div class="meta"><span>Generado: <strong>27/07/2026 18:42</strong></span><span>Fuente: <strong>brunofritsch.cl/autos-usados</strong></span><span>Total: <strong>944 vehiculos</strong></span></div>
-  <div class="ubadge">Se actualiza automaticamente cada lunes</div>
+  <div class="hdr-top">
+    <div>
+      <h1>AUDITORÍA PRICING — AUTOS USADOS BRUNO FRITSCH</h1>
+      <div class="sub">Revisión de consistencia: precios, kilometraje y equipamiento declarado</div>
+      <div class="ubadge">🔄 Se actualiza automáticamente cada lunes</div>
+    </div>
+    <div class="hdr-meta">
+      <div>Generado: <strong>27/07/2026 19:10</strong></div>
+      <div>Fuente: <strong>brunofritsch.cl/autos-usados</strong></div>
+      <div>Inventario: <strong>949 vehículos</strong></div>
+    </div>
+  </div>
 </div>
-<div style="background:#1e293b;padding:10px 40px;display:flex;gap:24px;flex-wrap:wrap;font-size:11px">
-  <span style="color:#94a3b8;font-weight:600">CRITERIO DE SEVERIDAD:</span>
-  <span><span style="background:#dc2626;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:10px">ALTO</span> <span style="color:#cbd5e1">Diferencia de precio mayor a $1.500.000 o error de equipamiento critico</span></span>
-  <span><span style="background:#d97706;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:10px">MEDIO</span> <span style="color:#cbd5e1">Diferencia entre $600.000 y $1.500.000, requiere revision</span></span>
-  <span><span style="background:#16a34a;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:10px">BAJO</span> <span style="color:#cbd5e1">Diferencia menor a $600.000, puede tener justificacion</span></span>
+
+<!-- SEVERITY BAR -->
+<div class="sev-bar">
+  <span class="label">Criterio de severidad</span>
+  <span class="sev-item"><span style="background:#dc2626;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:9px">ALTO</span> Diferencia &gt; $1.500.000 o error crítico</span>
+  <span class="sev-item"><span style="background:#d97706;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:9px">MEDIO</span> Diferencia $600K–$1.500K, requiere revisión</span>
+  <span class="sev-item"><span style="background:#16a34a;color:#fff;padding:1px 7px;border-radius:3px;font-weight:700;font-size:9px">BAJO</span> Diferencia &lt; $600.000, puede tener justificación</span>
 </div>
-<div class="kpis">
-  <div class="kpi"><div class="num">944</div><div class="lbl">Autos totales</div></div>
-  <div class="kpi"><div class="num">936</div><div class="lbl">Con precio (99%)</div></div>
-  <div class="kpi"><div class="num">0</div><div class="lbl">Combustible incorrecto</div></div>
-  <div class="kpi"><div class="num">41</div><div class="lbl">Km vs precio</div></div>
-  <div class="kpi"><div class="num">12</div><div class="lbl">Año vs precio</div></div>
-  <div class="kpi"><div class="num">1</div><div class="lbl">Version vs precio</div></div>
-  <div class="kpi"><div class="num">$5.990.000</div><div class="lbl">Precio minimo</div></div>
-  <div class="kpi"><div class="num">$53.190.000</div><div class="lbl">Precio maximo</div></div>
-  <div class="kpi"><div class="num">$14.996.238</div><div class="lbl">Precio promedio</div></div>
-  <div class="kpi"><div class="num">50.576 km</div><div class="lbl">Km promedio</div></div>
+
+<!-- DASHBOARD SUPERIOR -->
+<div class="dashboard">
+  <!-- Fila 1: KPIs inventario + precios -->
+  <div class="kpis-row">
+    <div class="kpi-group">
+      <div class="kpi"><div class="num">949</div><div class="lbl">Inventario total</div></div>
+      <div class="kpi"><div class="num">949</div><div class="lbl">Con precio (100%)</div></div>
+      <div class="kpi"><div class="num">50.349 km</div><div class="lbl">Km promedio</div></div>
+    </div>
+    <div class="kpi-group">
+      <div class="kpi"><div class="num">$5.190.000</div><div class="lbl">Precio mínimo</div></div>
+      <div class="kpi"><div class="num">$14.965.499</div><div class="lbl">Precio promedio</div></div>
+      <div class="kpi"><div class="num">$53.190.000</div><div class="lbl">Precio máximo</div></div>
+    </div>
+    <div class="kpi-group">
+      <div class="kpi" style="background:#fef2f2"><div class="num" style="color:#dc2626">54</div><div class="lbl">Total alertas</div></div>
+      <div class="kpi"><div class="num">0</div><div class="lbl">Combustible</div></div>
+      <div class="kpi"><div class="num">41</div><div class="lbl">Km vs precio</div></div>
+      <div class="kpi"><div class="num">12</div><div class="lbl">Año vs precio</div></div>
+      <div class="kpi"><div class="num">1</div><div class="lbl">Versión vs precio</div></div>
+    </div>
+  </div>
+  <!-- Fila 2: Resumen ejecutivo de alertas -->
+  <div class="alerts-row">
+    <div class="alert-box alto">
+      <div class="n">4</div>
+      <div class="desc">🔴 Prioridad Alta</div>
+      <div class="sub">Acción inmediata requerida</div>
+    </div>
+    <div class="alert-box medio">
+      <div class="n">50</div>
+      <div class="desc">🟠 Prioridad Media</div>
+      <div class="sub">Revisar esta semana</div>
+    </div>
+    <div class="alert-box bajo">
+      <div class="n">27</div>
+      <div class="desc">🟢 Prioridad Baja</div>
+      <div class="sub">Monitorear — puede tener justificación</div>
+    </div>
+    <div class="alert-box neutro">
+      <div class="n">14</div>
+      <div class="desc">📦 Marcas afectadas</div>
+      <div class="sub">Con al menos una inconsistencia</div>
+    </div>
+  </div>
 </div>
+
 <div class="content">
-<div class="section"><div class="sec-title">Combustible mal catalogado <span class="cnt">0 casos</span></div>
-<table><thead><tr><th>Vehiculo</th><th>Km</th><th>Precio</th><th>Actual</th><th>Deberia ser</th><th>Detalle</th><th>Sev.</th></tr></thead><tbody><tr><td colspan="7" class="empty">Sin inconsistencias detectadas</td></tr></tbody></table></div>
-<div class="section"><div class="sec-title">Mismo modelo/año/version - Mas km, precio mayor <span class="cnt">41 grupos</span></div>
-<p class="hint">Criterio: misma version y año exactos, el precio deberia bajar al subir los km.</p>
-<table><thead><tr><th>Vehiculo</th><th>Secuencia km - precio</th><th>Sev.</th></tr></thead><tbody><tr><td><strong>TOYOTA RAV4 2023 2.0 LE 4X2 CVT AT 5P</strong></td><td class='seq'><span>36.500 km $22.490.000</span> <span>39.612 km $22.490.000</span> <span>42.265 km $22.490.000</span> <span>52.471 km $21.190.000</span> <span class="sube">54.695 km $21.490.000 SUBE</span> <span>70.730 km $20.190.000</span> <span class="sube">73.629 km $21.890.000 SUBE</span> <span>80.200 km $21.490.000</span> <span>92.054 km $21.490.000</span> <span>100.556 km $19.790.000</span></td><td><span class="badge" style="background:#dc2626">ALTO</span></td></tr><tr><td><strong>FORD EXPLORER 2019 2.3 LIMITED 4X2 AT 5P</strong></td><td class='seq'><span>102.501 km $16.390.000</span> <span class="sube">105.351 km $18.990.000 SUBE</span></td><td><span class="badge" style="background:#dc2626">ALTO</span></td></tr><tr><td><strong>MG ZS 2023 1.5 STD 4X2 AT 5P</strong></td><td class='seq'><span>26.415 km $8.290.000</span> <span class="sube">61.001 km $16.590.000 SUBE</span></td><td><span class="badge" style="background:#dc2626">ALTO</span></td></tr><tr><td><strong>VOLKSWAGEN T-CROSS 2024 1.0 TSI TRENDLINE 4X2 5MT 5P</strong></td><td class='seq'><span>45.109 km $12.390.000</span> <span class="sube">47.330 km $12.990.000 SUBE</span> <span>50.223 km $12.790.000</span> <span>65.632 km $12.590.000</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>NISSAN VERSA 2023 1.6 SENSE 4X2 MT 4P</strong></td><td class='seq'><span>44.728 km $11.390.000</span> <span>47.526 km $10.890.000</span> <span class="sube">54.001 km $11.690.000 SUBE</span> <span>64.700 km $10.990.000</span> <span>64.981 km $10.390.000</span> <span class="sube">75.010 km $10.990.000 SUBE</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>TOYOTA 4RUNNER 2026 2.4T SR5 4X4 AT 5P</strong></td><td class='seq'><span>1.115 km $45.790.000</span> <span class="sube">1.544 km $46.590.000 SUBE</span> <span>6.727 km $45.190.000</span> <span>7.566 km $45.190.000</span> <span>7.701 km $45.190.000</span> <span>8.862 km $45.190.000</span> <span>11.051 km $44.790.000</span> <span>11.995 km $44.790.000</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>OMODA C5 2025 1.5T LUXURY 4X2 CVT AT 5P</strong></td><td class='seq'><span>8.900 km $13.690.000</span> <span>9.000 km $12.990.000</span> <span class="sube">14.152 km $13.790.000 SUBE</span> <span class="sube">16.196 km $13.990.000 SUBE</span> <span>20.969 km $13.290.000</span> <span class="sube">21.847 km $13.390.000 SUBE</span> <span class="sube">22.235 km $13.490.000 SUBE</span> <span class="sube">23.255 km $13.590.000 SUBE</span> <span class="sube">33.385 km $13.990.000 SUBE</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>OMODA C5 2024 1.5T LUXURY 4X2 CVT AT 5P</strong></td><td class='seq'><span>23.699 km $12.790.000</span> <span>39.214 km $11.990.000</span> <span class="sube">43.978 km $12.590.000 SUBE</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>JAECOO 7 2025 1.6T PRIME FWD 4X2 AT 5P</strong></td><td class='seq'><span>12.126 km $13.990.000</span> <span>13.985 km $13.990.000</span> <span>14.153 km $13.990.000</span> <span>14.306 km $13.990.000</span> <span>14.911 km $13.990.000</span> <span>15.489 km $13.790.000</span> <span>17.788 km $13.790.000</span> <span>18.334 km $13.790.000</span> <span>18.356 km $13.790.000</span> <span>18.589 km $13.790.000</span> <span>18.638 km $13.790.000</span> <span>20.032 km $13.590.000</span> <span class="sube">22.922 km $14.390.000 SUBE</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>CHERY TIGGO 7 PRO 2025 1.5T GLS 4X2 CVT AT 5P</strong></td><td class='seq'><span>19.856 km $11.690.000</span> <span class="sube">49.990 km $12.290.000 SUBE</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>CHERY TIGGO 7 PRO MAX 2025 1.5T LIMITED 2WD CVT AT 5P</strong></td><td class='seq'><span>16.390 km $11.690.000</span> <span>16.533 km $11.690.000</span> <span>16.642 km $11.690.000</span> <span>17.892 km $11.690.000</span> <span>18.057 km $11.690.000</span> <span>18.209 km $11.690.000</span> <span>19.421 km $11.690.000</span> <span>20.257 km $11.490.000</span> <span>20.327 km $11.490.000</span> <span>21.148 km $11.490.000</span> <span>21.178 km $11.490.000</span> <span class="sube">23.004 km $12.590.000 SUBE</span> <span>23.038 km $11.490.000</span> <span>23.742 km $11.490.000</span> <span>24.025 km $11.490.000</span> <span>24.655 km $11.490.000</span> <span>27.081 km $11.290.000</span> <span>27.225 km $11.290.000</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>CHERY TIGGO 8 2021 1.5T GLX 4X2 DCT AT6 5P</strong></td><td class='seq'><span>57.506 km $11.490.000</span> <span>57.860 km $11.490.000</span> <span>70.776 km $11.490.000</span> <span>71.843 km $11.490.000</span> <span class="sube">73.702 km $12.490.000 SUBE</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>PEUGEOT 3008 2025 1.2 ACTIVE PACK PURETECH 130 4X2 MT6 5P</strong></td><td class='seq'><span>20.388 km $17.590.000</span> <span>23.017 km $16.990.000</span> <span class="sube">29.170 km $17.990.000 SUBE</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>MAZDA CX-5 2019 2.0 R 2WD 6MT 5P</strong></td><td class='seq'><span>87.000 km $14.590.000</span> <span class="sube">89.630 km $15.490.000 SUBE</span></td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td><strong>CHERY TIGGO 7 PRO 2024 1.5T GLS 4X2 CVT AT 5P</strong></td><td class='seq'><span>29.695 km $11.990.000</span> <span class="sube">31.470 km $12.190.000 SUBE</span> <span>44.000 km $11.990.000</span> <span>44.371 km $11.990.000</span> <span class="sube">47.000 km $12.190.000 SUBE</span> <span>82.856 km $11.190.000</span></td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr></tbody></table></div>
-<div class="section"><div class="sec-title">Año mas nuevo con precio menor <span class="cnt">12 casos</span></div>
-<table><thead><tr><th>Modelo</th><th>Año antiguo</th><th>Año nuevo</th><th>Nota</th><th>Sev.</th></tr></thead><tbody><tr><td>TOYOTA COROLLA CROSS 2021 1.8 SEG HYBRID 4X2 CVT AT 5P</td><td>2021<br><small>81.536 km<br>$19.590.000</small></td><td>2023<br><small>142.067 km<br>$16.990.000</small></td><td class='note'>2023 mas barato en $2.600.000 con 60.531 km mas.</td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td>MG ZS 2023 1.5 STD 4X2 AT 5P</td><td>2023<br><small>61.001 km<br>$16.590.000</small></td><td>2024<br><small>20.827 km<br>$8.990.000</small></td><td class='note'>2024 mas barato en $7.600.000 con -40.174 km mas.</td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td>MG GT 2025 1.5 COM 4X2 MT 4P</td><td>2025<br><small>10.000 km<br>$11.690.000</small></td><td>2026<br><small>16.900 km<br>$9.990.000</small></td><td class='note'>2026 mas barato en $1.700.000 con 6.900 km mas.</td><td><span class="badge" style="background:#d97706">MEDIO</span></td></tr><tr><td>OPEL MOKKA 2023 1.2T ELEGANCE 4X2 MT6 5P</td><td>2023<br><small>37.129 km<br>$12.590.000</small></td><td>2024<br><small>40.801 km<br>$12.390.000</small></td><td class='note'>2024 mas barato en $200.000 con 3.672 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr><tr><td>CHERY TIGGO 7 PRO 2022 1.5T GLS 4X2 CVT AT 5P</td><td>2022<br><small>32.190 km<br>$11.590.000</small></td><td>2023<br><small>58.450 km<br>$11.390.000</small></td><td class='note'>2023 mas barato en $200.000 con 26.260 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr><tr><td>NISSAN QASHQAI 2019 2.0 SENSE 4X2 MT 5P</td><td>2019<br><small>85.395 km<br>$11.290.000</small></td><td>2020<br><small>108.130 km<br>$10.990.000</small></td><td class='note'>2020 mas barato en $300.000 con 22.735 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr><tr><td>HAVAL JOLION 2023 1.5T ELITE 4X2 MT 5P</td><td>2023<br><small>46.737 km<br>$11.990.000</small></td><td>2024<br><small>28.387 km<br>$10.990.000</small></td><td class='note'>2024 mas barato en $1.000.000 con -18.350 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr><tr><td>MG ZX 2025 1.5 COM 2WD AT 5P</td><td>2025<br><small>19.750 km<br>$11.190.000</small></td><td>2026<br><small>19.336 km<br>$10.990.000</small></td><td class='note'>2026 mas barato en $200.000 con -414 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr><tr><td>TOYOTA RAV4 2020 2.0 LE 4X2 CVT AT 5P</td><td>2020<br><small>95.977 km<br>$17.490.000</small></td><td>2021<br><small>115.000 km<br>$16.990.000</small></td><td class='note'>2021 mas barato en $500.000 con 19.023 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr><tr><td>MG ZS 2022 1.5 COMFORT 4X2 AT 5P</td><td>2022<br><small>46.941 km<br>$9.190.000</small></td><td>2023<br><small>24.604 km<br>$8.990.000</small></td><td class='note'>2023 mas barato en $200.000 con -22.337 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr><tr><td>HYUNDAI ACCENT 2024 1.5 PLUS 4X2 MT 4P</td><td>2024<br><small>23.953 km<br>$11.990.000</small></td><td>2025<br><small>75.800 km<br>$11.490.000</small></td><td class='note'>2025 mas barato en $500.000 con 51.847 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr><tr><td>LEXUS NX250 2022 2.5 PREMIUM 4X4 AT 5P</td><td>2022<br><small>33.042 km<br>$35.900.000</small></td><td>2023<br><small>61.000 km<br>$34.900.000</small></td><td class='note'>2023 mas barato en $1.000.000 con 27.958 km mas.</td><td><span class="badge" style="background:#16a34a">BAJO</span></td></tr></tbody></table></div>
-<div class="section"><div class="sec-title">Version inferior mas cara que version superior <span class="cnt">1 casos</span></div>
-<p class="hint">Version de menor equipamiento aparece mas cara sin que los km justifiquen la brecha.</p>
-<table><thead><tr><th>Modelo / Año</th><th>Version inferior</th><th>Version superior</th><th>Analisis</th><th>Sev.</th></tr></thead><tbody><tr><td>TOYOTA 2021<br><small style='color:#6b7280'>RAV4: LE MT < LE CVT</small></td><td><span class='tag-inf'>INFERIOR</span><br><small>TOYOTA RAV4 2021 2.0 LE 4X2 MT 5P<br>78.639 km $17.990.000</small></td><td><span class='tag-sup'>SUPERIOR</span><br><small>TOYOTA RAV4 2021 2.0 LE 4X2 CVT AT 5P<br>115.000 km $16.990.000</small></td><td class='note'>Version inferior $1.000.000 mas cara con 36.361 km diferencia.</td><td><span class="badge" style="background:#dc2626">ALTO</span></td></tr></tbody></table></div>
-<div class="section"><div class="sec-title">Estadisticas del inventario</div>
-<div class="stats-grid">
-  <div class="stat-card"><h4>Top 10 marcas</h4><table><tbody><tr><td>TOYOTA</td><td><strong>107</strong></td></tr><tr><td>CHERY</td><td><strong>103</strong></td></tr><tr><td>HYUNDAI</td><td><strong>94</strong></td></tr><tr><td>MG</td><td><strong>75</strong></td></tr><tr><td>PEUGEOT</td><td><strong>58</strong></td></tr><tr><td>OMODA</td><td><strong>56</strong></td></tr><tr><td>JAECOO</td><td><strong>55</strong></td></tr><tr><td>NISSAN</td><td><strong>48</strong></td></tr><tr><td>CHEVROLET</td><td><strong>34</strong></td></tr><tr><td>FORD</td><td><strong>31</strong></td></tr></tbody></table></div>
-  <div class="stat-card"><h4>Combustible</h4><table><tbody><tr><td>Gasolina</td><td>880 (93%)</td></tr><tr><td>Diesel</td><td>35 (3%)</td></tr><tr><td>Híbrido</td><td>26 (2%)</td></tr><tr><td>Eléctrico</td><td>3 (0%)</td></tr></tbody></table></div>
-  <div class="stat-card"><h4>Transmision</h4><table><tbody><tr><td>Mecánica</td><td>321 (34%)</td></tr><tr><td>Automática</td><td>623 (65%)</td></tr></tbody></table></div>
-  <div class="stat-card"><h4>Por año</h4><table><tbody><tr><td>2026</td><td><strong>147</strong></td></tr><tr><td>2025</td><td><strong>138</strong></td></tr><tr><td>2024</td><td><strong>132</strong></td></tr><tr><td>2023</td><td><strong>166</strong></td></tr><tr><td>2022</td><td><strong>112</strong></td></tr><tr><td>2021</td><td><strong>68</strong></td></tr><tr><td>2020</td><td><strong>46</strong></td></tr><tr><td>2019</td><td><strong>56</strong></td></tr><tr><td>2018</td><td><strong>35</strong></td></tr><tr><td>2017</td><td><strong>17</strong></td></tr><tr><td>2016</td><td><strong>10</strong></td></tr><tr><td>2015</td><td><strong>3</strong></td></tr><tr><td>2014</td><td><strong>2</strong></td></tr><tr><td>2013</td><td><strong>2</strong></td></tr></tbody></table></div>
-</div></div>
-<div class="section"><div class="sec-title">Resumen y recomendaciones</div>
-<div class="res-grid">
-  <div class="res-card r"><h4>Prioridad Alta</h4><ul><li>Combustible incorrecto: <strong>0</strong></li><li>Km vs precio (ALTO): <strong>3</strong></li><li>Version inferior mas cara (ALTO): <strong>1</strong></li></ul></div>
-  <div class="res-card o"><h4>Prioridad Media</h4><ul><li>Km vs precio (MEDIO/BAJO): <strong>38</strong></li><li>Año vs precio: <strong>12</strong></li></ul></div>
-  <div class="res-card y"><h4>Revisar</h4><ul><li>MHEV, B4-B8, E-TSI como Hibrido</li><li>AWD/4WD vs 2WD</li><li>Top trim mas barato que base</li></ul></div>
-  <div class="res-card g"><h4>Cobertura</h4><ul><li><strong>944</strong> vehiculos</li><li><strong>99%</strong> con precio</li><li>Actualizacion: lunes automatico</li></ul></div>
-</div></div>
+
+<!-- SECCIÓN 1: COMBUSTIBLE -->
+<div class="section">
+  <div class="sec-hdr">
+    <h2>⚠️ Combustible mal catalogado</h2>
+    <span class="hint">Vehículos con tecnología híbrida catalogados incorrectamente</span>
+    <span class="cnt">0 casos</span>
+  </div>
+  <div class="empty-state">Sin inconsistencias detectadas ✓</div>
 </div>
-<footer>Informe generado automaticamente - Bruno Fritsch Autos Usados - brunofritsch.cl - 27/07/2026 18:42 - 944 vehiculos</footer>
+
+<!-- SECCIÓN 2: KM vs PRECIO -->
+<div class="section">
+  <div class="sec-hdr">
+    <h2>📈 Mismo modelo/versión/año — Más km, precio mayor</h2>
+    <span class="hint">El precio debería bajar al subir los km en la misma versión</span>
+    <span class="cnt">41 grupos</span>
+  </div>
+  <div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_CHERY')">
+                <span class="marca-name">CHERY</span>
+                <span class="marca-count">10 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_CHERY">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_CHERY"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_CHERY_TIGGO_2')">
+                    <span class="modelo-name">TIGGO 2</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_CHERY_TIGGO_2">▶</span>
+                </button>
+                <div class="modelo-body" id="km_CHERY_TIGGO_2"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 2 2022 1.5 VVT GLS 4X2 MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">47.451 km</div>
+                    <div class="seq-precio">$7.390.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">71.972 km</div>
+                    <div class="seq-precio">$7.590.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_CHERY_TIGGO_3_PRO')">
+                    <span class="modelo-name">TIGGO 3 PRO</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_CHERY_TIGGO_3_PRO">▶</span>
+                </button>
+                <div class="modelo-body" id="km_CHERY_TIGGO_3_PRO"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 3 PRO 2023 1.5T GLX 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$500.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">21.722 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">27.296 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_CHERY_TIGGO_7_PRO')">
+                    <span class="modelo-name">TIGGO 7 PRO</span>
+                    <span class="modelo-meta">5 casos </span>
+                    <span class="chevron" id="ch_km_CHERY_TIGGO_7_PRO">▶</span>
+                </button>
+                <div class="modelo-body" id="km_CHERY_TIGGO_7_PRO"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 7 PRO 2025 1.5T GLS 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$600.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">19.856 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">49.990 km</div>
+                    <div class="seq-precio">$12.290.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 7 PRO 2024 1.5T GLS 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">29.695 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">31.470 km</div>
+                    <div class="seq-precio">$12.190.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">44.000 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">44.371 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">47.000 km</div>
+                    <div class="seq-precio">$12.190.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">82.856 km</div>
+                    <div class="seq-precio">$11.190.000</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 7 PRO 2022 1.5T GLX 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">57.673 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">63.860 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">64.230 km</div>
+                    <div class="seq-precio">$11.190.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">65.716 km</div>
+                    <div class="seq-precio">$10.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">84.811 km</div>
+                    <div class="seq-precio">$11.190.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">88.588 km</div>
+                    <div class="seq-precio">$11.190.000</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 7 PRO 2022 1.5T GLS 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$100.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">32.190 km</div>
+                    <div class="seq-precio">$11.590.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">59.986 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">75.000 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">84.474 km</div>
+                    <div class="seq-precio">$10.690.000</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 7 PRO 2023 1.5T GLX 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$300.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">51.239 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">54.879 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">70.000 km</div>
+                    <div class="seq-precio">$12.190.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">72.170 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">79.000 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_CHERY_TIGGO_7_PRO_MAX')">
+                    <span class="modelo-name">TIGGO 7 PRO MAX</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_CHERY_TIGGO_7_PRO_MAX">▶</span>
+                </button>
+                <div class="modelo-body" id="km_CHERY_TIGGO_7_PRO_MAX"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 7 PRO MAX 2025 1.5T LIMITED 2WD CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$1.100.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">16.390 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">16.533 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">16.642 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">17.892 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">18.057 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">18.209 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">19.421 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">20.257 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">20.327 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">21.148 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">21.178 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">23.004 km</div>
+                    <div class="seq-precio">$12.590.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">23.038 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">23.742 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">24.025 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">24.655 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">27.081 km</div>
+                    <div class="seq-precio">$11.290.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">27.225 km</div>
+                    <div class="seq-precio">$11.290.000</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_CHERY_TIGGO_8')">
+                    <span class="modelo-name">TIGGO 8</span>
+                    <span class="modelo-meta">2 casos </span>
+                    <span class="chevron" id="ch_km_CHERY_TIGGO_8">▶</span>
+                </button>
+                <div class="modelo-body" id="km_CHERY_TIGGO_8"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 8 2021 1.5T GLX 4X2 DCT AT6 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$1.000.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">57.506 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">57.860 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">70.776 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">71.843 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">73.702 km</div>
+                    <div class="seq-precio">$12.490.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 8 2022 1.5T GLX 4X2 DCT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">45.001 km</div>
+                    <div class="seq-precio">$12.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">48.000 km</div>
+                    <div class="seq-precio">$12.290.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">62.930 km</div>
+                    <div class="seq-precio">$11.290.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">70.200 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_CHEVROLET')">
+                <span class="marca-name">CHEVROLET</span>
+                <span class="marca-count">1 inconsistencia</span>
+                <span class="chevron" id="ch_km_marca_CHEVROLET">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_CHEVROLET"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_CHEVROLET_TRACKER')">
+                    <span class="modelo-name">TRACKER</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_CHEVROLET_TRACKER">▶</span>
+                </button>
+                <div class="modelo-body" id="km_CHEVROLET_TRACKER"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHEVROLET TRACKER 2023 1.2T LS FWD MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">32.069 km</div>
+                    <div class="seq-precio">$10.490.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">32.852 km</div>
+                    <div class="seq-precio">$10.690.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_FORD')">
+                <span class="marca-name">FORD</span>
+                <span class="marca-count">1 inconsistencia</span>
+                <span class="chevron" id="ch_km_marca_FORD">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_FORD"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_FORD_EXPLORER')">
+                    <span class="modelo-name">EXPLORER</span>
+                    <span class="modelo-meta">1 caso <span class="marca-alto">1 ALTO</span></span>
+                    <span class="chevron" id="ch_km_FORD_EXPLORER">▶</span>
+                </button>
+                <div class="modelo-body" id="km_FORD_EXPLORER"><div class="inc-card sev-alto">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">FORD EXPLORER 2019 2.3 LIMITED 4X2 AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$2.600.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#dc2626;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">ALTO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">102.501 km</div>
+                    <div class="seq-precio">$16.390.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">105.351 km</div>
+                    <div class="seq-precio">$18.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_GAC')">
+                <span class="marca-name">GAC</span>
+                <span class="marca-count">1 inconsistencia</span>
+                <span class="chevron" id="ch_km_marca_GAC">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_GAC"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_GAC_GS4')">
+                    <span class="modelo-name">GS4</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_GAC_GS4">▶</span>
+                </button>
+                <div class="modelo-body" id="km_GAC_GS4"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">GAC GS4 2023 1.5T GB 4X2 AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$500.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">33.000 km</div>
+                    <div class="seq-precio">$9.490.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">45.000 km</div>
+                    <div class="seq-precio">$9.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_HYUNDAI')">
+                <span class="marca-name">HYUNDAI</span>
+                <span class="marca-count">4 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_HYUNDAI">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_HYUNDAI"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_HYUNDAI_CRETA')">
+                    <span class="modelo-name">CRETA</span>
+                    <span class="modelo-meta">2 casos </span>
+                    <span class="chevron" id="ch_km_HYUNDAI_CRETA">▶</span>
+                </button>
+                <div class="modelo-body" id="km_HYUNDAI_CRETA"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">HYUNDAI CRETA 2024 1.5 PLUS SU2I 4X2 MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$500.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">23.000 km</div>
+                    <div class="seq-precio">$15.490.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">23.456 km</div>
+                    <div class="seq-precio">$15.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">48.758 km</div>
+                    <div class="seq-precio">$14.990.000</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">HYUNDAI CRETA 2017 1.6 GL 4X2 2AB MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$100.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">117.910 km</div>
+                    <div class="seq-precio">$9.290.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">131.000 km</div>
+                    <div class="seq-precio">$9.390.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_HYUNDAI_TUCSON')">
+                    <span class="modelo-name">TUCSON</span>
+                    <span class="modelo-meta">2 casos </span>
+                    <span class="chevron" id="ch_km_HYUNDAI_TUCSON">▶</span>
+                </button>
+                <div class="modelo-body" id="km_HYUNDAI_TUCSON"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">HYUNDAI TUCSON 2024 2.0 NX4 PLUS 2WD AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$400.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">26.588 km</div>
+                    <div class="seq-precio">$19.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">29.000 km</div>
+                    <div class="seq-precio">$19.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">42.055 km</div>
+                    <div class="seq-precio">$19.590.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">44.250 km</div>
+                    <div class="seq-precio">$19.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">HYUNDAI TUCSON 2023 2.0 NX4 PLUS 2WD MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$100.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">42.734 km</div>
+                    <div class="seq-precio">$18.190.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">48.996 km</div>
+                    <div class="seq-precio">$18.290.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_JAC')">
+                <span class="marca-name">JAC</span>
+                <span class="marca-count">1 inconsistencia</span>
+                <span class="chevron" id="ch_km_marca_JAC">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_JAC"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_JAC_JS4')">
+                    <span class="modelo-name">JS4</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_JAC_JS4">▶</span>
+                </button>
+                <div class="modelo-body" id="km_JAC_JS4"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">JAC JS4 2023 1.5 LUXURY 4X2 MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$300.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">25.734 km</div>
+                    <div class="seq-precio">$10.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">42.842 km</div>
+                    <div class="seq-precio">$9.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">50.968 km</div>
+                    <div class="seq-precio">$10.290.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_JAECOO')">
+                <span class="marca-name">JAECOO</span>
+                <span class="marca-count">2 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_JAECOO">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_JAECOO"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_JAECOO_7')">
+                    <span class="modelo-name">7</span>
+                    <span class="modelo-meta">2 casos </span>
+                    <span class="chevron" id="ch_km_JAECOO_7">▶</span>
+                </button>
+                <div class="modelo-body" id="km_JAECOO_7"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">JAECOO 7 2025 1.6T PRIME FWD 4X2 AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$800.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">12.126 km</div>
+                    <div class="seq-precio">$13.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">13.985 km</div>
+                    <div class="seq-precio">$13.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">14.153 km</div>
+                    <div class="seq-precio">$13.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">14.306 km</div>
+                    <div class="seq-precio">$13.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">14.911 km</div>
+                    <div class="seq-precio">$13.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">15.489 km</div>
+                    <div class="seq-precio">$13.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">17.788 km</div>
+                    <div class="seq-precio">$13.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">18.334 km</div>
+                    <div class="seq-precio">$13.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">18.356 km</div>
+                    <div class="seq-precio">$13.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">18.589 km</div>
+                    <div class="seq-precio">$13.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">18.638 km</div>
+                    <div class="seq-precio">$13.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">20.032 km</div>
+                    <div class="seq-precio">$13.590.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">22.922 km</div>
+                    <div class="seq-precio">$14.390.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">JAECOO 7 2024 1.6T PRIME FWD AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">7.940 km</div>
+                    <div class="seq-precio">$13.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">15.018 km</div>
+                    <div class="seq-precio">$14.190.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_MAZDA')">
+                <span class="marca-name">MAZDA</span>
+                <span class="marca-count">1 inconsistencia</span>
+                <span class="chevron" id="ch_km_marca_MAZDA">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_MAZDA"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_MAZDA_CX_5')">
+                    <span class="modelo-name">CX-5</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_MAZDA_CX_5">▶</span>
+                </button>
+                <div class="modelo-body" id="km_MAZDA_CX_5"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">MAZDA CX-5 2019 2.0 R 2WD 6MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$900.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">87.000 km</div>
+                    <div class="seq-precio">$14.590.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">89.630 km</div>
+                    <div class="seq-precio">$15.490.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_MG')">
+                <span class="marca-name">MG</span>
+                <span class="marca-count">4 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_MG">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_MG"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_MG_3')">
+                    <span class="modelo-name">3</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_MG_3">▶</span>
+                </button>
+                <div class="modelo-body" id="km_MG_3"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">MG 3 2022 1.5 STD 4X2 HB MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">43.592 km</div>
+                    <div class="seq-precio">$6.790.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">63.510 km</div>
+                    <div class="seq-precio">$6.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_MG_ZS')">
+                    <span class="modelo-name">ZS</span>
+                    <span class="modelo-meta">3 casos <span class="marca-alto">1 ALTO</span></span>
+                    <span class="chevron" id="ch_km_MG_ZS">▶</span>
+                </button>
+                <div class="modelo-body" id="km_MG_ZS"><div class="inc-card sev-alto">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">MG ZS 2023 1.5 STD 4X2 AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$8.300.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#dc2626;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">ALTO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">26.415 km</div>
+                    <div class="seq-precio">$8.290.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">61.001 km</div>
+                    <div class="seq-precio">$16.590.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">MG ZS 2026 1.5 STD 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$300.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">7.074 km</div>
+                    <div class="seq-precio">$9.890.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">15.927 km</div>
+                    <div class="seq-precio">$10.190.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">19.452 km</div>
+                    <div class="seq-precio">$9.990.000</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">MG ZS 2024 1.5 STD 4X2 AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">13.570 km</div>
+                    <div class="seq-precio">$8.790.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">20.827 km</div>
+                    <div class="seq-precio">$8.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_NISSAN')">
+                <span class="marca-name">NISSAN</span>
+                <span class="marca-count">4 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_NISSAN">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_NISSAN"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_NISSAN_KICKS')">
+                    <span class="modelo-name">KICKS</span>
+                    <span class="modelo-meta">2 casos </span>
+                    <span class="chevron" id="ch_km_NISSAN_KICKS">▶</span>
+                </button>
+                <div class="modelo-body" id="km_NISSAN_KICKS"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">NISSAN KICKS 2018 1.6 ADVANCE 4X2 MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$300.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">67.576 km</div>
+                    <div class="seq-precio">$9.690.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">97.000 km</div>
+                    <div class="seq-precio">$9.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">NISSAN KICKS 2023 1.6 ADVANCE 4X2 MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">57.924 km</div>
+                    <div class="seq-precio">$12.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">70.407 km</div>
+                    <div class="seq-precio">$12.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">70.628 km</div>
+                    <div class="seq-precio">$13.190.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_NISSAN_VERSA')">
+                    <span class="modelo-name">VERSA</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_NISSAN_VERSA">▶</span>
+                </button>
+                <div class="modelo-body" id="km_NISSAN_VERSA"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">NISSAN VERSA 2023 1.6 SENSE 4X2 MT 4P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$800.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">44.728 km</div>
+                    <div class="seq-precio">$11.390.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">47.526 km</div>
+                    <div class="seq-precio">$10.890.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">54.001 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">64.700 km</div>
+                    <div class="seq-precio">$10.990.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">64.981 km</div>
+                    <div class="seq-precio">$10.390.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">75.010 km</div>
+                    <div class="seq-precio">$10.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_NISSAN_X_TRAIL')">
+                    <span class="modelo-name">X-TRAIL</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_NISSAN_X_TRAIL">▶</span>
+                </button>
+                <div class="modelo-body" id="km_NISSAN_X_TRAIL"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">NISSAN X-TRAIL 2020 2.5 SENSE 4X4 2ROW CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$100.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">90.991 km</div>
+                    <div class="seq-precio">$12.890.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">94.996 km</div>
+                    <div class="seq-precio">$12.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_OMODA')">
+                <span class="marca-name">OMODA</span>
+                <span class="marca-count">3 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_OMODA">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_OMODA"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_OMODA_C5')">
+                    <span class="modelo-name">C5</span>
+                    <span class="modelo-meta">3 casos </span>
+                    <span class="chevron" id="ch_km_OMODA_C5">▶</span>
+                </button>
+                <div class="modelo-body" id="km_OMODA_C5"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">OMODA C5 2025 1.5T LUXURY 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$800.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">8.900 km</div>
+                    <div class="seq-precio">$13.690.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">9.000 km</div>
+                    <div class="seq-precio">$12.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">14.152 km</div>
+                    <div class="seq-precio">$13.790.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">16.196 km</div>
+                    <div class="seq-precio">$13.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">20.969 km</div>
+                    <div class="seq-precio">$13.290.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">21.847 km</div>
+                    <div class="seq-precio">$13.390.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">22.235 km</div>
+                    <div class="seq-precio">$13.490.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">23.255 km</div>
+                    <div class="seq-precio">$13.590.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">33.385 km</div>
+                    <div class="seq-precio">$13.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">OMODA C5 2024 1.5T LUXURY 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$600.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">23.699 km</div>
+                    <div class="seq-precio">$12.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">39.214 km</div>
+                    <div class="seq-precio">$11.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">43.978 km</div>
+                    <div class="seq-precio">$12.590.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">OMODA C5 2025 1.5T COMFORT 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$500.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">8.702 km</div>
+                    <div class="seq-precio">$12.190.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">8.796 km</div>
+                    <div class="seq-precio">$12.190.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">22.000 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">23.378 km</div>
+                    <div class="seq-precio">$10.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">23.496 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">23.517 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">24.016 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_PEUGEOT')">
+                <span class="marca-name">PEUGEOT</span>
+                <span class="marca-count">3 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_PEUGEOT">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_PEUGEOT"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_PEUGEOT_')">
+                    <span class="modelo-name"></span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_PEUGEOT_">▶</span>
+                </button>
+                <div class="modelo-body" id="km_PEUGEOT_"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">PEUGEOT 2008 2022 1.2 ACTIVE PURETECH 130 4X2 MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">22.854 km</div>
+                    <div class="seq-precio">$11.490.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">43.500 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">53.417 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_PEUGEOT_3008')">
+                    <span class="modelo-name">3008</span>
+                    <span class="modelo-meta">2 casos </span>
+                    <span class="chevron" id="ch_km_PEUGEOT_3008">▶</span>
+                </button>
+                <div class="modelo-body" id="km_PEUGEOT_3008"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">PEUGEOT 3008 2025 1.2 ACTIVE PACK PURETECH 130 4X2 MT6 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$1.000.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">20.388 km</div>
+                    <div class="seq-precio">$17.590.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">23.017 km</div>
+                    <div class="seq-precio">$16.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">29.170 km</div>
+                    <div class="seq-precio">$17.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">PEUGEOT 3008 2024 1.6 ALLURE PACK THP 165 4X2 EAT6 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$200.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">26.250 km</div>
+                    <div class="seq-precio">$16.990.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">33.448 km</div>
+                    <div class="seq-precio">$17.190.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_TOYOTA')">
+                <span class="marca-name">TOYOTA</span>
+                <span class="marca-count">4 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_TOYOTA">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_TOYOTA"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_TOYOTA_4RUNNER')">
+                    <span class="modelo-name">4RUNNER</span>
+                    <span class="modelo-meta">1 caso </span>
+                    <span class="chevron" id="ch_km_TOYOTA_4RUNNER">▶</span>
+                </button>
+                <div class="modelo-body" id="km_TOYOTA_4RUNNER"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">TOYOTA 4RUNNER 2026 2.4T SR5 4X4 AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$800.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">1.115 km</div>
+                    <div class="seq-precio">$45.790.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">1.544 km</div>
+                    <div class="seq-precio">$46.590.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">6.727 km</div>
+                    <div class="seq-precio">$45.190.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">7.566 km</div>
+                    <div class="seq-precio">$45.190.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">7.701 km</div>
+                    <div class="seq-precio">$45.190.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">8.862 km</div>
+                    <div class="seq-precio">$45.190.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">11.051 km</div>
+                    <div class="seq-precio">$44.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">11.995 km</div>
+                    <div class="seq-precio">$44.790.000</div>
+                </div></div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_TOYOTA_RAV4')">
+                    <span class="modelo-name">RAV4</span>
+                    <span class="modelo-meta">3 casos <span class="marca-alto">1 ALTO</span></span>
+                    <span class="chevron" id="ch_km_TOYOTA_RAV4">▶</span>
+                </button>
+                <div class="modelo-body" id="km_TOYOTA_RAV4"><div class="inc-card sev-alto">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">TOYOTA RAV4 2023 2.0 LE 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$1.700.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#dc2626;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">ALTO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">36.500 km</div>
+                    <div class="seq-precio">$22.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">39.612 km</div>
+                    <div class="seq-precio">$22.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">42.265 km</div>
+                    <div class="seq-precio">$22.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">52.471 km</div>
+                    <div class="seq-precio">$21.190.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">54.695 km</div>
+                    <div class="seq-precio">$21.490.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">70.730 km</div>
+                    <div class="seq-precio">$20.190.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">73.629 km</div>
+                    <div class="seq-precio">$21.890.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">80.200 km</div>
+                    <div class="seq-precio">$21.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">92.054 km</div>
+                    <div class="seq-precio">$21.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">100.556 km</div>
+                    <div class="seq-precio">$19.790.000</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">TOYOTA RAV4 2022 2.0 LE 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$300.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">47.502 km</div>
+                    <div class="seq-precio">$19.490.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">70.000 km</div>
+                    <div class="seq-precio">$19.390.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">81.305 km</div>
+                    <div class="seq-precio">$19.190.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">98.481 km</div>
+                    <div class="seq-precio">$19.490.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">TOYOTA RAV4 2021 2.0 LE 4X2 MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$500.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">60.009 km</div>
+                    <div class="seq-precio">$17.490.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">78.639 km</div>
+                    <div class="seq-precio">$17.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('km_marca_VOLKSWAGEN')">
+                <span class="marca-name">VOLKSWAGEN</span>
+                <span class="marca-count">2 inconsistencias</span>
+                <span class="chevron" id="ch_km_marca_VOLKSWAGEN">▶</span>
+            </button>
+            <div class="marca-body" id="km_marca_VOLKSWAGEN"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('km_VOLKSWAGEN_T_CROSS')">
+                    <span class="modelo-name">T-CROSS</span>
+                    <span class="modelo-meta">2 casos </span>
+                    <span class="chevron" id="ch_km_VOLKSWAGEN_T_CROSS">▶</span>
+                </button>
+                <div class="modelo-body" id="km_VOLKSWAGEN_T_CROSS"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">VOLKSWAGEN T-CROSS 2024 1.0 TSI TRENDLINE 4X2 5MT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$600.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">45.109 km</div>
+                    <div class="seq-precio">$12.390.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">47.330 km</div>
+                    <div class="seq-precio">$12.990.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">50.223 km</div>
+                    <div class="seq-precio">$12.790.000</div>
+                </div><div class="seq-item">
+                    <div class="seq-km">65.632 km</div>
+                    <div class="seq-precio">$12.590.000</div>
+                </div></div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">VOLKSWAGEN T-CROSS 2023 1.0 TSI TRENDLINE LITE 4X2 MT5 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$100.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">98.587 km</div>
+                    <div class="seq-precio">$11.290.000</div>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">99.955 km</div>
+                    <div class="seq-precio">$11.390.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                </div></div>
+        </div></div>
+            </div></div>
+        </div>
+</div>
+
+<!-- SECCIÓN 3: AÑO vs PRECIO -->
+<div class="section">
+  <div class="sec-hdr">
+    <h2>🗓️ Año más nuevo con precio menor (misma versión)</h2>
+    <span class="hint">Un modelo más nuevo debería costar igual o más que el anterior en igualdad de condiciones</span>
+    <span class="cnt">12 casos</span>
+  </div>
+  <div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ano_marca_CHERY')">
+                <span class="marca-name">CHERY</span>
+                <span class="marca-count">2 casos</span>
+                <span class="chevron" id="ch_ano_marca_CHERY">▶</span>
+            </button>
+            <div class="marca-body" id="ano_marca_CHERY"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_CHERY_TIGGO_3_PRO')">
+                    <span class="modelo-name">TIGGO 3 PRO</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_CHERY_TIGGO_3_PRO">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_CHERY_TIGGO_3_PRO"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 3 PRO 2023 1.5T GLX 4X2 CVT AT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2023</div>
+                    <div class="ano-km">27.296 km</div>
+                    <div class="ano-precio">$11.990.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$300.000</div>
+                    <div class="ano-diff-km">+5.436 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2024 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">32.732 km</div>
+                    <div class="ano-precio">$11.690.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_CHERY_TIGGO_7_PRO')">
+                    <span class="modelo-name">TIGGO 7 PRO</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_CHERY_TIGGO_7_PRO">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_CHERY_TIGGO_7_PRO"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 7 PRO 2022 1.5T GLS 4X2 CVT AT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2022</div>
+                    <div class="ano-km">32.190 km</div>
+                    <div class="ano-precio">$11.590.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$200.000</div>
+                    <div class="ano-diff-km">+26.260 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">58.450 km</div>
+                    <div class="ano-precio">$11.390.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ano_marca_HAVAL')">
+                <span class="marca-name">HAVAL</span>
+                <span class="marca-count">1 caso</span>
+                <span class="chevron" id="ch_ano_marca_HAVAL">▶</span>
+            </button>
+            <div class="marca-body" id="ano_marca_HAVAL"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_HAVAL_JOLION')">
+                    <span class="modelo-name">JOLION</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_HAVAL_JOLION">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_HAVAL_JOLION"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">HAVAL JOLION 2023 1.5T ELITE 4X2 MT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2023</div>
+                    <div class="ano-km">46.737 km</div>
+                    <div class="ano-precio">$11.990.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$1.000.000</div>
+                    <div class="ano-diff-km">-18.350 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2024 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">28.387 km</div>
+                    <div class="ano-precio">$10.990.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ano_marca_HYUNDAI')">
+                <span class="marca-name">HYUNDAI</span>
+                <span class="marca-count">1 caso</span>
+                <span class="chevron" id="ch_ano_marca_HYUNDAI">▶</span>
+            </button>
+            <div class="marca-body" id="ano_marca_HYUNDAI"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_HYUNDAI_ACCENT')">
+                    <span class="modelo-name">ACCENT</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_HYUNDAI_ACCENT">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_HYUNDAI_ACCENT"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">HYUNDAI ACCENT 2024 1.5 PLUS 4X2 MT 4P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2024</div>
+                    <div class="ano-km">23.953 km</div>
+                    <div class="ano-precio">$11.990.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$500.000</div>
+                    <div class="ano-diff-km">+51.847 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2025 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">75.800 km</div>
+                    <div class="ano-precio">$11.490.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ano_marca_LEXUS')">
+                <span class="marca-name">LEXUS</span>
+                <span class="marca-count">1 caso</span>
+                <span class="chevron" id="ch_ano_marca_LEXUS">▶</span>
+            </button>
+            <div class="marca-body" id="ano_marca_LEXUS"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_LEXUS_NX250')">
+                    <span class="modelo-name">NX250</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_LEXUS_NX250">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_LEXUS_NX250"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">LEXUS NX250 2022 2.5 PREMIUM 4X4 AT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2022</div>
+                    <div class="ano-km">33.042 km</div>
+                    <div class="ano-precio">$35.900.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$1.000.000</div>
+                    <div class="ano-diff-km">+27.958 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">61.000 km</div>
+                    <div class="ano-precio">$34.900.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ano_marca_MG')">
+                <span class="marca-name">MG</span>
+                <span class="marca-count">3 casos</span>
+                <span class="chevron" id="ch_ano_marca_MG">▶</span>
+            </button>
+            <div class="marca-body" id="ano_marca_MG"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_MG_ZS')">
+                    <span class="modelo-name">ZS</span>
+                    <span class="modelo-meta">2 casos</span>
+                    <span class="chevron" id="ch_ano_MG_ZS">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_MG_ZS"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">MG ZS 2023 1.5 STD 4X2 AT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2023</div>
+                    <div class="ano-km">61.001 km</div>
+                    <div class="ano-precio">$16.590.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$7.600.000</div>
+                    <div class="ano-diff-km">-40.174 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2024 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">20.827 km</div>
+                    <div class="ano-precio">$8.990.000</div>
+                </div>
+            </div>
+        </div><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">MG ZS 2022 1.5 COMFORT 4X2 AT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2022</div>
+                    <div class="ano-km">46.941 km</div>
+                    <div class="ano-precio">$9.190.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$200.000</div>
+                    <div class="ano-diff-km">-22.337 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">24.604 km</div>
+                    <div class="ano-precio">$8.990.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_MG_ZX')">
+                    <span class="modelo-name">ZX</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_MG_ZX">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_MG_ZX"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">MG ZX 2025 1.5 COM 2WD AT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2025</div>
+                    <div class="ano-km">19.750 km</div>
+                    <div class="ano-precio">$11.190.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$200.000</div>
+                    <div class="ano-diff-km">-414 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2026 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">19.336 km</div>
+                    <div class="ano-precio">$10.990.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ano_marca_NISSAN')">
+                <span class="marca-name">NISSAN</span>
+                <span class="marca-count">1 caso</span>
+                <span class="chevron" id="ch_ano_marca_NISSAN">▶</span>
+            </button>
+            <div class="marca-body" id="ano_marca_NISSAN"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_NISSAN_QASHQAI')">
+                    <span class="modelo-name">QASHQAI</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_NISSAN_QASHQAI">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_NISSAN_QASHQAI"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">NISSAN QASHQAI 2019 2.0 SENSE 4X2 MT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2019</div>
+                    <div class="ano-km">85.395 km</div>
+                    <div class="ano-precio">$11.290.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$300.000</div>
+                    <div class="ano-diff-km">+22.735 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2020 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">108.130 km</div>
+                    <div class="ano-precio">$10.990.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ano_marca_OPEL')">
+                <span class="marca-name">OPEL</span>
+                <span class="marca-count">1 caso</span>
+                <span class="chevron" id="ch_ano_marca_OPEL">▶</span>
+            </button>
+            <div class="marca-body" id="ano_marca_OPEL"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_OPEL_MOKKA')">
+                    <span class="modelo-name">MOKKA</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_OPEL_MOKKA">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_OPEL_MOKKA"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">OPEL MOKKA 2023 1.2T ELEGANCE 4X2 MT6 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2023</div>
+                    <div class="ano-km">37.129 km</div>
+                    <div class="ano-precio">$12.590.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$200.000</div>
+                    <div class="ano-diff-km">+3.672 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2024 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">40.801 km</div>
+                    <div class="ano-precio">$12.390.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div></div>
+        </div><div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ano_marca_TOYOTA')">
+                <span class="marca-name">TOYOTA</span>
+                <span class="marca-count">2 casos</span>
+                <span class="chevron" id="ch_ano_marca_TOYOTA">▶</span>
+            </button>
+            <div class="marca-body" id="ano_marca_TOYOTA"><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_TOYOTA_COROLLA_CROSS')">
+                    <span class="modelo-name">COROLLA CROSS</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_TOYOTA_COROLLA_CROSS">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_TOYOTA_COROLLA_CROSS"><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">TOYOTA COROLLA CROSS 2021 1.8 SEG HYBRID 4X2 CVT AT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2021</div>
+                    <div class="ano-km">81.536 km</div>
+                    <div class="ano-precio">$19.590.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$2.600.000</div>
+                    <div class="ano-diff-km">+60.531 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">142.067 km</div>
+                    <div class="ano-precio">$16.990.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div><div class="modelo-group">
+                <button class="modelo-btn" onclick="toggle('ano_TOYOTA_RAV4')">
+                    <span class="modelo-name">RAV4</span>
+                    <span class="modelo-meta">1 caso</span>
+                    <span class="chevron" id="ch_ano_TOYOTA_RAV4">▶</span>
+                </button>
+                <div class="modelo-body" id="ano_TOYOTA_RAV4"><div class="inc-card sev-bajo">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">TOYOTA RAV4 2020 2.0 LE 4X2 CVT AT 5P</span>
+                </div>
+                <span style="display:inline-block;background:#16a34a;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">BAJO</span>
+            </div>
+            <div class="ano-compare">
+                <div class="ano-box ano-old">
+                    <div class="ano-label">AÑO 2020</div>
+                    <div class="ano-km">95.977 km</div>
+                    <div class="ano-precio">$17.490.000</div>
+                </div>
+                <div class="ano-arrow">
+                    <div class="ano-diff-precio">−$500.000</div>
+                    <div class="ano-diff-km">+19.023 km km</div>
+                    <div>→</div>
+                </div>
+                <div class="ano-box ano-new">
+                    <div class="ano-label">AÑO 2021 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
+                    <div class="ano-km">115.000 km</div>
+                    <div class="ano-precio">$16.990.000</div>
+                </div>
+            </div>
+        </div></div>
+            </div></div>
+        </div>
+</div>
+
+<!-- SECCIÓN 4: VERSIÓN vs PRECIO -->
+<div class="section">
+  <div class="sec-hdr">
+    <h2>🏆 Versión inferior más cara que versión superior</h2>
+    <span class="hint">Versión de menor equipamiento/potencia aparece más cara sin justificación en km</span>
+    <span class="cnt">1 casos</span>
+  </div>
+  <div class="marca-group">
+            <button class="marca-btn" onclick="toggle('ver_marca_TOYOTA')">
+                <span class="marca-name">TOYOTA</span>
+                <span class="marca-count">1 caso</span>
+                <span class="chevron" id="ch_ver_marca_TOYOTA">▶</span>
+            </button>
+            <div class="marca-body" id="ver_marca_TOYOTA"><div class="inc-card sev-alto">
+                <div class="inc-card-head">
+                    <div>
+                        <span class="inc-version">TOYOTA 2021</span>
+                        <span class="inc-diff">RAV4: LE MT < LE CVT</span>
+                    </div>
+                    <span style="display:inline-block;background:#dc2626;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">ALTO</span>
+                </div>
+                <div class="ver-compare">
+                    <div class="ver-box ver-inf">
+                        <div class="ver-tag-inf">VERSIÓN INFERIOR — MÁS CARA</div>
+                        <div class="ver-name">TOYOTA RAV4 2021 2.0 LE 4X2 MT 5P</div>
+                        <div class="ver-detail">78.639 km · <strong>$17.990.000</strong></div>
+                    </div>
+                    <div class="ver-diff">
+                        <div style="color:#dc2626;font-weight:700;font-size:13px">+$1.000.000</div>
+                        <div style="font-size:10px;color:#6b7280">de diferencia</div>
+                    </div>
+                    <div class="ver-box ver-sup">
+                        <div class="ver-tag-sup">VERSIÓN SUPERIOR — MÁS BARATA</div>
+                        <div class="ver-name">TOYOTA RAV4 2021 2.0 LE 4X2 CVT AT 5P</div>
+                        <div class="ver-detail">115.000 km · <strong>$16.990.000</strong></div>
+                    </div>
+                </div>
+            </div></div>
+        </div>
+</div>
+
+<!-- ESTADÍSTICAS -->
+<div class="section">
+  <div class="sec-hdr"><h2>📊 Estadísticas del inventario</h2></div>
+  <div class="stats-grid">
+    <div class="stat-card"><h4>Top marcas en stock</h4><table><tbody><tr><td>TOYOTA</td><td style="text-align:right"><strong>108</strong></td></tr><tr><td>CHERY</td><td style="text-align:right"><strong>103</strong></td></tr><tr><td>HYUNDAI</td><td style="text-align:right"><strong>92</strong></td></tr><tr><td>MG</td><td style="text-align:right"><strong>74</strong></td></tr><tr><td>PEUGEOT</td><td style="text-align:right"><strong>59</strong></td></tr><tr><td>OMODA</td><td style="text-align:right"><strong>57</strong></td></tr><tr><td>JAECOO</td><td style="text-align:right"><strong>55</strong></td></tr><tr><td>NISSAN</td><td style="text-align:right"><strong>48</strong></td></tr><tr><td>CHEVROLET</td><td style="text-align:right"><strong>32</strong></td></tr><tr><td>FORD</td><td style="text-align:right"><strong>31</strong></td></tr></tbody></table></div>
+    <div class="stat-card"><h4>Distribución combustible</h4><table><tbody><tr><td>Gasolina</td><td style="text-align:right">883 <span style="color:#94a3b8">(93%)</span></td></tr><tr><td>Diesel</td><td style="text-align:right">36 <span style="color:#94a3b8">(3%)</span></td></tr><tr><td>Híbrido</td><td style="text-align:right">27 <span style="color:#94a3b8">(2%)</span></td></tr><tr><td>Eléctrico</td><td style="text-align:right">3 <span style="color:#94a3b8">(0%)</span></td></tr></tbody></table></div>
+    <div class="stat-card"><h4>Transmisión</h4><table><tbody><tr><td>Automática</td><td style="text-align:right">623 <span style="color:#94a3b8">(65%)</span></td></tr><tr><td>Mecánica</td><td style="text-align:right">326 <span style="color:#94a3b8">(34%)</span></td></tr></tbody></table></div>
+    <div class="stat-card"><h4>Por año de fabricación</h4><table><tbody><tr><td>2026</td><td style="text-align:right"><strong>154</strong></td></tr><tr><td>2025</td><td style="text-align:right"><strong>137</strong></td></tr><tr><td>2024</td><td style="text-align:right"><strong>132</strong></td></tr><tr><td>2023</td><td style="text-align:right"><strong>167</strong></td></tr><tr><td>2022</td><td style="text-align:right"><strong>111</strong></td></tr><tr><td>2021</td><td style="text-align:right"><strong>68</strong></td></tr><tr><td>2020</td><td style="text-align:right"><strong>45</strong></td></tr><tr><td>2019</td><td style="text-align:right"><strong>56</strong></td></tr><tr><td>2018</td><td style="text-align:right"><strong>35</strong></td></tr><tr><td>2017</td><td style="text-align:right"><strong>17</strong></td></tr><tr><td>2016</td><td style="text-align:right"><strong>10</strong></td></tr><tr><td>2015</td><td style="text-align:right"><strong>3</strong></td></tr><tr><td>2014</td><td style="text-align:right"><strong>2</strong></td></tr><tr><td>2013</td><td style="text-align:right"><strong>2</strong></td></tr></tbody></table></div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  Informe generado automáticamente · Bruno Fritsch Autos Usados · brunofritsch.cl · 27/07/2026 19:10 · 949 vehículos analizados
+</footer>
+
+<script>
+function toggle(id) {
+  const body = document.getElementById(id);
+  const ch   = document.getElementById('ch_' + id);
+  if (!body) return;
+  const open = body.classList.toggle('open');
+  if (ch) ch.classList.toggle('open', open);
+}
+// Abrir primer grupo de cada sección automáticamente
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.marca-body').forEach((b, i) => {
+    if (i === 0 || i === 1) {
+      b.classList.add('open');
+      const ch = document.getElementById('ch_' + b.id);
+      if (ch) ch.classList.add('open');
+    }
+  });
+});
+</script>
 </body></html>

@@ -1,16 +1,169 @@
 {
-  "generado": "2026-07-27T18:42:28.999397",
-  "total": 944,
-  "con_precio": 936,
+  "generado": "2026-07-27T19:10:26.828589",
+  "total": 949,
+  "con_precio": 949,
   "vehiculos": [
     {
-      "titulo": "CHEVROLET SAIL 2025 1.5 LTZ S 4X2 SDN MT 4P",
-      "marca": "CHEVROLET",
+      "titulo": "LEXUS NX350H 2025 2.5 PLUS HIB 4X2 AT 5P",
+      "marca": "LEXUS",
       "ano": 2025,
-      "km": 31870,
-      "precio": null,
+      "km": 14469,
+      "precio": 45900000,
+      "combustible": "Híbrido",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "PEUGEOT PARTNER 2023 1.6 L2 HDI DIESEL 90HP 4X2 MT 5P",
+      "marca": "PEUGEOT",
+      "ano": 2023,
+      "km": 45214,
+      "precio": 13990000,
+      "combustible": "Diesel",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "HONDA WR-V 2017 1.5 LX 4X2 MT 5P",
+      "marca": "HONDA",
+      "ano": 2017,
+      "km": 48703,
+      "precio": 9990000,
       "combustible": "Gasolina",
       "transmision": "Mecánica"
+    },
+    {
+      "titulo": "NISSAN X-TRAIL 2019 2.5 EXCLUSIVE 4X4 CVT AT 5P",
+      "marca": "NISSAN",
+      "ano": 2019,
+      "km": 126452,
+      "precio": 12190000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "FAW D60 2020 1.5 PT 4X2 MT 5P",
+      "marca": "FAW",
+      "ano": 2020,
+      "km": 56000,
+      "precio": 5190000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "CHEVROLET TRACKER 2023 1.2T LTZ FWD AT 5P",
+      "marca": "CHEVROLET",
+      "ano": 2023,
+      "km": 55676,
+      "precio": 11690000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "TOYOTA COROLLA 2022 1.6 XLI 4X2 MT 4P",
+      "marca": "TOYOTA",
+      "ano": 2022,
+      "km": 64300,
+      "precio": 13990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "CHANGAN CS15 2025 1.5 LUXURY 4X2 MT 5P",
+      "marca": "CHANGAN",
+      "ano": 2025,
+      "km": 10281,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "TOYOTA RAV4 2018 2.0 LUJO 4X2 MT 5P",
+      "marca": "TOYOTA",
+      "ano": 2018,
+      "km": 127298,
+      "precio": 12590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "VOLKSWAGEN T-CROSS 2021 1.6 MSI TRENDLINE 4X2 MT5 5P",
+      "marca": "VOLKSWAGEN",
+      "ano": 2021,
+      "km": 77565,
+      "precio": 10690000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "OMODA C5 2026 1.5 URBAN 4X2 CVT AT 5P",
+      "marca": "OMODA",
+      "ano": 2026,
+      "km": 18555,
+      "precio": 10990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
+    },
+    {
+      "titulo": "KIA SOLUTO 2026 1.4 LX 4X2 E6 MT 4P",
+      "marca": "KIA",
+      "ano": 2026,
+      "km": 14176,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "KIA SOLUTO 2026 1.4 LX 4X2 E6 MT 4P",
+      "marca": "KIA",
+      "ano": 2026,
+      "km": 13014,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "KIA SOLUTO 2026 1.4 LX 4X2 E6 MT 4P",
+      "marca": "KIA",
+      "ano": 2026,
+      "km": 18191,
+      "precio": 8790000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "KIA SOLUTO 2026 1.4 LX 4X2 E6 MT 4P",
+      "marca": "KIA",
+      "ano": 2026,
+      "km": 14500,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "KIA SOLUTO 2026 1.4 LX 4X2 E6 MT 4P",
+      "marca": "KIA",
+      "ano": 2026,
+      "km": 20331,
+      "precio": 8590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "KIA SOLUTO 2026 1.4 LX 4X2 E6 MT 4P",
+      "marca": "KIA",
+      "ano": 2026,
+      "km": 18313,
+      "precio": 8790000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica"
+    },
+    {
+      "titulo": "CHERY TIGGO 8 PRO 2023 1.6 TGDI GLX 4X2 EURO5 DCT AT 5P",
+      "marca": "CHERY",
+      "ano": 2023,
+      "km": 84859,
+      "precio": 13990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática"
     },
     {
       "titulo": "HYUNDAI GRAND I10 2025 1.2 PLUS 4X2 SDN MT 4P",
@@ -297,159 +450,6 @@
       "ano": 2022,
       "km": 55000,
       "precio": 25390000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "MAZDA BT-50 2024 3.0 DIESEL 4X4 DOB.CAB. 6AT 4P",
-      "marca": "MAZDA",
-      "ano": 2024,
-      "km": 19644,
-      "precio": 30990000,
-      "combustible": "Diesel",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "HAVAL JOLION 2022 1.5T ELITE 4X2 MT 5P",
-      "marca": "HAVAL",
-      "ano": 2022,
-      "km": 54200,
-      "precio": 10990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "NISSAN KICKS 2018 1.6 ADVANCE 4X2 MT 5P",
-      "marca": "NISSAN",
-      "ano": 2018,
-      "km": 67576,
-      "precio": 9690000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "TOYOTA LAND CRUISER 2023 4.0 PRADO VX-L 4X4 AT 5P",
-      "marca": "TOYOTA",
-      "ano": 2023,
-      "km": 38314,
-      "precio": 52990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "HONDA WR-V 2017 1.5 LX 4X2 MT 5P",
-      "marca": "HONDA",
-      "ano": 2017,
-      "km": 48008,
-      "precio": 9990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "NISSAN KICKS 2018 1.6 ADVANCE 4X2 MT 5P",
-      "marca": "NISSAN",
-      "ano": 2018,
-      "km": 97000,
-      "precio": 9990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "MITSUBISHI OUTLANDER 2019 2.0 4X2 MT 5P",
-      "marca": "MITSUBISHI",
-      "ano": 2019,
-      "km": 108742,
-      "precio": 10990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "TOYOTA RAV4 2018 2.0 LUJO 4X2 CVT AT 5P",
-      "marca": "TOYOTA",
-      "ano": 2018,
-      "km": 127077,
-      "precio": 12590000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "LEXUS RX 2021 3.5 LUX 4X4 AT 5P",
-      "marca": "LEXUS",
-      "ano": 2021,
-      "km": 104141,
-      "precio": 31900000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "HYUNDAI TUCSON 2020 2.0 VALUE 4X2 FL MT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2020,
-      "km": 79000,
-      "precio": 14590000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "CHEVROLET SILVERADO 2019 5.3 LT TRAILBOSS 4WD Z71 AT 4P",
-      "marca": "CHEVROLET",
-      "ano": 2019,
-      "km": 99767,
-      "precio": 23990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "TOYOTA YARIS 2013 1.3 SPORT XLI 4X2 EE MT 5P",
-      "marca": "TOYOTA",
-      "ano": 2013,
-      "km": 87162,
-      "precio": 6290000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "PEUGEOT RIFTER 2025 1.5 ALLURE BLUEHDI DIESEL 130HP 4X2 EAT8 5P",
-      "marca": "PEUGEOT",
-      "ano": 2025,
-      "km": 45404,
-      "precio": 17990000,
-      "combustible": "Diesel",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "CHANGAN CX70 2022 1.6 COMFORT 4X2 MT 5P",
-      "marca": "CHANGAN",
-      "ano": 2022,
-      "km": 79059,
-      "precio": null,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "VOLKSWAGEN TERA 2026 1.0 TSI COMFORT 2WD AT 5P",
-      "marca": "VOLKSWAGEN",
-      "ano": 2026,
-      "km": 1050,
-      "precio": 15990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática"
-    },
-    {
-      "titulo": "PEUGEOT 2008 2021 1.2 ACTIVE PURETECH 4X2 130 MT 5P",
-      "marca": "PEUGEOT",
-      "ano": 2008,
-      "km": 35300,
-      "precio": 11190000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica"
-    },
-    {
-      "titulo": "JEEP COMPASS 2020 2.4 SPORT 4X2 AT 5P",
-      "marca": "JEEP",
-      "ano": 2020,
-      "km": 113931,
-      "precio": 12590000,
       "combustible": "Gasolina",
       "transmision": "Automática"
     }
