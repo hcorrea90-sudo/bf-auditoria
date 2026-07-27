@@ -135,17 +135,17 @@ def scrape_pagina_pw(page, pagina):
                 break;
             }
             // Version: primer span que no sea km, combustible, transmision ni precio
-            const skipVersion = /^(Gasolina|Bencina|Di.sel|H.brido|El.ctrico|Autom.tica|Mec.nica|Manual|GNC|GLP)$/i;
+            // Chips de estado que NO son version
+            const skipSpan = /^(Gasolina|Bencina|Di.sel|H.brido|El.ctrico|Autom.tica|Mec.nica|Manual|GNC|GLP|.nico\s*due.o|Pocos\s*kil.metros|Pocos\s*KM|SALE|Winter\s*Sale|Vendido|Nuevo\s*Ingreso|Destacado)$/i;
             for (const el of t.querySelectorAll('span')) {
                 const text = el.innerText.trim();
                 if (text.length < 4) continue;
                 if (/km$/i.test(text)) continue;
                 if (/^\$/.test(text)) continue;
-                if (/bono|incluye/i.test(text)) continue;
-                if (skipVersion.test(text)) continue;
+                if (/bono|incluye|vendido/i.test(text)) continue;
+                if (skipSpan.test(text)) continue;
                 if (text === titulo) continue;
-                version = text;
-                break;
+                if (/\d/.test(text)) { version = text; break; }
             }
 
             // Precio: p o span que empiece con $ y tenga digitos largos
