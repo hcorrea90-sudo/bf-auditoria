@@ -146,6 +146,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
 .empty-state{text-align:center;color:var(--muted);padding:24px;font-size:12px;
               background:#f8fafc;border-radius:6px;border:1px dashed var(--border)}
+.btn-link{display:inline-block;margin-top:6px;padding:3px 10px;background:#1d4ed8;
+           color:#fff;border-radius:4px;font-size:10px;font-weight:600;
+           text-decoration:none;white-space:nowrap}
+.btn-link:hover{background:#1e40af}
 
 footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
         border-top:1px solid var(--border);margin-top:20px}
@@ -167,7 +171,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
       <div class="ubadge">🔄 Se actualiza automáticamente cada lunes</div>
     </div>
     <div class="hdr-meta">
-      <div>Generado: <strong>06/08/2026 19:08</strong></div>
+      <div>Generado: <strong>06/08/2026 19:23</strong></div>
       <div>Fuente: <strong>brunofritsch.cl/autos-usados</strong></div>
       <div>Inventario: <strong>942 vehículos</strong></div>
     </div>
@@ -188,17 +192,17 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
   <div class="kpis-row">
     <div class="kpi-group">
       <div class="kpi"><div class="num">942</div><div class="lbl">Inventario total</div></div>
-      <div class="kpi"><div class="num">939</div><div class="lbl">Con precio (99%)</div></div>
-      <div class="kpi"><div class="num">49.766 km</div><div class="lbl">Km promedio</div></div>
+      <div class="kpi"><div class="num">940</div><div class="lbl">Con precio (99%)</div></div>
+      <div class="kpi"><div class="num">49.566 km</div><div class="lbl">Km promedio</div></div>
     </div>
     <div class="kpi-group">
       <div class="kpi"><div class="num">$5.790.000</div><div class="lbl">Precio mínimo</div></div>
-      <div class="kpi"><div class="num">$15.120.403</div><div class="lbl">Precio promedio</div></div>
+      <div class="kpi"><div class="num">$15.135.903</div><div class="lbl">Precio promedio</div></div>
       <div class="kpi"><div class="num">$54.900.000</div><div class="lbl">Precio máximo</div></div>
     </div>
     <div class="kpi-group">
-      <div class="kpi" style="background:#fef2f2"><div class="num" style="color:#dc2626">46</div><div class="lbl">Total alertas</div></div>
-      <div class="kpi"><div class="num">1</div><div class="lbl">Combustible</div></div>
+      <div class="kpi" style="background:#fef2f2"><div class="num" style="color:#dc2626">47</div><div class="lbl">Total alertas</div></div>
+      <div class="kpi"><div class="num">2</div><div class="lbl">Combustible</div></div>
       <div class="kpi"><div class="num">32</div><div class="lbl">Km vs precio</div></div>
       <div class="kpi"><div class="num">12</div><div class="lbl">Año vs precio</div></div>
       <div class="kpi"><div class="num">1</div><div class="lbl">Versión vs precio</div></div>
@@ -207,7 +211,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
   <!-- Fila 2: Resumen ejecutivo de alertas -->
   <div class="alerts-row">
     <div class="alert-box alto">
-      <div class="n">5</div>
+      <div class="n">6</div>
       <div class="desc">🔴 Prioridad Alta</div>
       <div class="sub">Acción inmediata requerida</div>
     </div>
@@ -236,17 +240,37 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
   <div class="sec-hdr">
     <h2>⚠️ Combustible mal catalogado</h2>
     <span class="hint">Vehículos con tecnología híbrida catalogados incorrectamente</span>
-    <span class="cnt">1 casos</span>
+    <span class="cnt">2 casos</span>
   </div>
   <div class="inc-card sev-alto">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">PEUGEOT 2008 2026 1.2 MCA STYLE MHEV 136HP 4X2 AT 5P</span>
+                    <span class="inc-diff">272 km · $15.990.000</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                    <a href="https://www.brunofritsch.cl/autos-usados/VTLG-94" target="_blank" class="btn-link">Ver en sitio →</a>
+                    <span style="display:inline-block;background:#dc2626;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">ALTO</span>
+                </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:8px;font-size:12px;flex-wrap:wrap">
+                <span style="background:#fee2e2;color:#991b1b;padding:3px 10px;border-radius:4px">Actual: Gasolina</span>
+                <span style="color:#6b7280">→</span>
+                <span style="background:#dcfce7;color:#166534;padding:3px 10px;border-radius:4px">Debería ser: Hibrido</span>
+                <span style="color:#6b7280;font-size:11px">"MHEV" indica tecnologia mild-hybrid o hibrida. Revisar catalogacion.</span>
+            </div>
+        </div><div class="inc-card sev-alto">
             <div class="inc-card-head">
                 <div>
                     <span class="inc-version">VOLVO XC60 2025 2.0 B5 PLUS TECHO PANORAMICO AWD AT 5P</span>
                     <span class="inc-diff">12.632 km · $43.900.000</span>
                 </div>
-                <span style="display:inline-block;background:#dc2626;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">ALTO</span>
+                <div style="display:flex;align-items:center;gap:8px">
+                    <a href="https://www.brunofritsch.cl/autos-usados/VCHG-90" target="_blank" class="btn-link">Ver en sitio →</a>
+                    <span style="display:inline-block;background:#dc2626;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">ALTO</span>
+                </div>
             </div>
-            <div style="display:flex;gap:12px;align-items:center;margin-top:8px;font-size:12px">
+            <div style="display:flex;gap:12px;align-items:center;margin-top:8px;font-size:12px;flex-wrap:wrap">
                 <span style="background:#fee2e2;color:#991b1b;padding:3px 10px;border-radius:4px">Actual: Gasolina</span>
                 <span style="color:#6b7280">→</span>
                 <span style="background:#dcfce7;color:#166534;padding:3px 10px;border-radius:4px">Debería ser: Hibrido</span>
@@ -285,10 +309,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">22.000 km</div>
                     <div class="seq-precio">$11.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SRPZ-43" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">27.296 km</div>
                     <div class="seq-precio">$11.490.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SWLR-22" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-bajo">
             <div class="inc-card-head">
@@ -301,10 +327,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">39.000 km</div>
                     <div class="seq-precio">$9.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SPDJ-90" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">40.000 km</div>
                     <div class="seq-precio">$9.290.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/STTY-40" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div><div class="modelo-group">
@@ -316,22 +344,6 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                 <div class="modelo-body" id="km_CHERY_TIGGO_7_PRO"><div class="inc-card sev-medio">
             <div class="inc-card-head">
                 <div>
-                    <span class="inc-version">CHERY TIGGO 7 PRO 2025 1.5T GLS 4X2 CVT AT 5P</span>
-                    <span class="inc-diff">Sobreprecio máximo: <strong>$600.000</strong></span>
-                </div>
-                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
-            </div>
-            <div class="seq-row"><div class="seq-item">
-                    <div class="seq-km">19.856 km</div>
-                    <div class="seq-precio">$11.690.000</div>
-                </div><div class="seq-item sube">
-                    <div class="seq-km">49.990 km</div>
-                    <div class="seq-precio">$12.290.000</div>
-                    <div class="seq-tag">▲ SUBE</div>
-                </div></div>
-        </div><div class="inc-card sev-medio">
-            <div class="inc-card-head">
-                <div>
                     <span class="inc-version">CHERY TIGGO 7 PRO 2023 1.5T GLS 4X2 CVT AT 5P</span>
                     <span class="inc-diff">Sobreprecio máximo: <strong>$1.300.000</strong></span>
                 </div>
@@ -340,13 +352,34 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">39.345 km</div>
                     <div class="seq-precio">$10.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SJTH-39" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">58.450 km</div>
                     <div class="seq-precio">$11.690.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SFYT-34" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">80.112 km</div>
                     <div class="seq-precio">$10.290.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SGHL-46" target="_blank" class="btn-link">Ver en sitio →</a>
+                </div></div>
+        </div><div class="inc-card sev-medio">
+            <div class="inc-card-head">
+                <div>
+                    <span class="inc-version">CHERY TIGGO 7 PRO 2025 1.5T GLS 4X2 CVT AT 5P</span>
+                    <span class="inc-diff">Sobreprecio máximo: <strong>$600.000</strong></span>
+                </div>
+                <span style="display:inline-block;background:#d97706;color:#fff;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px">MEDIO</span>
+            </div>
+            <div class="seq-row"><div class="seq-item">
+                    <div class="seq-km">19.856 km</div>
+                    <div class="seq-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGGD-99" target="_blank" class="btn-link">Ver en sitio →</a>
+                </div><div class="seq-item sube">
+                    <div class="seq-km">49.990 km</div>
+                    <div class="seq-precio">$12.290.000</div>
+                    <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TTSH-13" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-medio">
             <div class="inc-card-head">
@@ -359,27 +392,34 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">29.695 km</div>
                     <div class="seq-precio">$11.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/THHK-51" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">31.470 km</div>
                     <div class="seq-precio">$12.190.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TPZC-32" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">37.770 km</div>
                     <div class="seq-precio">$12.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TFLL-99" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">44.000 km</div>
                     <div class="seq-precio">$11.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TSHG-82" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">44.371 km</div>
                     <div class="seq-precio">$11.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TFTW-58" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">47.000 km</div>
                     <div class="seq-precio">$12.190.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TFLL-80" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">82.856 km</div>
                     <div class="seq-precio">$10.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TBRH-15" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-bajo">
             <div class="inc-card-head">
@@ -392,25 +432,32 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">57.673 km</div>
                     <div class="seq-precio">$11.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RCKL-98" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">63.860 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RRTD-70" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">64.230 km</div>
                     <div class="seq-precio">$11.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RXPW-17" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">65.716 km</div>
                     <div class="seq-precio">$10.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RFVY-45" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">84.811 km</div>
                     <div class="seq-precio">$11.190.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RJHT-55" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">88.588 km</div>
                     <div class="seq-precio">$11.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SBVP-84" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">89.581 km</div>
                     <div class="seq-precio">$10.290.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RVTY-46" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-bajo">
             <div class="inc-card-head">
@@ -423,17 +470,21 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">54.879 km</div>
                     <div class="seq-precio">$11.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SKSP-71" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">70.000 km</div>
                     <div class="seq-precio">$12.190.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SWHK-73" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">72.170 km</div>
                     <div class="seq-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SHZS-41" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">79.000 km</div>
                     <div class="seq-precio">$11.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SKKX-38" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div><div class="modelo-group">
@@ -453,37 +504,48 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">17.892 km</div>
                     <div class="seq-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VFBG-61" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">18.057 km</div>
                     <div class="seq-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VFBJ-71" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">18.209 km</div>
                     <div class="seq-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGFX-58" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">19.421 km</div>
                     <div class="seq-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VJHC-71" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">20.327 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VJGV-59" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">21.148 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VJGZ-38" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">21.178 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VJGX-88" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">23.004 km</div>
                     <div class="seq-precio">$12.590.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VFBC-51" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">23.742 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VJGW-73" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">24.025 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VJDW-84" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">24.655 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGFT-75" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div><div class="modelo-group">
@@ -503,16 +565,20 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">45.001 km</div>
                     <div class="seq-precio">$12.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RVFG-46" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">48.000 km</div>
                     <div class="seq-precio">$12.290.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RWJY-27" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">62.930 km</div>
                     <div class="seq-precio">$11.290.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RTZZ-88" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">70.200 km</div>
                     <div class="seq-precio">$11.490.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RVXH-14" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -539,10 +605,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">54.000 km</div>
                     <div class="seq-precio">$8.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/LXYZ-16" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">55.866 km</div>
                     <div class="seq-precio">$8.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/LVCJ-57" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -569,10 +637,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">33.000 km</div>
                     <div class="seq-precio">$9.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SWGP-15" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">45.000 km</div>
                     <div class="seq-precio">$9.690.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SFYG-35" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -599,10 +669,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">26.001 km</div>
                     <div class="seq-precio">$13.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SWWV-17" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">49.000 km</div>
                     <div class="seq-precio">$14.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SXWV-82" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-bajo">
             <div class="inc-card-head">
@@ -615,10 +687,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">117.910 km</div>
                     <div class="seq-precio">$9.290.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/JSYH-57" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">131.000 km</div>
                     <div class="seq-precio">$9.390.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/JTLY-15" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div><div class="modelo-group">
@@ -638,14 +712,17 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">43.000 km</div>
                     <div class="seq-precio">$18.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SVDR-89" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">50.868 km</div>
                     <div class="seq-precio">$18.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SWSZ-55" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">58.843 km</div>
                     <div class="seq-precio">$19.490.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SVDR-72" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-bajo">
             <div class="inc-card-head">
@@ -658,13 +735,16 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">42.734 km</div>
                     <div class="seq-precio">$18.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SLRY-51" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">48.996 km</div>
                     <div class="seq-precio">$18.290.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SPSD-38" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">57.700 km</div>
                     <div class="seq-precio">$17.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SKRT-57" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -691,46 +771,60 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">12.126 km</div>
                     <div class="seq-precio">$13.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGSB-13" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">13.985 km</div>
                     <div class="seq-precio">$13.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-63" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">14.153 km</div>
                     <div class="seq-precio">$13.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-41" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">14.306 km</div>
                     <div class="seq-precio">$13.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRY-98" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">14.911 km</div>
                     <div class="seq-precio">$13.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-71" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">15.489 km</div>
                     <div class="seq-precio">$13.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-49" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">17.512 km</div>
                     <div class="seq-precio">$13.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-76" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">17.788 km</div>
                     <div class="seq-precio">$13.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-30" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">18.334 km</div>
                     <div class="seq-precio">$13.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRY-99" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">18.356 km</div>
                     <div class="seq-precio">$13.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-13" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">18.589 km</div>
                     <div class="seq-precio">$13.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-44" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">18.638 km</div>
                     <div class="seq-precio">$13.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-95" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">20.032 km</div>
                     <div class="seq-precio">$13.590.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGRZ-24" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">22.922 km</div>
                     <div class="seq-precio">$13.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TZJY-44" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -757,10 +851,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">67.900 km</div>
                     <div class="seq-precio">$12.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RYKX-20" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">75.367 km</div>
                     <div class="seq-precio">$13.690.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RXYD-73" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -787,10 +883,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">43.592 km</div>
                     <div class="seq-precio">$6.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RZCW-70" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">63.510 km</div>
                     <div class="seq-precio">$6.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SCXL-78" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div><div class="modelo-group">
@@ -810,10 +908,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">13.570 km</div>
                     <div class="seq-precio">$8.590.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TKKZ-51" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">20.827 km</div>
                     <div class="seq-precio">$8.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TSPF-73" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -840,13 +940,16 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">57.924 km</div>
                     <div class="seq-precio">$12.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SRDV-46" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">70.407 km</div>
                     <div class="seq-precio">$12.790.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SRWR-26" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">70.628 km</div>
                     <div class="seq-precio">$12.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SPLV-31" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div><div class="modelo-group">
@@ -866,27 +969,34 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">44.728 km</div>
                     <div class="seq-precio">$11.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/STVC-75" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">47.526 km</div>
                     <div class="seq-precio">$10.890.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/STYS-65" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">54.001 km</div>
                     <div class="seq-precio">$11.690.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SVZF-80" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">63.550 km</div>
                     <div class="seq-precio">$10.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SPLW-75" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">64.700 km</div>
                     <div class="seq-precio">$10.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/STVC-21" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">64.981 km</div>
                     <div class="seq-precio">$10.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/STGB-44" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">75.010 km</div>
                     <div class="seq-precio">$10.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SPCK-41" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -913,17 +1023,21 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">9.000 km</div>
                     <div class="seq-precio">$12.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VJGZ-37" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">16.196 km</div>
                     <div class="seq-precio">$13.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VFPF-55" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">23.255 km</div>
                     <div class="seq-precio">$13.590.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TTFB-93" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">33.385 km</div>
                     <div class="seq-precio">$13.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TVCW-46" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-bajo">
             <div class="inc-card-head">
@@ -936,25 +1050,32 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">8.702 km</div>
                     <div class="seq-precio">$12.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VHLL-41" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">8.796 km</div>
                     <div class="seq-precio">$12.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VHLC-77" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">22.000 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VFSC-64" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">23.378 km</div>
                     <div class="seq-precio">$10.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGFS-43" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">23.496 km</div>
                     <div class="seq-precio">$11.490.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VHLR-40" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">23.517 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VHLL-70" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">24.016 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VHDY-94" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -981,13 +1102,16 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">30.487 km</div>
                     <div class="seq-precio">$11.290.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SLLB-91" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">37.129 km</div>
                     <div class="seq-precio">$12.590.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SPLL-85" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">64.178 km</div>
                     <div class="seq-precio">$11.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SJBH-88" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -1014,16 +1138,20 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">22.854 km</div>
                     <div class="seq-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RSTY-97" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">43.500 km</div>
                     <div class="seq-precio">$11.690.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SWPW-78" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">53.417 km</div>
                     <div class="seq-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RXGP-80" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">64.843 km</div>
                     <div class="seq-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SKHZ-14" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div><div class="modelo-group">
@@ -1043,24 +1171,30 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">11.978 km</div>
                     <div class="seq-precio">$17.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VCZK-63" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">15.300 km</div>
                     <div class="seq-precio">$24.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGHD-82" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">17.200 km</div>
                     <div class="seq-precio">$16.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VGSL-42" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">20.388 km</div>
                     <div class="seq-precio">$17.190.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TTDY-27" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">22.500 km</div>
                     <div class="seq-precio">$16.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TSTP-93" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">29.170 km</div>
                     <div class="seq-precio">$17.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TVGW-33" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -1087,10 +1221,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">36.880 km</div>
                     <div class="seq-precio">$34.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TSCS-62" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">43.540 km</div>
                     <div class="seq-precio">$36.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TDCG-73" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div><div class="modelo-group">
@@ -1110,36 +1246,46 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">36.500 km</div>
                     <div class="seq-precio">$21.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SPSF-77" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">39.612 km</div>
                     <div class="seq-precio">$21.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SKJW-93" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">42.265 km</div>
                     <div class="seq-precio">$22.490.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SSVX-11" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">52.471 km</div>
                     <div class="seq-precio">$19.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SLDL-70" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">54.695 km</div>
                     <div class="seq-precio">$21.490.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SLCL-50" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">70.730 km</div>
                     <div class="seq-precio">$20.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SLFR-78" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">73.629 km</div>
                     <div class="seq-precio">$21.890.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TBHY-65" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">80.200 km</div>
                     <div class="seq-precio">$21.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SGLX-60" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">92.054 km</div>
                     <div class="seq-precio">$21.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SLFR-14" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">100.556 km</div>
                     <div class="seq-precio">$19.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SVCX-99" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-medio">
             <div class="inc-card-head">
@@ -1152,10 +1298,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">65.499 km</div>
                     <div class="seq-precio">$18.290.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/PTFZ-98" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">66.997 km</div>
                     <div class="seq-precio">$18.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/PLPB-83" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-bajo">
             <div class="inc-card-head">
@@ -1168,19 +1316,24 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">47.502 km</div>
                     <div class="seq-precio">$19.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SBTB-40" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">70.000 km</div>
                     <div class="seq-precio">$19.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RRDX-36" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">81.305 km</div>
                     <div class="seq-precio">$19.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RVBD-94" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">98.481 km</div>
                     <div class="seq-precio">$19.490.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RSVS-50" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">118.666 km</div>
                     <div class="seq-precio">$18.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RWGZ-62" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -1207,16 +1360,20 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">45.109 km</div>
                     <div class="seq-precio">$12.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SZPC-13" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">47.330 km</div>
                     <div class="seq-precio">$12.990.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SZPC-14" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">50.223 km</div>
                     <div class="seq-precio">$12.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SZPC-41" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item">
                     <div class="seq-km">65.632 km</div>
                     <div class="seq-precio">$12.590.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SZPB-55" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div><div class="inc-card sev-bajo">
             <div class="inc-card-head">
@@ -1229,10 +1386,12 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
             <div class="seq-row"><div class="seq-item">
                     <div class="seq-km">98.587 km</div>
                     <div class="seq-precio">$11.290.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SWBF-10" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div><div class="seq-item sube">
                     <div class="seq-km">99.955 km</div>
                     <div class="seq-precio">$11.390.000</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SVBZ-27" target="_blank" class="btn-link">Ver en sitio →</a>
                 </div></div>
         </div></div>
             </div></div>
@@ -1270,6 +1429,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2022</div>
                     <div class="ano-km">75.000 km</div>
                     <div class="ano-precio">$11.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SDGZ-33" target="_blank" class="btn-link">Ver 2022 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$1.100.000</div>
@@ -1280,6 +1440,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">39.345 km</div>
                     <div class="ano-precio">$10.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SJTH-39" target="_blank" class="btn-link">Ver 2023 →</a>
                 </div>
             </div>
         </div></div>
@@ -1308,6 +1469,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2024</div>
                     <div class="ano-km">42.868 km</div>
                     <div class="ano-precio">$9.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TCYL-72" target="_blank" class="btn-link">Ver 2024 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$200.000</div>
@@ -1318,6 +1480,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2026 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">5.555 km</div>
                     <div class="ano-precio">$8.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VWXH-47" target="_blank" class="btn-link">Ver 2026 →</a>
                 </div>
             </div>
         </div></div>
@@ -1346,6 +1509,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2022</div>
                     <div class="ano-km">41.948 km</div>
                     <div class="ano-precio">$8.590.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RWJK-94" target="_blank" class="btn-link">Ver 2022 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$200.000</div>
@@ -1356,6 +1520,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">105.667 km</div>
                     <div class="ano-precio">$8.390.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SGHH-62" target="_blank" class="btn-link">Ver 2023 →</a>
                 </div>
             </div>
         </div></div>
@@ -1384,6 +1549,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2022</div>
                     <div class="ano-km">33.042 km</div>
                     <div class="ano-precio">$35.900.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/JKXW-69" target="_blank" class="btn-link">Ver 2022 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$1.000.000</div>
@@ -1394,6 +1560,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">61.000 km</div>
                     <div class="ano-precio">$34.900.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SGYL-27" target="_blank" class="btn-link">Ver 2023 →</a>
                 </div>
             </div>
         </div></div>
@@ -1422,6 +1589,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2025</div>
                     <div class="ano-km">9.828 km</div>
                     <div class="ano-precio">$11.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TSTY-88" target="_blank" class="btn-link">Ver 2025 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$1.700.000</div>
@@ -1432,6 +1600,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2026 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">16.900 km</div>
                     <div class="ano-precio">$9.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VKCJ-81" target="_blank" class="btn-link">Ver 2026 →</a>
                 </div>
             </div>
         </div></div>
@@ -1453,6 +1622,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2023</div>
                     <div class="ano-km">61.001 km</div>
                     <div class="ano-precio">$15.590.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SVYK-97" target="_blank" class="btn-link">Ver 2023 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$6.600.000</div>
@@ -1463,6 +1633,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2024 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">20.827 km</div>
                     <div class="ano-precio">$8.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TSPF-73" target="_blank" class="btn-link">Ver 2024 →</a>
                 </div>
             </div>
         </div><div class="inc-card sev-bajo">
@@ -1477,6 +1648,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2023</div>
                     <div class="ano-km">25.067 km</div>
                     <div class="ano-precio">$8.790.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SXKD-18" target="_blank" class="btn-link">Ver 2023 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$100.000</div>
@@ -1487,6 +1659,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2024 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">34.896 km</div>
                     <div class="ano-precio">$8.690.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TFJL-22" target="_blank" class="btn-link">Ver 2024 →</a>
                 </div>
             </div>
         </div><div class="inc-card sev-bajo">
@@ -1501,6 +1674,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2022</div>
                     <div class="ano-km">46.941 km</div>
                     <div class="ano-precio">$9.190.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RPSF-23" target="_blank" class="btn-link">Ver 2022 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$200.000</div>
@@ -1511,6 +1685,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">48.253 km</div>
                     <div class="ano-precio">$8.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SVLX-83" target="_blank" class="btn-link">Ver 2023 →</a>
                 </div>
             </div>
         </div></div>
@@ -1539,6 +1714,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2024</div>
                     <div class="ano-km">17.497 km</div>
                     <div class="ano-precio">$13.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TPHV-26" target="_blank" class="btn-link">Ver 2024 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$500.000</div>
@@ -1549,6 +1725,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2025 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">25.307 km</div>
                     <div class="ano-precio">$13.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TTRV-73" target="_blank" class="btn-link">Ver 2025 →</a>
                 </div>
             </div>
         </div></div>
@@ -1577,6 +1754,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2021</div>
                     <div class="ano-km">81.536 km</div>
                     <div class="ano-precio">$19.590.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/RDLB-44" target="_blank" class="btn-link">Ver 2021 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$2.600.000</div>
@@ -1587,6 +1765,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2023 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">142.067 km</div>
                     <div class="ano-precio">$16.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/SGYJ-90" target="_blank" class="btn-link">Ver 2023 →</a>
                 </div>
             </div>
         </div></div>
@@ -1608,6 +1787,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2020</div>
                     <div class="ano-km">95.977 km</div>
                     <div class="ano-precio">$17.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/LYFG-81" target="_blank" class="btn-link">Ver 2020 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$500.000</div>
@@ -1618,6 +1798,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2021 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">115.000 km</div>
                     <div class="ano-precio">$16.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/PJXX-60" target="_blank" class="btn-link">Ver 2021 →</a>
                 </div>
             </div>
         </div><div class="inc-card sev-bajo">
@@ -1632,6 +1813,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2024</div>
                     <div class="ano-km">39.442 km</div>
                     <div class="ano-precio">$22.490.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/TJBL-65" target="_blank" class="btn-link">Ver 2024 →</a>
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−$500.000</div>
@@ -1642,6 +1824,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                     <div class="ano-label">AÑO 2026 <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">12.934 km</div>
                     <div class="ano-precio">$21.990.000</div>
+                    <a href="https://www.brunofritsch.cl/autos-usados/VRBV-89" target="_blank" class="btn-link">Ver 2026 →</a>
                 </div>
             </div>
         </div></div>
@@ -1675,6 +1858,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                         <div class="ver-tag-inf">VERSIÓN INFERIOR — MÁS CARA</div>
                         <div class="ver-name">TOYOTA RAV4 2021 2.0 LE 4X2 MT 5P</div>
                         <div class="ver-detail">60.009 km · <strong>$17.490.000</strong></div>
+                        <a href="https://www.brunofritsch.cl/autos-usados/RDJB-33" target="_blank" class="btn-link">Ver en sitio →</a>
                     </div>
                     <div class="ver-diff">
                         <div style="color:#dc2626;font-weight:700;font-size:13px">+$500.000</div>
@@ -1684,6 +1868,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
                         <div class="ver-tag-sup">VERSIÓN SUPERIOR — MÁS BARATA</div>
                         <div class="ver-name">TOYOTA RAV4 2021 2.0 LE 4X2 CVT AT 5P</div>
                         <div class="ver-detail">115.000 km · <strong>$16.990.000</strong></div>
+                        <a href="https://www.brunofritsch.cl/autos-usados/PJXX-60" target="_blank" class="btn-link">Ver en sitio →</a>
                     </div>
                 </div>
             </div></div>
@@ -1694,17 +1879,17 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:10px;
 <div class="section">
   <div class="sec-hdr"><h2>📊 Estadísticas del inventario</h2></div>
   <div class="stats-grid">
-    <div class="stat-card"><h4>Top marcas en stock</h4><table><tbody><tr><td>TOYOTA</td><td style="text-align:right"><strong>112</strong></td></tr><tr><td>CHERY</td><td style="text-align:right"><strong>99</strong></td></tr><tr><td>HYUNDAI</td><td style="text-align:right"><strong>94</strong></td></tr><tr><td>MG</td><td style="text-align:right"><strong>77</strong></td></tr><tr><td>PEUGEOT</td><td style="text-align:right"><strong>65</strong></td></tr><tr><td>JAECOO</td><td style="text-align:right"><strong>54</strong></td></tr><tr><td>NISSAN</td><td style="text-align:right"><strong>48</strong></td></tr><tr><td>OMODA</td><td style="text-align:right"><strong>42</strong></td></tr><tr><td>CHEVROLET</td><td style="text-align:right"><strong>33</strong></td></tr><tr><td>FORD</td><td style="text-align:right"><strong>32</strong></td></tr></tbody></table></div>
-    <div class="stat-card"><h4>Distribución combustible</h4><table><tbody><tr><td>Gasolina</td><td style="text-align:right">866 <span style="color:#94a3b8">(91%)</span></td></tr><tr><td>Híbrido</td><td style="text-align:right">37 <span style="color:#94a3b8">(3%)</span></td></tr><tr><td>Diesel</td><td style="text-align:right">36 <span style="color:#94a3b8">(3%)</span></td></tr><tr><td>Eléctrico</td><td style="text-align:right">3 <span style="color:#94a3b8">(0%)</span></td></tr></tbody></table></div>
-    <div class="stat-card"><h4>Transmisión</h4><table><tbody><tr><td>Automática</td><td style="text-align:right">616 <span style="color:#94a3b8">(65%)</span></td></tr><tr><td>Mecánica</td><td style="text-align:right">326 <span style="color:#94a3b8">(34%)</span></td></tr></tbody></table></div>
-    <div class="stat-card"><h4>Por año de fabricación</h4><table><tbody><tr><td>2026</td><td style="text-align:right"><strong>149</strong></td></tr><tr><td>2025</td><td style="text-align:right"><strong>135</strong></td></tr><tr><td>2024</td><td style="text-align:right"><strong>127</strong></td></tr><tr><td>2023</td><td style="text-align:right"><strong>165</strong></td></tr><tr><td>2022</td><td style="text-align:right"><strong>119</strong></td></tr><tr><td>2021</td><td style="text-align:right"><strong>70</strong></td></tr><tr><td>2020</td><td style="text-align:right"><strong>41</strong></td></tr><tr><td>2019</td><td style="text-align:right"><strong>46</strong></td></tr><tr><td>2018</td><td style="text-align:right"><strong>39</strong></td></tr><tr><td>2017</td><td style="text-align:right"><strong>20</strong></td></tr><tr><td>2016</td><td style="text-align:right"><strong>11</strong></td></tr><tr><td>2015</td><td style="text-align:right"><strong>3</strong></td></tr><tr><td>2014</td><td style="text-align:right"><strong>4</strong></td></tr><tr><td>2013</td><td style="text-align:right"><strong>1</strong></td></tr></tbody></table></div>
+    <div class="stat-card"><h4>Top marcas en stock</h4><table><tbody><tr><td>TOYOTA</td><td style="text-align:right"><strong>113</strong></td></tr><tr><td>CHERY</td><td style="text-align:right"><strong>99</strong></td></tr><tr><td>HYUNDAI</td><td style="text-align:right"><strong>93</strong></td></tr><tr><td>MG</td><td style="text-align:right"><strong>77</strong></td></tr><tr><td>PEUGEOT</td><td style="text-align:right"><strong>67</strong></td></tr><tr><td>JAECOO</td><td style="text-align:right"><strong>54</strong></td></tr><tr><td>NISSAN</td><td style="text-align:right"><strong>49</strong></td></tr><tr><td>OMODA</td><td style="text-align:right"><strong>42</strong></td></tr><tr><td>CHEVROLET</td><td style="text-align:right"><strong>33</strong></td></tr><tr><td>FORD</td><td style="text-align:right"><strong>32</strong></td></tr></tbody></table></div>
+    <div class="stat-card"><h4>Distribución combustible</h4><table><tbody><tr><td>Gasolina</td><td style="text-align:right">865 <span style="color:#94a3b8">(91%)</span></td></tr><tr><td>Híbrido</td><td style="text-align:right">38 <span style="color:#94a3b8">(4%)</span></td></tr><tr><td>Diesel</td><td style="text-align:right">36 <span style="color:#94a3b8">(3%)</span></td></tr><tr><td>Eléctrico</td><td style="text-align:right">3 <span style="color:#94a3b8">(0%)</span></td></tr></tbody></table></div>
+    <div class="stat-card"><h4>Transmisión</h4><table><tbody><tr><td>Mecánica</td><td style="text-align:right">326 <span style="color:#94a3b8">(34%)</span></td></tr><tr><td>Automática</td><td style="text-align:right">616 <span style="color:#94a3b8">(65%)</span></td></tr></tbody></table></div>
+    <div class="stat-card"><h4>Por año de fabricación</h4><table><tbody><tr><td>2026</td><td style="text-align:right"><strong>150</strong></td></tr><tr><td>2025</td><td style="text-align:right"><strong>134</strong></td></tr><tr><td>2024</td><td style="text-align:right"><strong>126</strong></td></tr><tr><td>2023</td><td style="text-align:right"><strong>166</strong></td></tr><tr><td>2022</td><td style="text-align:right"><strong>119</strong></td></tr><tr><td>2021</td><td style="text-align:right"><strong>69</strong></td></tr><tr><td>2020</td><td style="text-align:right"><strong>41</strong></td></tr><tr><td>2019</td><td style="text-align:right"><strong>47</strong></td></tr><tr><td>2018</td><td style="text-align:right"><strong>39</strong></td></tr><tr><td>2017</td><td style="text-align:right"><strong>20</strong></td></tr><tr><td>2016</td><td style="text-align:right"><strong>10</strong></td></tr><tr><td>2015</td><td style="text-align:right"><strong>3</strong></td></tr><tr><td>2014</td><td style="text-align:right"><strong>4</strong></td></tr><tr><td>2013</td><td style="text-align:right"><strong>1</strong></td></tr></tbody></table></div>
   </div>
 </div>
 
 </div>
 
 <footer>
-  Informe generado automáticamente · Bruno Fritsch Autos Usados · brunofritsch.cl · 06/08/2026 19:08 · 942 vehículos analizados
+  Informe generado automáticamente · Bruno Fritsch Autos Usados · brunofritsch.cl · 06/08/2026 19:23 · 942 vehículos analizados
 </footer>
 
 <script>
