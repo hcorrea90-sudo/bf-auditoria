@@ -155,9 +155,28 @@ def scrape_pagina_pw(page, pagina):
                 if (/^\$[\d\.\s]{6,}/.test(text)) { precio = text; break; }
             }
 
+            // URL del auto: buscar enlace con href que contenga /autos-usados/
+            let url_auto = '';
+            for (const a of t.querySelectorAll('a')) {
+                const href = a.getAttribute('href') || '';
+                if (href.includes('/autos-usados/') || href.includes('/product/')) {
+                    url_auto = href.startsWith('http') ? href : 'https://www.brunofritsch.cl' + href;
+                    break;
+                }
+            }
+            // Fallback: enlace del id del producto si hay link general
+            if (!url_auto) {
+                const linkParent = t.closest('a') || t.querySelector('a');
+                if (linkParent) {
+                    const href = linkParent.getAttribute('href') || '';
+                    url_auto = href.startsWith('http') ? href : 'https://www.brunofritsch.cl' + href;
+                }
+            }
+
             resultado.push({
                 titulo, version, precio_txt: precio,
                 combustible, km_txt: km, transmision,
+                url_auto,
                 txt_full: txt.substring(0, 300)
             });
         });
@@ -202,6 +221,7 @@ def scrape_pagina_pw(page, pagina):
         vehiculos.append({
             "titulo": titulo, "marca": marca, "ano": ano,
             "km": km, "precio": precio, "combustible": comb, "transmision": trans,
+            "url": d.get("url_auto", ""),
         })
 
     log.info(f"  Pagina {pagina:02d}: {len(vehiculos)} autos | precios: {sum(1 for v in vehiculos if v['precio'])} | combustible: {sum(1 for v in vehiculos if v['combustible'])} | total sitio: {total}")
@@ -255,6 +275,7 @@ def analizar_combustible(veh):
                     "vehiculo":    v["titulo"],
                     "km":          v["km"],
                     "precio":      v["precio"],
+                    "url":         v.get("url",""),
                     "comb_actual": v["combustible"] or "No especificado",
                     "deberia":     "Hibrido",
                     "detalle":     f'"{kw.upper().strip()}" indica tecnologia mild-hybrid o hibrida. Revisar catalogacion.',
@@ -280,7 +301,7 @@ def analizar_km_precio(veh):
             sube = i > 0 and item["precio"] > items[i-1]["precio"]
             if sube:
                 anomalia = True
-            seq.append({"km": item["km"], "precio": item["precio"], "sube": sube})
+            seq.append({"km": item["km"], "precio": item["precio"], "sube": sube, "url": item.get("url","")})
         if not anomalia:
             continue
         diff_max = max(
@@ -315,8 +336,10 @@ def analizar_ano_precio(veh):
             sev = "MEDIO" if dp >= 1_200_000 and dk < 90_000 else "BAJO"
             out.append({
                 "modelo": r1["titulo"], "ano_ant": a1, "km_ant": r1["km"],
-                "precio_ant": r1["precio"], "ano_nuevo": a2, "km_nuevo": r2["km"],
-                "precio_nuevo": r2["precio"], "diff_precio": dp, "diff_km": dk, "sev": sev,
+                "precio_ant": r1["precio"], "url_ant": r1.get("url",""),
+                "ano_nuevo": a2, "km_nuevo": r2["km"],
+                "precio_nuevo": r2["precio"], "url_nuevo": r2.get("url",""),
+                "diff_precio": dp, "diff_km": dk, "sev": sev,
             })
     out.sort(key=lambda x: {"ALTO":0,"MEDIO":1,"BAJO":2}[x["sev"]])
     return out[:12]
@@ -370,8 +393,8 @@ def analizar_version_precio(veh):
             out.append({
                 "modelo":    f"{clave.split('|')[0]} {clave.split('|')[1]}",
                 "desc":      desc,
-                "ver_inf":   mi["titulo"], "km_inf":  mi["km"], "precio_inf": mi["precio"],
-                "ver_sup":   ms["titulo"], "km_sup":  ms["km"], "precio_sup": ms["precio"],
+                "ver_inf":   mi["titulo"], "km_inf":  mi["km"], "precio_inf": mi["precio"], "url_inf": mi.get("url",""),
+                "ver_sup":   ms["titulo"], "km_sup":  ms["km"], "precio_sup": ms["precio"], "url_sup": ms.get("url",""),
                 "diff": diff, "diff_km": dk,
                 "sev": "ALTO" if diff >= 1_000_000 else "MEDIO",
             })
@@ -452,21 +475,28 @@ def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
         ano_por_marca[m][mo].append(h)
 
     # ── Bloque KM vs PRECIO jerárquico ────────────────────────────────────────
+    def btn_link(url, texto="Ver en sitio →"):
+        if url:
+            return f'<a href="{url}" target="_blank" class="btn-link">{texto}</a>'
+        return ""
+
     def render_km_card(h, idx):
         secuencia = ""
         for i, p in enumerate(h["secuencia"]):
+            url_btn = btn_link(p.get("url",""))
             if p["sube"]:
                 secuencia += f'''<div class="seq-item sube">
                     <div class="seq-km">{fk(p["km"])}</div>
                     <div class="seq-precio">{fp(p["precio"])}</div>
                     <div class="seq-tag">▲ SUBE</div>
+                    {url_btn}
                 </div>'''
             else:
                 secuencia += f'''<div class="seq-item">
                     <div class="seq-km">{fk(p["km"])}</div>
                     <div class="seq-precio">{fp(p["precio"])}</div>
+                    {url_btn}
                 </div>'''
-        # Calcular diferencia máxima
         diffs = [h["secuencia"][i]["precio"] - h["secuencia"][i-1]["precio"]
                  for i in range(1, len(h["secuencia"]))
                  if h["secuencia"][i]["sube"]]
@@ -517,6 +547,8 @@ def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
     # ── Bloque AÑO vs PRECIO jerárquico ──────────────────────────────────────
     def render_ano_card(h):
         diff_km_txt = f"+{fk(h['diff_km'])}" if h["diff_km"] >= 0 else fk(h["diff_km"])
+        link_ant  = btn_link(h.get("url_ant",""),  f"Ver {h['ano_ant']} →")
+        link_nuevo = btn_link(h.get("url_nuevo",""), f"Ver {h['ano_nuevo']} →")
         return f'''<div class="inc-card sev-{h["sev"].lower()}">
             <div class="inc-card-head">
                 <div>
@@ -529,6 +561,7 @@ def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
                     <div class="ano-label">AÑO {h["ano_ant"]}</div>
                     <div class="ano-km">{fk(h["km_ant"])}</div>
                     <div class="ano-precio">{fp(h["precio_ant"])}</div>
+                    {link_ant}
                 </div>
                 <div class="ano-arrow">
                     <div class="ano-diff-precio">−{fp(h["diff_precio"])}</div>
@@ -539,6 +572,7 @@ def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
                     <div class="ano-label">AÑO {h["ano_nuevo"]} <span style="color:#dc2626;font-size:10px">MÁS BARATO</span></div>
                     <div class="ano-km">{fk(h["km_nuevo"])}</div>
                     <div class="ano-precio">{fp(h["precio_nuevo"])}</div>
+                    {link_nuevo}
                 </div>
             </div>
         </div>'''
@@ -599,6 +633,7 @@ def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
                         <div class="ver-tag-inf">VERSIÓN INFERIOR — MÁS CARA</div>
                         <div class="ver-name">{h["ver_inf"]}</div>
                         <div class="ver-detail">{fk(h["km_inf"])} · <strong>{fp(h["precio_inf"])}</strong></div>
+                        {btn_link(h.get("url_inf",""), "Ver en sitio →")}
                     </div>
                     <div class="ver-diff">
                         <div style="color:#dc2626;font-weight:700;font-size:13px">+{fp(diff)}</div>
@@ -608,6 +643,7 @@ def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
                         <div class="ver-tag-sup">VERSIÓN SUPERIOR — MÁS BARATA</div>
                         <div class="ver-name">{h["ver_sup"]}</div>
                         <div class="ver-detail">{fk(h["km_sup"])} · <strong>{fp(h["precio_sup"])}</strong></div>
+                        {btn_link(h.get("url_sup",""), "Ver en sitio →")}
                     </div>
                 </div>
             </div>'''
@@ -632,9 +668,12 @@ def generar_html(veh, comb_err, km_p, ano_p, ver_p, stats, fecha_gen, hora_gen):
                     <span class="inc-version">{h["vehiculo"]}</span>
                     <span class="inc-diff">{fk(h["km"])} · {fp(h["precio"])}</span>
                 </div>
-                {badge_sev(h["sev"])}
+                <div style="display:flex;align-items:center;gap:8px">
+                    {btn_link(h.get("url",""), "Ver en sitio →")}
+                    {badge_sev(h["sev"])}
+                </div>
             </div>
-            <div style="display:flex;gap:12px;align-items:center;margin-top:8px;font-size:12px">
+            <div style="display:flex;gap:12px;align-items:center;margin-top:8px;font-size:12px;flex-wrap:wrap">
                 <span style="background:#fee2e2;color:#991b1b;padding:3px 10px;border-radius:4px">Actual: {h["comb_actual"]}</span>
                 <span style="color:#6b7280">→</span>
                 <span style="background:#dcfce7;color:#166534;padding:3px 10px;border-radius:4px">Debería ser: {h["deberia"]}</span>
@@ -812,6 +851,10 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
 .empty-state{{text-align:center;color:var(--muted);padding:24px;font-size:12px;
               background:#f8fafc;border-radius:6px;border:1px dashed var(--border)}}
+.btn-link{{display:inline-block;margin-top:6px;padding:3px 10px;background:#1d4ed8;
+           color:#fff;border-radius:4px;font-size:10px;font-weight:600;
+           text-decoration:none;white-space:nowrap}}
+.btn-link:hover{{background:#1e40af}}
 
 footer{{text-align:center;padding:20px;color:var(--muted);font-size:10px;
         border-top:1px solid var(--border);margin-top:20px}}
