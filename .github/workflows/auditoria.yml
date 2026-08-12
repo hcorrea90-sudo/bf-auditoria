@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,5 +35,8 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/index.html docs/data.json
-          git diff --staged --quiet || git commit -m "Auditoria semanal $(date +'%Y-%m-%d')"
+          # Forzar commit aunque no haya cambios tocando .nojekyll
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > docs/.updated
+          git add docs/.updated
+          git commit -m "Auditoria semanal $(date +'%Y-%m-%d %H:%M')" || true
           git push
