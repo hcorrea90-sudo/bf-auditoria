@@ -5,13 +5,15 @@ on:
     - cron: "0 11 * * 1"
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   auditar:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,13 +32,18 @@ jobs:
       - name: Correr auditoría
         run: python scripts/scraper.py
 
-      - name: Publicar informe
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html docs/data.json
-          # Forzar commit aunque no haya cambios tocando .nojekyll
-          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > docs/.updated
-          git add docs/.updated
-          git commit -m "Auditoria semanal $(date +'%Y-%m-%d %H:%M')" || true
-          git push
+      - name: Subir artefacto para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
+
+  deploy:
+    needs: auditar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
