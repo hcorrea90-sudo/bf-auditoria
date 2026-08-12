@@ -1,507 +1,507 @@
 {
-  "generado": "2026-08-10T11:43:04.708376",
-  "total": 910,
-  "con_precio": 910,
+  "generado": "2026-08-12T15:30:10.223950",
+  "total": 941,
+  "con_precio": 941,
   "vehiculos": [
     {
-      "titulo": "TOYOTA 4RUNNER 2019 4.0 SR5 4X2 CONTROL VOLANTE EUROV AT 5P",
-      "marca": "TOYOTA",
+      "titulo": "NISSAN KICKS 2019 1.6 ADVANCE 4X2 MT 5P",
+      "marca": "NISSAN",
       "ano": 2019,
-      "km": 150775,
-      "precio": 24990000,
+      "km": 96250,
+      "precio": 10190000,
       "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/KZPT-41"
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/LJCK-17"
     },
     {
-      "titulo": "TOYOTA HILUX 2026 2.4 DX DIESEL 4X2 DOB. CAB. MT 4P",
+      "titulo": "TOYOTA RAV4 2026 2.0 LE 4X2 CVT AT 5P",
       "marca": "TOYOTA",
       "ano": 2026,
-      "km": 17,
-      "precio": 29390000,
+      "km": 11440,
+      "precio": 21990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/VPXG-29"
+    },
+    {
+      "titulo": "TOYOTA RAV4 2023 2.0 LE 4X2 CVT AT 5P",
+      "marca": "TOYOTA",
+      "ano": 2023,
+      "km": 40386,
+      "precio": 21490000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/SJJV-18"
+    },
+    {
+      "titulo": "PEUGEOT PARTNER 2026 1.5 MCA L2 HDI DIESEL 100HP 4X2 MT 5P",
+      "marca": "PEUGEOT",
+      "ano": 2026,
+      "km": 1625,
+      "precio": 20790000,
       "combustible": "Diesel",
       "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/VKYC-44"
+      "url": "https://www.brunofritsch.cl/autos-usados/VRRS-20"
     },
     {
-      "titulo": "TOYOTA RAV4 2020 2.5 LE HYBRID HV 4X2 CVT AT 5P",
-      "marca": "TOYOTA",
-      "ano": 2020,
-      "km": 126150,
-      "precio": 20890000,
-      "combustible": "Híbrido",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/PDCG-98"
+      "titulo": "OPEL MOKKA 2025 1.2T ELEGANCE 4X2 MT6 5P",
+      "marca": "OPEL",
+      "ano": 2025,
+      "km": 15049,
+      "precio": 13490000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/TTDH-76"
     },
     {
-      "titulo": "TOYOTA RUSH 2017 1.5 LEI 4X2 AT 5P",
-      "marca": "TOYOTA",
-      "ano": 2017,
-      "km": 115000,
+      "titulo": "MG ZS 2026 1.5 STD 4X2 CVT AT 5P",
+      "marca": "MG",
+      "ano": 2026,
+      "km": 10684,
       "precio": 9990000,
       "combustible": "Gasolina",
       "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/JRYY-25"
+      "url": "https://www.brunofritsch.cl/autos-usados/VRCB-94"
     },
     {
-      "titulo": "TOYOTA YARIS 2020 1.5 SPORT GL E 4X2 HB MT 5P",
+      "titulo": "TOYOTA RAV4 2026 2.0 LE 4X2 CVT AT 5P",
       "marca": "TOYOTA",
-      "ano": 2020,
-      "km": 98889,
-      "precio": 10390000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/LYFC-25"
-    },
-    {
-      "titulo": "PEUGEOT 308 2023 1.2 ALLURE PURETECH 130 4X2 MT 5P",
-      "marca": "PEUGEOT",
-      "ano": 2023,
-      "km": 62000,
-      "precio": 13190000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/SYZW-35"
-    },
-    {
-      "titulo": "NISSAN X-TRAIL 2018 2.5 SENSE 4X2 CVT AT 5P",
-      "marca": "NISSAN",
-      "ano": 2018,
-      "km": 37000,
-      "precio": 13190000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/KPDB-77"
-    },
-    {
-      "titulo": "PEUGEOT 2008 2023 1.2 ACTIVE PURETECH 130 4X2 MT 5P",
-      "marca": "PEUGEOT",
-      "ano": 2008,
-      "km": 64843,
-      "precio": 11690000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/SKHZ-14"
-    },
-    {
-      "titulo": "NISSAN VERSA 2023 1.6 SENSE 4X2 MT 4P",
-      "marca": "NISSAN",
-      "ano": 2023,
-      "km": 47526,
-      "precio": 10890000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/STYS-65"
-    },
-    {
-      "titulo": "KIA SORENTO 2018 2.4 EX 4X4 6AT 5P",
-      "marca": "KIA",
-      "ano": 2018,
-      "km": 114535,
-      "precio": 16990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/KFZV-40"
-    },
-    {
-      "titulo": "JAECOO 5 2026 1.5T ELEMENTAL FWD CVT9 AT 5P",
-      "marca": "JAECOO",
       "ano": 2026,
-      "km": 24347,
-      "precio": 9990000,
+      "km": 16372,
+      "precio": 21490000,
       "combustible": "Gasolina",
       "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/VJZG-22"
+      "url": "https://www.brunofritsch.cl/autos-usados/VPXD-18"
     },
     {
-      "titulo": "HYUNDAI TUCSON 2023 2.0 NX4 PLUS 4WD AT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2023,
-      "km": 50868,
-      "precio": 18990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/SWSZ-55"
-    },
-    {
-      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
-      "marca": "HYUNDAI",
+      "titulo": "MG 3 2026 1.5 COM 2WD HB MT 5P",
+      "marca": "MG",
       "ano": 2026,
-      "km": 13118,
-      "precio": 12990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/VPPF-15"
-    },
-    {
-      "titulo": "HAVAL JOLION 2022 1.5T ELITE 4X2 MT 5P",
-      "marca": "HAVAL",
-      "ano": 2022,
-      "km": 119936,
-      "precio": 9490000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/RHSJ-73"
-    },
-    {
-      "titulo": "GEELY GX3 PRO 2024 1.5 GF 4X2 CVT AT 5P",
-      "marca": "GEELY",
-      "ano": 2024,
-      "km": 69663,
-      "precio": 8890000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/TSHV-41"
-    },
-    {
-      "titulo": "FIAT 500 X 2019 1.6 4X2 MT 5P",
-      "marca": "FIAT",
-      "ano": 2019,
-      "km": 90449,
-      "precio": 8290000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/LFLT-73"
-    },
-    {
-      "titulo": "CHEVROLET CAPTIVA 2017 2.4 LS FWD 6AT 5P",
-      "marca": "CHEVROLET",
-      "ano": 2017,
-      "km": 95826,
+      "km": 3279,
       "precio": 8990000,
       "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/JJKH-73"
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VRBZ-11"
     },
     {
-      "titulo": "CHERY TIGGO 8 2022 1.5T GLX 4X2 DCT AT 5P",
-      "marca": "CHERY",
+      "titulo": "OPEL CORSA 2022 1.5T EDITION DIESEL 4X2 100HP MT6 5P",
+      "marca": "OPEL",
       "ano": 2022,
-      "km": 45001,
-      "precio": 12890000,
+      "km": 69234,
+      "precio": 10490000,
+      "combustible": "Diesel",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/RPYG-37"
+    },
+    {
+      "titulo": "HYUNDAI GRAND I10 2025 1.2 PLUS 4X2 HB MT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2025,
+      "km": 12,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VHWL-67"
+    },
+    {
+      "titulo": "HONDA CR-V 2019 1.5T TOURING 4X4 CVT AT 5P",
+      "marca": "HONDA",
+      "ano": 2019,
+      "km": 71000,
+      "precio": 18490000,
       "combustible": "Gasolina",
       "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/RVFG-46"
+      "url": "https://www.brunofritsch.cl/autos-usados/KVRG-62"
+    },
+    {
+      "titulo": "CHEVROLET GROOVE 2023 1.5 LTZ 4X2 MT 5P",
+      "marca": "CHEVROLET",
+      "ano": 2023,
+      "km": 60400,
+      "precio": 9690000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/SGLK-14"
     },
     {
       "titulo": "CHERY TIGGO 7 PRO 2022 1.5T GLS 4X2 CVT AT 5P",
       "marca": "CHERY",
       "ano": 2022,
-      "km": 59986,
-      "precio": 11390000,
+      "km": 9536,
+      "precio": 11490000,
       "combustible": "Gasolina",
       "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/RRJJ-70"
+      "url": "https://www.brunofritsch.cl/autos-usados/RVHS-52"
     },
     {
-      "titulo": "CHERY TIGGO 7 PRO 2025 1.5T GLS 4X2 CVT AT 5P",
-      "marca": "CHERY",
-      "ano": 2025,
-      "km": 19856,
-      "precio": 11690000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/VGGD-99"
-    },
-    {
-      "titulo": "HYUNDAI VERNA 2022 1.4 CB PLUS 4X2 MT5 4P",
-      "marca": "HYUNDAI",
-      "ano": 2022,
-      "km": 90921,
-      "precio": 7990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/RKYZ-62"
-    },
-    {
-      "titulo": "VOLKSWAGEN GOL 2022 1.6 TRENDLINE 4X2 HB MT 5P",
-      "marca": "VOLKSWAGEN",
-      "ano": 2022,
-      "km": 62000,
-      "precio": 7690000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/RWKB-48"
-    },
-    {
-      "titulo": "SUZUKI S-PRESSO 2022 1.0 GLX 4X2 MT 5P",
-      "marca": "SUZUKI",
-      "ano": 2022,
-      "km": 39361,
-      "precio": 6790000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/RFTJ-51"
-    },
-    {
-      "titulo": "KIA SELTOS 2021 1.6 EX FULL 4X2 6MT 5P",
-      "marca": "KIA",
-      "ano": 2021,
-      "km": 23893,
-      "precio": 13590000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/PDLB-58"
-    },
-    {
-      "titulo": "MAZDA 3 2023 2.0 V 4X2 HB 6AT 5P",
+      "titulo": "MAZDA CX-5 2022 2.0 R CAR AUDIO 4X2 6MT 5P",
       "marca": "MAZDA",
-      "ano": 2023,
-      "km": 61353,
-      "precio": 19190000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/SPGB-63"
-    },
-    {
-      "titulo": "SUBARU FORESTER 2021 2.0I X AWD AT 5P",
-      "marca": "SUBARU",
-      "ano": 2021,
-      "km": 98642,
-      "precio": 17990000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/PTSR-33"
-    },
-    {
-      "titulo": "HYUNDAI TUCSON 2023 2.0 NX4 PLUS 2WD MT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2023,
-      "km": 42734,
-      "precio": 18190000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/SLRY-51"
-    },
-    {
-      "titulo": "HYUNDAI CRETA 2017 1.6 GL 4X2 2AB MT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2017,
-      "km": 131000,
-      "precio": 9390000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/JTLY-15"
-    },
-    {
-      "titulo": "SUZUKI BALENO 2022 1.4 GL 4X2 HB MT 5P",
-      "marca": "SUZUKI",
       "ano": 2022,
-      "km": 28576,
-      "precio": 10290000,
+      "km": 29000,
+      "precio": 17590000,
       "combustible": "Gasolina",
       "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/RYPR-27"
+      "url": "https://www.brunofritsch.cl/autos-usados/RTLG-43"
     },
     {
-      "titulo": "MG ZS 2024 1.5 STD 4X2 MT 5P",
-      "marca": "MG",
-      "ano": 2024,
-      "km": 56000,
-      "precio": 7990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/TJTK-66"
-    },
-    {
-      "titulo": "CHEVROLET TRACKER 2023 1.2T LTZ FWD AT 5P",
-      "marca": "CHEVROLET",
-      "ano": 2023,
-      "km": 55676,
-      "precio": 11690000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/SGCH-79"
-    },
-    {
-      "titulo": "CHANGAN CS35 2022 1.6 COMFORT 4X2 MT 5P",
-      "marca": "CHANGAN",
-      "ano": 2022,
-      "km": 59000,
-      "precio": 9290000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/RFVD-59"
-    },
-    {
-      "titulo": "NISSAN KICKS 2023 1.6 ADVANCE 4X2 CVT AT 5P",
-      "marca": "NISSAN",
-      "ano": 2023,
-      "km": 21134,
-      "precio": 14390000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/SWXW-11"
-    },
-    {
-      "titulo": "MAZDA CX-9 2016 3.7 GT AWD AT 5P",
-      "marca": "MAZDA",
-      "ano": 2016,
-      "km": 146583,
-      "precio": 10690000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/HKKK-60"
-    },
-    {
-      "titulo": "NISSAN KICKS 2023 1.6 ADVANCE 4X2 MT 5P",
-      "marca": "NISSAN",
-      "ano": 2023,
-      "km": 40692,
-      "precio": 13190000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/SKZB-32"
-    },
-    {
-      "titulo": "JAC JS2 2025 1.5 COMFORT 4X2 MT 5P",
-      "marca": "JAC",
-      "ano": 2025,
-      "km": 37000,
-      "precio": 8490000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/VGJG-95"
-    },
-    {
-      "titulo": "MG RX5 2024 1.5T DLX 2WD DCT AT 5P",
-      "marca": "MG",
-      "ano": 2024,
-      "km": 52377,
-      "precio": 12190000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/TFJY-96"
-    },
-    {
-      "titulo": "HYUNDAI TUCSON 2025 2.0 NX4 PLUS FL 2WD AT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2025,
-      "km": 13645,
-      "precio": 20490000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/VHYR-37"
-    },
-    {
-      "titulo": "TOYOTA 4RUNNER 2026 2.4T SR5 4X4 AT 5P",
-      "marca": "TOYOTA",
-      "ano": 2026,
-      "km": 11995,
-      "precio": 44790000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/VRBV-99"
-    },
-    {
-      "titulo": "GREAT WALL POER 2024 2.0T ELITE DIESEL 4X2 DOB. CAB. AT 4P",
+      "titulo": "GREAT WALL WINGLE 7 2024 2.4 ELITE DOB. CAB. 4X2 MT 4P",
       "marca": "GREAT",
       "ano": 2024,
-      "km": 15866,
-      "precio": 19990000,
-      "combustible": "Diesel",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/TRKB-48"
-    },
-    {
-      "titulo": "HONDA PILOT 2022 3.5 TOURING 4X4 AT 5P",
-      "marca": "HONDA",
-      "ano": 2022,
-      "km": 66159,
-      "precio": 28390000,
-      "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/RPZY-94"
-    },
-    {
-      "titulo": "LEXUS LBX 2024 1.5 ACTIVE HIBRIDO 4X2 CVT AT 5P",
-      "marca": "LEXUS",
-      "ano": 2024,
-      "km": 27908,
-      "precio": 26990000,
-      "combustible": "Híbrido",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/TRCH-64"
-    },
-    {
-      "titulo": "HYUNDAI KONA 2024 1.6 VALUE OS HEV HIBRIDO 4X2 AT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2024,
-      "km": 14341,
-      "precio": 19390000,
-      "combustible": "Híbrido",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/TBWB-26"
-    },
-    {
-      "titulo": "SUZUKI GRAND VITARA 2015 1.6 GLX FULL 4X4 MT 3P",
-      "marca": "SUZUKI",
-      "ano": 2015,
-      "km": 138000,
-      "precio": 8990000,
+      "km": 18738,
+      "precio": 11690000,
       "combustible": "Gasolina",
       "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/HBFH-31"
+      "url": "https://www.brunofritsch.cl/autos-usados/TBHS-24"
     },
     {
-      "titulo": "NISSAN KICKS 2023 1.6 ADVANCE 4X2 MT 5P",
-      "marca": "NISSAN",
-      "ano": 2023,
-      "km": 57924,
-      "precio": 12390000,
+      "titulo": "TOYOTA RAV4 2026 2.0 LE 4X2 CVT AT 5P",
+      "marca": "TOYOTA",
+      "ano": 2026,
+      "km": 13219,
+      "precio": 21990000,
       "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/SRDV-46"
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/VPYG-42"
     },
     {
-      "titulo": "CHERY TIGGO 2 2024 1.5 VVT GLS 4X2 EURO6 MT 5P",
+      "titulo": "JAECOO 5 2026 1.5T ELEMENTAL FWD CVT9 AT 5P",
+      "marca": "JAECOO",
+      "ano": 2026,
+      "km": 19701,
+      "precio": 10190000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/VPKC-23"
+    },
+    {
+      "titulo": "MITSUBISHI ECLIPSE CROSS 2021 1.5 RS 4X2 AT 5P",
+      "marca": "MITSUBISHI",
+      "ano": 2021,
+      "km": 107776,
+      "precio": 12890000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/PJYF-19"
+    },
+    {
+      "titulo": "CHERY TIGGO 2 PRO 2024 1.5 GLS 4X2 MT 5P",
       "marca": "CHERY",
       "ano": 2024,
-      "km": 31543,
+      "km": 50186,
       "precio": 7790000,
       "combustible": "Gasolina",
       "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/TFYV-78"
+      "url": "https://www.brunofritsch.cl/autos-usados/TBJG-34"
     },
     {
-      "titulo": "SEAT TARRACO 2021 1.4 TSI XCELLENCE 4X2 AT 5P",
-      "marca": "SEAT",
+      "titulo": "VOLVO XC60 2018 2.0 T5 COMFORT 4X4 AT 5P",
+      "marca": "VOLVO",
+      "ano": 2018,
+      "km": 92925,
+      "precio": 19990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/KDXD-27"
+    },
+    {
+      "titulo": "SUZUKI SWIFT 2021 1.2 GL 4X2 HB MT 5P",
+      "marca": "SUZUKI",
       "ano": 2021,
-      "km": 79200,
-      "precio": 16590000,
+      "km": 72528,
+      "precio": 8790000,
       "combustible": "Gasolina",
-      "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/PYVS-57"
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/RDRV-87"
     },
     {
-      "titulo": "CHERY TIGGO 3 PRO 2023 1.5T GLX 4X2 CVT AT 5P",
-      "marca": "CHERY",
-      "ano": 2023,
-      "km": 22000,
-      "precio": 10690000,
+      "titulo": "HYUNDAI TUCSON 2025 2.0 NX4 PLUS 2WD AT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2025,
+      "km": 15980,
+      "precio": 19990000,
       "combustible": "Gasolina",
       "transmision": "Automática",
-      "url": "https://www.brunofritsch.cl/autos-usados/SRPZ-43"
+      "url": "https://www.brunofritsch.cl/autos-usados/VHWX-61"
+    },
+    {
+      "titulo": "NISSAN VERSA 2022 1.6 SENSE 4X2 MT 4P",
+      "marca": "NISSAN",
+      "ano": 2022,
+      "km": 64981,
+      "precio": 10290000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/SCRD-96"
+    },
+    {
+      "titulo": "KIA SOLUTO 2026 1.4 LX 4X2 E6 MT 4P",
+      "marca": "KIA",
+      "ano": 2026,
+      "km": 14864,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VKTK-23"
     },
     {
       "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
       "marca": "HYUNDAI",
       "ano": 2026,
-      "km": 10218,
-      "precio": 12990000,
-      "combustible": "Gasolina",
-      "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/VPPD-79"
-    },
-    {
-      "titulo": "HYUNDAI I20 2025 1.4 PLUS FL BI3 4X2 HB MT 5P",
-      "marca": "HYUNDAI",
-      "ano": 2025,
-      "km": 24714,
+      "km": 27915,
       "precio": 12390000,
       "combustible": "Gasolina",
       "transmision": "Mecánica",
-      "url": "https://www.brunofritsch.cl/autos-usados/VGGV-41"
+      "url": "https://www.brunofritsch.cl/autos-usados/VPLC-49"
+    },
+    {
+      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2026,
+      "km": 24577,
+      "precio": 12590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VPPL-58"
+    },
+    {
+      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2026,
+      "km": 24872,
+      "precio": 12590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VPPX-66"
+    },
+    {
+      "titulo": "HYUNDAI I20 2026 1.4 PLUS FL BI3 4X2 HB MT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2026,
+      "km": 23380,
+      "precio": 12590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VPKT-99"
+    },
+    {
+      "titulo": "PEUGEOT 3008 2025 1.2 ACTIVE PACK PURETECH 130 4X2 MT6 5P",
+      "marca": "PEUGEOT",
+      "ano": 2025,
+      "km": 12662,
+      "precio": 17490000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VCZK-63"
+    },
+    {
+      "titulo": "CHERY TIGGO 3 PRO 2025 1.5 GLS 4X2 CVT AT 5P",
+      "marca": "CHERY",
+      "ano": 2025,
+      "km": 25000,
+      "precio": 11690000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/TVTF-71"
+    },
+    {
+      "titulo": "SUZUKI SWIFT 2023 1.2 GLX PLUS 4X2 HB MT 5P",
+      "marca": "SUZUKI",
+      "ano": 2023,
+      "km": 43307,
+      "precio": 10290000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/SXGZ-33"
+    },
+    {
+      "titulo": "RENAULT DUSTER 2022 1.6 LIFE 4X2 5MT 5P",
+      "marca": "RENAULT",
+      "ano": 2022,
+      "km": 39035,
+      "precio": 9590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/RYBD-76"
+    },
+    {
+      "titulo": "HYUNDAI GRAND I10 2025 1.2 PLUS 4X2 SDN AT 4P",
+      "marca": "HYUNDAI",
+      "ano": 2025,
+      "km": 24932,
+      "precio": 9990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/VGKV-27"
+    },
+    {
+      "titulo": "TOYOTA RAV4 2022 2.0 LE 4X2 CVT AT 5P",
+      "marca": "TOYOTA",
+      "ano": 2022,
+      "km": 54303,
+      "precio": 19590000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/SCBW-23"
+    },
+    {
+      "titulo": "HYUNDAI GRAND I10 2021 1.2 GLS 4X2 HB AC 2AB MT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2021,
+      "km": 78728,
+      "precio": 7590000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/PJBX-84"
+    },
+    {
+      "titulo": "MG 3 2026 1.5 COM 2WD HB MT 5P",
+      "marca": "MG",
+      "ano": 2026,
+      "km": 12403,
+      "precio": 8790000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VRBZ-26"
+    },
+    {
+      "titulo": "MG ZS 2026 1.5 STD 4X2 CVT AT 5P",
+      "marca": "MG",
+      "ano": 2026,
+      "km": 5271,
+      "precio": 10390000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/VRCB-84"
+    },
+    {
+      "titulo": "MG ZS 2026 1.5 STD 4X2 CVT AT 5P",
+      "marca": "MG",
+      "ano": 2026,
+      "km": 9862,
+      "precio": 10390000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/VRCB-75"
+    },
+    {
+      "titulo": "MG 3 2026 1.5 COM 2WD HB MT 5P",
+      "marca": "MG",
+      "ano": 2026,
+      "km": 7772,
+      "precio": 8990000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/VRBX-83"
+    },
+    {
+      "titulo": "LEXUS LBX 2026 1.5 URBAN HIBRIDO 4X2 CVT AT 5P",
+      "marca": "LEXUS",
+      "ano": 2026,
+      "km": 2500,
+      "precio": 26500000,
+      "combustible": "Híbrido",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/VJLP-53"
+    },
+    {
+      "titulo": "TOYOTA 4RUNNER 2018 4.0 LIMITED EURO V 4X4 AT 5P",
+      "marca": "TOYOTA",
+      "ano": 2018,
+      "km": 153000,
+      "precio": 22490000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/KBYS-79"
+    },
+    {
+      "titulo": "KIA SOLUTO 2023 1.4 LX 4X2 E6 MT 4P",
+      "marca": "KIA",
+      "ano": 2023,
+      "km": 28743,
+      "precio": 8290000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/SPTG-45"
+    },
+    {
+      "titulo": "VOLKSWAGEN ATLAS 2022 3.6 FSI LIMITED 4MOTION 4X4 AT 5P",
+      "marca": "VOLKSWAGEN",
+      "ano": 2022,
+      "km": 60000,
+      "precio": 28990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/RYPK-46"
+    },
+    {
+      "titulo": "KIA RIO 5 2020 1.4 EX 4X2 6MT 5P",
+      "marca": "KIA",
+      "ano": 2020,
+      "km": 77200,
+      "precio": 9190000,
+      "combustible": "Gasolina",
+      "transmision": "Mecánica",
+      "url": "https://www.brunofritsch.cl/autos-usados/LVRF-32"
+    },
+    {
+      "titulo": "SUBARU FORESTER 2017 2.0I X AWD CVT AT 5P",
+      "marca": "SUBARU",
+      "ano": 2017,
+      "km": 118268,
+      "precio": 11690000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/JKGV-54"
+    },
+    {
+      "titulo": "HONDA HR-V 2021 1.8 EXL CVT 4X2 AT 5P",
+      "marca": "HONDA",
+      "ano": 2021,
+      "km": 90655,
+      "precio": 13990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/RDBK-77"
+    },
+    {
+      "titulo": "TOYOTA 4RUNNER 2024 4.0 SR5 4X4 AT 5P",
+      "marca": "TOYOTA",
+      "ano": 2024,
+      "km": 45813,
+      "precio": 38900000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/TFKR-80"
+    },
+    {
+      "titulo": "HYUNDAI GRAND I10 2022 1.2 VALUE 4X2 HB AT 5P",
+      "marca": "HYUNDAI",
+      "ano": 2022,
+      "km": 32604,
+      "precio": 9190000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/SFYZ-52"
+    },
+    {
+      "titulo": "VOLKSWAGEN T-CROSS 2024 1.0 TSI HIGHLINE HERO 4X2 6AT 5P",
+      "marca": "VOLKSWAGEN",
+      "ano": 2024,
+      "km": 22300,
+      "precio": 17190000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/TFXF-93"
+    },
+    {
+      "titulo": "CHEVROLET CAPTIVA 2025 1.5T PREMIER R 4X2 CVT AT 5P",
+      "marca": "CHEVROLET",
+      "ano": 2025,
+      "km": 14148,
+      "precio": 17990000,
+      "combustible": "Gasolina",
+      "transmision": "Automática",
+      "url": "https://www.brunofritsch.cl/autos-usados/VCRL-23"
     }
   ]
 }
